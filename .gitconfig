@@ -1,0 +1,10 @@
+[user]
+	name = Christian Geier
+	email = geier@lostpackets.de
+[color]
+	ui = true
+[alias]
+	undo-commit = reset --soft HEAD^
+[color "branch"]
+	current = red
+	remote = green
