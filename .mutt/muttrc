@@ -1,0 +1,80 @@
+set realname='Christian Geier'
+source ~/.mutt/colours.muttrc                # source colors file
+#source ~/.mutt/sidebar.muttrc                # any non-standard options are here
+source ~/.mutt/lostpackets.muttrc
+source ~/.mutt/uni.muttrc
+
+set mbox_type   = Maildir
+set folder      = ~/Mail
+folder-hook lostpackets 'set from="geier@lostpackets.de"; unset signature'
+folder-hook uni set from="geier@uni-bonn.de" \
+			signature=~/.mutt/uni.sig
+
+set spoolfile   = "+lostpackets/INBOX"      # inbox
+
+
+set copy=yes
+set record="+lostpackets/Sent"
+
+set timeout             = 3                 # idle time before scanning
+set mail_check          = 0                 # minimum time between scans
+set beep_new=yes                            # bell on new mails
+set sort_aux=reverse-date                   # newest mail on top
+
+set folder_format="%2C %t %N %8s %d %f"  #
+
+#macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+#macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro index,pager a <tag-prefix><save-message>=lostpackets/archive<enter><enter>
+
+macro generic "<esc>1" ":set from=geier@uni-bonn.de"
+macro generic "<esc>2" ":set from=geier@lostpackets.de"
+
+source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
+#macro index c "<change-folder>?<toggle-mailboxes>" "open a different folder"
+macro pager c "<change-folder>?<toggle-mailboxes>" "open a different folder"
+macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
+macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
+
+macro compose A "<attach-message>?<toggle-mailboxes>" "attach message(s) to this message"
+set pager_index_lines="5"
+
+#set use_envelope_from
+set use_from=yes
+set envelope_from=yes
+set sendmail  = "msmtp"
+#set sendmail  = "msmtp-enqueue.sh"
+
+set sort                = threads
+
+# mailboxes
+#mailboxes +uni/INBOX +uni/Sent +uni/Drafts +uni/Trash
+#mailboxes +lostpackets/INBOX  +lostpackets/Sent  +lostpackets/Drafts  +lostpackets/archive  +lostpackets/Trash +lostpackets/Junk +lostpackets/freebsd.stable +lostpackets/freebsd.current +lostpackets/freebsd.svn-src-head +lostpackets/freebsd.svn-src-stable-8
+
+mailboxes =lostpackets/INBOX =uni/INBOX
+
+# html messages 
+auto_view text/html                                   # view html automatically
+alternative_order text/plain text/enriched text/html  # but save it for last
+
+set query_command="pc_query -m '%s'"
+macro index,pager A "<pipe-message>pycard-import -a abook<enter>" "add the sender address to abook"
+macro index,pager B "<pipe-message>pycard-import --to<enter>" "add the sender address to abook"
+
+set print_command="/usr/bin/lpr -o page-left=72"
+# if exists source ~/.mutt/hostname.muttrc otherwise ~/.mutt/empty.muttrc
+
+source ~/.mutt/`test -e ~/.mutt/$(hostname -s).muttrc && echo $(hostname -s).muttrc || echo empty.muttrc`
+
+
+macro index <F8> \
+      "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt --prompt search<enter><change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter>" \
+      "notmuch: search mail"
+macro index <F9> \
+      "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt thread<enter><change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter><enter-command>set wait_key<enter>" \
+      "notmuch: reconstruct thread"
+macro index <F6> \
+      "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt tag -inbox<enter>" \
+      "notmuch: remove message from inbox"
+

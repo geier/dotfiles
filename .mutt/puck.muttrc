@@ -1,0 +1,1 @@
+set sendmail = "~/bin/msmtp-enqueue.sh"

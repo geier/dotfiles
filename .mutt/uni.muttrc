@@ -1,0 +1,22 @@
+###
+# uni specific options
+###
+
+color status green default
+
+set from      = "geier@uni-bonn.de"
+#set sendmail  = "/usr/bin/msmtp -a uni"
+set mbox      = "+uni/Archive"
+set record    = "+uni/Sent"
+set postponed = "+uni/Drafts"
+
+set use_from=yes
+set envelope_from=yes
+
+
+unset record
+set postponed = "+uni/drafts"
+
+macro index E "<change-folder>+lostpackets/archive<enter><limit>~B " "search everything"
+macro index D "<save-message>+uni/trash<enter>"              "move message to the trash"
+

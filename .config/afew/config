@@ -1,0 +1,16 @@
+#[SpamFilter]
+#[ClassifyingFilter]
+[KillThreadsFilter]
+[ListMailsFilter]
+[ArchiveSentMailsFilter]
+[InboxFilter]
+
+[MailMover]
+folders = lostpackets/INBOX uni/INBOX
+max_age = 30
+
+# rules
+lostpackets/INBOX = 'NOT tag:inbox':lostpackets/archive 'tag:killed':lostpackets/archive
+uni/INBOX = 'NOT tag:inbox':lostpackets/archive 'tag:killed':lostpackets/archive
+#'NOT tag:inbox':Archive
+Junk = 'NOT tag:spam AND tag:inbox':INBOX 'NOT tag:spam':Archive 

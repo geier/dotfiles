@@ -1,0 +1,52 @@
+# vim: ft=cfg
+[general]
+#NOTE: cronjob calls the quiet UI with -u
+accounts = uni, lostpackets
+autorefresh=2
+maxsyncaccounts = 3
+pythonfile=~/bin/keyring_helper.py
+
+[Account uni]
+localrepository = uni-Local
+remoterepository = uni-Remote
+autorefresh = 5
+postsynchook = notmuch new && afew --tag --new && afew -m
+
+[Account lostpackets]
+localrepository = lostpackets-Local
+remoterepository = lostpackets-Remote
+autorefresh = 5
+postsynchook = notmuch new && afew --tag --new && afew -m
+
+[Repository uni-Local]
+type = Maildir
+localfolders = ~/Mail/uni
+
+[Repository lostpackets-Local]
+type = Maildir
+localfolders = ~/Mail/lostpackets
+#nametrans = lambda folder: re.sub ('^INBOX.INBOX$', 'INBOX', 'INBOX.' + folder)
+nametrans = lambda f: ["INBOX."+f, f][f == "INBOX"]
+
+[Repository uni-Remote]
+type = IMAP
+ssl = yes
+remotehost = mail.uni-bonn.de
+remoteport = 993
+#remoteusereval = get_username("mail.uni-bonn.de")
+remoteuser = geier@uni-bonn.de
+remotepasseval = get_password("mail.uni-bonn.de", "geier@uni-bonn.de")
+cert_fingerprint = ef9ff7642ae7f80fdd7ac6bf22459bd04613776c
+
+[Repository lostpackets-Remote]
+type = IMAP
+ssl = yes
+remotehost = mail.lostpackets.de
+remoteport = 993
+#remoteusereval = get_username("mail.lostpackets.de")
+remoteuser = geier@lostpackets.de
+remotepasseval = get_password("mail.lostpackets.de", "geier@lostpackets.de")
+nametrans = lambda foldername: re.sub('^INBOX.', '', foldername)
+cert_fingerprint = ee636535ba7399e87f61a54d05887530c71730a0
+idlefolders = ['INBOX']
+

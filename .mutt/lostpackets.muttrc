@@ -1,0 +1,18 @@
+###
+# lostpackets specific options
+###
+
+color status yellow default
+
+set from      = "geier@lostpackets.de"
+#set sendmail  = "/usr/bin/msmtp -a lostpackets"
+set mbox      = "+lostpackets/archive"
+set record    = "+lostpackets/Sent"
+set postponed = "+lostpackets/Drafts"
+
+set use_from=yes
+set envelope_from=yes
+
+macro index E "<change-folder>+lostpackets/Archive<enter><limit>~B " "search everything"
+macro index D "<save-message>+lostpackets/Trash<enter>"              "move message to the trash"
+
