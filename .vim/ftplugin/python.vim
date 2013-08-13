@@ -25,7 +25,7 @@ setlocal colorcolumn=80
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
 match OverLength /\%81v.*/
 
-let g:syntastic_python_checkers=['pylint']
+let g:syntastic_python_checkers=['flake8']
 let g:syntastic_check_on_open = 1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_loc_list_height=5

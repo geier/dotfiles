@@ -126,6 +126,9 @@ alias Ag='sudo aptitude upgrade'
 alias Ad='sudo aptitude dist-upgrade'
 alias pi='pip install'
 
+alias cok='colout OK 28'
+alias cerror='colout Error 1'
+
 #alias ipython='PAGER=more ipython'
 
 if [[ -x /usr/bin/tmux || -x /usr/local/bin/tmux ]]; then 
