@@ -15,6 +15,11 @@ theme = solarized_dark
     draft_box = maildir:///home/cg/Mail/lostpackets/Draft
     sent_tags = sent,
     sendmail_command = msmtp -a lostpackets -t
+    [[[abook]]]
+        type = shellcommand
+        command = pc_query -m
+        regexp = '^(?P<email>[^@]+@[^\t]+)\t+(?P<name>[^\t]+)'
+        ignorecase = True
   [[uni]]
     address = geier@uni-bonn.de
     realname = Christian Geier
@@ -22,6 +27,12 @@ theme = solarized_dark
     draft_box = maildir:///home/cg/Mail/lostpackets/Draft
     sent_tags = sent,
     sendmail_command = msmtp -a uni -t
+    signature = ~/.uni.sig
+    [[[abook]]]
+        type = shellcommand
+        command = pc_query -m
+        regexp = '^(?P<email>[^@]+@[^\t]+)\t+(?P<name>[^\t]+)'
+        ignorecase = True
 
 [bindings]
 [[search]]
