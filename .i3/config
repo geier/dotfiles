@@ -205,7 +205,7 @@ bar {
 exec gnome-settings-daemon &
 exec nm-applet &
 exec glipper &
-bindsym Mod4+Ctrl+L exec i3lock -i ~/Pictures/locksrceen.png
-exec_always xautolock -time 10 -locker 'i3lock -i ~/Pictures/locksrceen.png'
+bindsym Mod4+Ctrl+L exec i3lock -i ~/Pictures/lockscreen.png
+exec_always xautolock -time 10 -locker 'i3lock -i ~/Pictures/lockscreen.png'
 #exec nm-applet &
 #exec gnome-power-manager &
