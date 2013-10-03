@@ -434,6 +434,10 @@ ls
   zle -N complete-or-list
   bindkey '^I' complete-or-list
 
+sudo() {  # sudo vi/vim => sudoedit
+	[[ $1 == (vi|vim) ]] && shift && sudoedit "$@" || command sudo "$@";
+}
+
 
 # taken http://stackoverflow.com/questions/171563/whats-in-your-zshrc/904023#904023
 function most_useless_use_of_zsh {
