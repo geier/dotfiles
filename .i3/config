@@ -23,7 +23,7 @@ bindsym Mod4+Return exec gnome-terminal
 bindsym Mod4+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym Mod4+p exec dmenu_run
+bindsym Mod4+p exec i3-dmenu-desktop
 #bindsym Mod4+P exec dmenu_run
 
 # change focus
