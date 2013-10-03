@@ -369,17 +369,24 @@ fi
   rmtex() {
       find . -maxdepth 1 -regex ".*\(\~\|\.log\|\.nav\|\.snm\|\.toc\|\.cp\|\.fn\|\.tp\|\.vr\|\.pg\|\.bbl\|\#\|\.blg\|\.ilg\|\.dvi\|\.aux\)" -exec rm -vf {} \; ; find . -maxdepth 1 -type d -name "auto" -exec rm -vfr {} \;}
 
-  psgrep() {
-    if [ ! -z $1 ] ; then
-        ps aux | grep $1 | grep -v grep
-    else
-        echo "!! Need name to grep for"
-    fi
+
+psgrep() {
+	if [[ -x /bin/pgrep || -x /usr/bin/pgrep ]]; then
+		echo "please get used to pgrep"
+		return 1
+	elif [ ! -z $1 ] ; then
+		ps aux | grep $1 | grep -v grep
+	else
+		echo "!! Need name to grep for"
+	fi
 }
 
 pskill() {
-	if  [ ! -z $1 ] ; then
-		kill -9 `ps aux | grep $1 | grep -v grep  | awk '{ print $2}'` 
+	if [[ -x /bin/pkill || -x /usr/bin/pkill ]]; then
+		echo "please get used to pkill"
+		return 1
+	elif  [ ! -z $1 ] ; then
+		kill -9 `ps aux | grep $1 | grep -v grep  | awk '{ print $2}'`
 	else 
 		echo "!! Need name to grep for"
 	fi
