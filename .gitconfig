@@ -8,3 +8,5 @@
 [color "branch"]
 	current = red
 	remote = green
+[push]
+	default = simple
