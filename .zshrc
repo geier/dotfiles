@@ -336,38 +336,37 @@ fi
 # Funktionen {{{
 # Usage: extract <file>
 # Description: extracts archived files (maybe)
-  extract () {
-        if [[ -f $1 ]]
-        then
-		if [[ -x /usr/bin/pbzip2 || -x /usr/local/bin/pbzip2 ]]
-		then
+extract () {
+	if [[ -f $1 ]] then
+		if [[ -x /usr/bin/pbzip2 || -x /usr/local/bin/pbzip2 ]] then
 			BZIP=pbzip2
 		else
 			BZIP=bzip2
 		fi
-                case $1 in
-                        *.tar.bz2)  `$BZIP -v -d $1`    ;;
-                        *.tar.gz)   tar -xvzf $1        ;;
-                        *.rar)      unrar x $1          ;;
-                        *.deb)      ar -x $1            ;;
-                        *.bz2)      `$BZIP -d $1`       ;;
-                        *.lzh)      lha x $1            ;;
-                        *.gz)       gunzip -d $1        ;;
-                        *.tar)      tar -xvf $1         ;;
-                        *.tgz)      tar -xvzf $1        ;;
-                        *.tbz2)     tar -jxvf $1        ;;
-                        *.zip)      unzip $1            ;;
-                        *.Z)        uncompress $1       ;;
-                        *.xz)       xz -d $1            ;;
-                        *)          echo "'$1' Error. Please go away" ;;
-                esac
-        else
-                echo "'$1' is not a valid file"
-        fi
-  }
+		case $1 in
+			*.tar.bz2)  `$BZIP -v -d $1`    ;;
+			*.tar.gz)   tar -xvzf $1        ;;
+			*.rar)      unrar x $1          ;;
+			*.deb)      ar -x $1            ;;
+			*.bz2)      `$BZIP -d $1`       ;;
+			*.lzh)      lha x $1            ;;
+			*.gz)       gunzip -d $1        ;;
+			*.tar)      tar -xvf $1         ;;
+			*.tgz)      tar -xvzf $1        ;;
+			*.tbz2)     tar -jxvf $1        ;;
+			*.zip)      unzip $1            ;;
+			*.Z)        uncompress $1       ;;
+			*.xz)       xz -d $1            ;;
+			*)          echo "'$1' Error. Please go away" ;;
+		esac
+	else
+		echo "'$1' is not a valid file"
+	fi
+}
 
-  rmtex() {
-      find . -maxdepth 1 -regex ".*\(\~\|\.log\|\.nav\|\.snm\|\.toc\|\.cp\|\.fn\|\.tp\|\.vr\|\.pg\|\.bbl\|\#\|\.blg\|\.ilg\|\.dvi\|\.aux\)" -exec rm -vf {} \; ; find . -maxdepth 1 -type d -name "auto" -exec rm -vfr {} \;}
+rmtex() {
+	find . -maxdepth 1 -regex ".*\(\~\|\.log\|\.nav\|\.snm\|\.toc\|\.cp\|\.fn\|\.tp\|\.vr\|\.pg\|\.bbl\|\#\|\.blg\|\.ilg\|\.dvi\|\.aux\)" -exec rm -vf {} \; ; find . -maxdepth 1 -type d -name "auto" -exec rm -vfr {} \;
+}
 
 
 psgrep() {
@@ -393,15 +392,16 @@ pskill() {
 }
 
 mcd () {
-    mkdir "$@" && cd "$@"
+	mkdir "$@" && cd "$@"
 }
 
-qrdisplay() {         
-    qrencode -o - "$1" | display
+qrdisplay() {
+	qrencode -o - "$1" | display
 }
 
 unspace() {
-mv -iv "$1" "${1// /_}" ; }
+	mv -iv "$1" "${1// /_}" ;
+}
 
 # zd 
 if [[ -e ~/.zsh/z/z.sh ]]; then
@@ -411,21 +411,21 @@ fi
 
 # 2011-10-19: tmux shortcut for creating/attaching named sessions 
 # cannot remember where I stole it from
-  tm() {
-    [[ -z "$1" ]] && { echo "usage: tm <session>" >&2; return 1; }
-    tmux has -t $1 && tmux attach -t $1 || tmux new -s $1
-  }
+tm() {
+	[[ -z "$1" ]] && { echo "usage: tm <session>" >&2; return 1; }
+	tmux has -t $1 && tmux attach -t $1 || tmux new -s $1
+}
 
 function __tmux-sessions() {
-    local expl
-    local -a sessions
-    sessions=( ${${(f)"$(command tmux list-sessions 2> /dev/null)"}/:[ $'\t']##/:} )
-    _describe -t sessions 'sessions' sessions "$@"
+	local expl
+	local -a sessions
+	sessions=( ${${(f)"$(command tmux list-sessions 2> /dev/null)"}/:[ $'\t']##/:} )
+	_describe -t sessions 'sessions' sessions "$@"
 }
 compdef __tmux-sessions tm
 
 # tab on empty command line lists dir contents
-  complete-or-list() {
+complete-or-list() {
     [[ $#BUFFER != 0 ]] && { zle complete-word ; return 0 }
     echo
 ls
