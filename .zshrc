@@ -1,3 +1,7 @@
+
+fpath=(~/zsh/ $fpath)
+
+
 # options {{{
 HISTFILE=$HOME/.zsh_history
 SAVEHIST=65536
