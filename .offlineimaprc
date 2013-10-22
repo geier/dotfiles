@@ -36,7 +36,7 @@ remoteport = 993
 #remoteusereval = get_username("mail.uni-bonn.de")
 remoteuser = geier@uni-bonn.de
 remotepasseval = get_password("mail.uni-bonn.de", "geier@uni-bonn.de")
-cert_fingerprint = ef9ff7642ae7f80fdd7ac6bf22459bd04613776c
+cert_fingerprint = 141e2c832d993c88e9a52787cb26f8cef53c27e2
 
 [Repository lostpackets-Remote]
 type = IMAP
