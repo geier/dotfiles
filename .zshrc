@@ -327,14 +327,6 @@ if [[ `uname -n` == "brutus.lostpackets.de" ]]
 	export PATH=/usr/local/texlive/2012/bin/amd64-freebsd:$PATH
     fi
 
-if [[ `uname -n` == "theseus" ]]
-then
-	export PATH=/usr/local/texlive/2011/bin/x86_64-linux:$PATH
-	export MANPATH=/usr/local/texlive/2011/texmf/doc/man:$MANPATH
-	export INFOPATH=/usr/local/texlive/2011/texmf/doc/info:$INFOPATH
-	export TEXMFCNF="/usr/local/texlive/2011/texmf/web2c"
-	#alias rm='trash'
-fi
 #}}}
 
 
