@@ -133,6 +133,7 @@ alias pi='pip install'
 alias cok='colout OK 28'
 alias cerror='colout Error 1'
 
+alias errcat='less *.err(L+0)'
 #alias ipython='PAGER=more ipython'
 
 if [[ -x /usr/bin/tmux || -x /usr/local/bin/tmux ]]; then 
@@ -374,10 +375,7 @@ rmtex() {
 
 
 psgrep() {
-	if [[ -x /bin/pgrep || -x /usr/bin/pgrep ]]; then
-		echo "please get used to pgrep"
-		return 1
-	elif [ ! -z $1 ] ; then
+	if [ ! -z $1 ] ; then
 		ps aux | grep $1 | grep -v grep
 	else
 		echo "!! Need name to grep for"
@@ -462,3 +460,5 @@ function most_useless_use_of_zsh {
 
 
 # }}}
+
+
