@@ -133,6 +133,7 @@ alias pi='pip install'
 alias cok='colout OK 28'
 alias cerror='colout Error 1'
 
+alias errcat='less *.err(L+0)'
 #alias ipython='PAGER=more ipython'
 
 if [[ -x /usr/bin/tmux || -x /usr/local/bin/tmux ]]; then 
@@ -326,14 +327,6 @@ if [[ `uname -n` == "brutus.lostpackets.de" ]]
 	export PATH=/usr/local/texlive/2012/bin/amd64-freebsd:$PATH
     fi
 
-if [[ `uname -n` == "theseus" ]]
-then
-	export PATH=/usr/local/texlive/2011/bin/x86_64-linux:$PATH
-	export MANPATH=/usr/local/texlive/2011/texmf/doc/man:$MANPATH
-	export INFOPATH=/usr/local/texlive/2011/texmf/doc/info:$INFOPATH
-	export TEXMFCNF="/usr/local/texlive/2011/texmf/web2c"
-	#alias rm='trash'
-fi
 #}}}
 
 
@@ -374,10 +367,7 @@ rmtex() {
 
 
 psgrep() {
-	if [[ -x /bin/pgrep || -x /usr/bin/pgrep ]]; then
-		echo "please get used to pgrep"
-		return 1
-	elif [ ! -z $1 ] ; then
+	if [ ! -z $1 ] ; then
 		ps aux | grep $1 | grep -v grep
 	else
 		echo "!! Need name to grep for"
@@ -462,3 +452,5 @@ function most_useless_use_of_zsh {
 
 
 # }}}
+
+
