@@ -165,12 +165,12 @@ mode "resize" {
 
 
 new_window 1pixel
-bindsym Mod4+Shift+s move workspace to output DVI-1
-bindsym Mod4+s move container to output DVI-1
+bindsym Mod4+Shift+s move workspace to output DFP10
+bindsym Mod4+s move container to output DFP10
 
 # Put this window on the presentation output.
-bindsym Mod4+Shift+o move workspace to output DVI-0
-bindsym Mod4+o move container to output DVI-0
+bindsym Mod4+Shift+o move workspace to output DFP11
+bindsym Mod4+o move container to output DFP11
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
