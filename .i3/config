@@ -35,6 +35,7 @@ bindsym Mod4+Shift+c kill
 #bindsym Mod4+d exec --no-startup-id i3-dmenu-desktop
 #bindsym Mod4+d exec i3-dmenu-desktop
 bindsym Mod4+d exec dmenu_run
+bindsym Mod4+Tab exec simpleswitcher -now -font "snap-10" -fg "#657b83" -bg "#002b36" -hlfg "#586e75" -hlbg "#eee8d5" -o 85
 
 # change focus
 bindsym Mod4+i focus left
@@ -87,49 +88,49 @@ bindsym Mod4+u focus parent
 #bindsym Mod4+d focus child
 
 # switch to workspace
-bindsym Mod4+1 workspace 1
-bindsym Mod4+2 workspace 2
-bindsym Mod4+3 workspace 3
-bindsym Mod4+4 workspace 4
-bindsym Mod4+5 workspace 5
-bindsym Mod4+6 workspace 6
-bindsym Mod4+7 workspace 7
-bindsym Mod4+8 workspace 8
-bindsym Mod4+9 workspace 9: www
-bindsym Mod4+0 workspace 10
-bindsym Mod4+F1 workspace 11
-bindsym Mod4+F2 workspace 12
-bindsym Mod4+F3 workspace 13
-bindsym Mod4+F4 workspace 14
-bindsym Mod4+F5 workspace 15
-bindsym Mod4+F6 workspace 16
-bindsym Mod4+F7 workspace 17
-bindsym Mod4+F8 workspace 18
-bindsym Mod4+F9 workspace 19
-bindsym Mod4+F10 workspace 20
+bindsym Mod4+1 workspace number 1
+bindsym Mod4+2 workspace number 2
+bindsym Mod4+3 workspace number 3
+bindsym Mod4+4 workspace number 4
+bindsym Mod4+5 workspace number 5
+bindsym Mod4+6 workspace number 6
+bindsym Mod4+7 workspace number 7
+bindsym Mod4+8 workspace number 8
+bindsym Mod4+9 workspace number 9
+bindsym Mod4+0 workspace number 10
+bindsym Mod4+F1 workspace number 11
+bindsym Mod4+F2 workspace number 12
+bindsym Mod4+F3 workspace number 13
+bindsym Mod4+F4 workspace number 14
+bindsym Mod4+F5 workspace number 15
+bindsym Mod4+F6 workspace number 16
+bindsym Mod4+F7 workspace number 17
+bindsym Mod4+F8 workspace number 18
+bindsym Mod4+F9 workspace number 19
+bindsym Mod4+F10 workspace number 20
 
 
 # move focused container to workspace
-bindsym Mod4+Shift+1 move container to workspace 1
-bindsym Mod4+Shift+2 move container to workspace 2
-bindsym Mod4+Shift+3 move container to workspace 3
-bindsym Mod4+Shift+4 move container to workspace 4
-bindsym Mod4+Shift+5 move container to workspace 5
-bindsym Mod4+Shift+6 move container to workspace 6
-bindsym Mod4+Shift+7 move container to workspace 7
-bindsym Mod4+Shift+8 move container to workspace 8
-bindsym Mod4+Shift+9 move container to workspace 9: www
-bindsym Mod4+Shift+0 move container to workspace 10
-bindsym Mod4+Shift+F1 move workspace 11
-bindsym Mod4+Shift+F2 move workspace 12
-bindsym Mod4+Shift+F3 move workspace 13
-bindsym Mod4+Shift+F4 move workspace 14
-bindsym Mod4+Shift+F5 move workspace 15
-bindsym Mod4+Shift+F6 move workspace 16
-bindsym Mod4+Shift+F7 move workspace 17
-bindsym Mod4+Shift+F8 move workspace 18
-bindsym Mod4+Shift+F9 move workspace 19
-bindsym Mod4+Shift+F10 move workspace 20
+bindsym Mod4+Shift+1 move container to workspace number 1
+bindsym Mod4+Shift+2 move container to workspace number 2
+bindsym Mod4+Shift+3 move container to workspace number 3
+bindsym Mod4+Shift+4 move container to workspace number 4
+bindsym Mod4+Shift+5 move container to workspace number 5
+bindsym Mod4+Shift+6 move container to workspace number 6
+bindsym Mod4+Shift+7 move container to workspace number 7
+bindsym Mod4+Shift+8 move container to workspace number 8
+bindsym Mod4+Shift+9 move container to workspace number 9
+bindsym Mod4+Shift+0 move container to workspace number 10
+bindsym Mod4+Shift+F1 move workspace number 11
+bindsym Mod4+Shift+F2 move workspace number 12
+bindsym Mod4+Shift+F3 move workspace number 13
+bindsym Mod4+Shift+F4 move workspace number 14
+bindsym Mod4+Shift+F5 move workspace number 15
+bindsym Mod4+Shift+F6 move workspace number 16
+bindsym Mod4+Shift+F7 move workspace number 17
+bindsym Mod4+Shift+F8 move workspace number 18
+bindsym Mod4+Shift+F9 move workspace number 19
+bindsym Mod4+Shift+F10 move workspace number 20
 
 
 # reload the configuration file
@@ -171,6 +172,8 @@ bindsym Mod4+s move container to output DVI-1
 # Put this window on the presentation output.
 bindsym Mod4+Shift+o move workspace to output DVI-0
 bindsym Mod4+o move container to output DVI-0
+
+font pango:Ubuntu Mono 12
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
