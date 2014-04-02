@@ -26,8 +26,12 @@ don't forget to
 
 
 
-# change to vundle cleanup
+## change to vundle cleanup
 
 cat remove_mod.txt | xargs git submodule deinit
 cat remove_mod.txt | xargs git rm
 
+rm -rf ~/.vim/bundle/
+
+open vim:
+	:PluginInstall

@@ -1,7 +1,22 @@
-
-
 " we want Vim, not Vi
  set nocompatible
+
+" vundle
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Plugin 'gmarik/vundle'
+
+" Plugins
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
+Plugin 'thomwiggers/vim-colors-solarized'
+Plugin 'scrooloose/syntastic'
+Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'Lokaltog/powerline'
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
 
 " backups into
 if has("unix")
