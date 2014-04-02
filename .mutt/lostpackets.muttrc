@@ -13,6 +13,11 @@ set postponed = "+lostpackets/Drafts"
 set use_from=yes
 set envelope_from=yes
 
+set pgp_use_gpg_agent = yes
+set pgp_sign_as = 561FFEEC
+set crypt_autosign = yes
+set crypt_replyencrypt = yes
+
 macro index E "<change-folder>+lostpackets/Archive<enter><limit>~B " "search everything"
 macro index D "<save-message>+lostpackets/Trash<enter>"              "move message to the trash"
 

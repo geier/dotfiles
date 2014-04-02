@@ -78,3 +78,4 @@ macro index <F6> \
       "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt tag -inbox<enter>" \
       "notmuch: remove message from inbox"
 
+source ~/.mutt/gpg.rc
