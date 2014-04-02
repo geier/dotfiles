@@ -7,6 +7,7 @@
 search_threads_sort_order = newest_first
 show_count_in_tag_list = messages
 theme = solarized_dark
+prefer_plaintext = True
 [accounts]
   [[lostpackets]]
     address = geier@lostpackets.de
