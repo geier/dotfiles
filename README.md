@@ -25,3 +25,9 @@ don't forget to
  * *mutt* and starting with *alot* for reading etc.
 
 
+
+# change to vundle cleanup
+
+cat remove_mod.txt | xargs git submodule deinit
+cat remove_mod.txt | xargs git rm
+

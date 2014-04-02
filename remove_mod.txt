@@ -1,0 +1,9 @@
+.vim/bundle/vim-gitgutter
+.vim/bundle/vim-fugitive
+.vim/bundle/vim-colors-solarized
+.vim/bundle/syntastic
+.vim/bundle/pep8-indent
+.vim/bundle/nerdcommenter
+.vim/bundle/jedi-vim
+.vim/bundle/vim-pathogen
+.vim/bundle/powerline
