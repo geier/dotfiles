@@ -5,6 +5,7 @@
 	ui = true
 [alias]
 	undo-commit = reset --soft HEAD^
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
 [color "branch"]
 	current = red
 	remote = green
