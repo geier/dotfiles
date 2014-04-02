@@ -27,7 +27,7 @@ do
 
 		if [[ $RUN -ge 3 ]]
 		then
-			echo ",[{\"name\":\"mail\", \"color\":\"$COLOR\",\"full_text\":\"M: ⇩ $MAILS\"},${line:2}" || exit 1
+			echo ",[{\"name\":\"mail\", \"color\":\"$COLOR\",\"full_text\":\"✉ $MAILS\"},${line:2}" || exit 1
 		else
 			echo $line
 			let RUN=RUN+1
