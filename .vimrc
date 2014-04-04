@@ -56,6 +56,9 @@ set statusline=%<[%n]\ %F\ \ Filetype=\%Y\ \ %r\ %1*%m%*%w%=%(Line:\ %l%)%4(%)Co
 " highlight all search search pattern matches
 set hlsearch
 
+" nicer autocompletion
+set wildmenu
+set wildmode=full
 
 " history? yes please!
 set history=5000
