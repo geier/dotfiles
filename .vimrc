@@ -117,9 +117,6 @@ cmap w!! %!sudo tee > /dev/null %
 " needed for vim outliner
 filetype plugin indent on
 
-" remapping for jump to tag, since c-Mod4-l doesn't work (neo layout)
-noremap t <c-]>
-
 " vim powerline
 set rtp+=/home/cg/.vim/bundle/powerline/powerline/bindings/vim
 let g:Powerline_symbols = 'fancy'
