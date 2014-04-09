@@ -39,3 +39,6 @@ prefer_plaintext = True
 [[search]]
     S = toggletags spam
 
+[[thread]]
+   A = pipeto 'pycard-import -a abook'
+

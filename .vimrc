@@ -36,7 +36,6 @@ autocmd VimLeave * echo "Cya in Hell."
 
 
 " colours, plugins
-
 syntax enable
 set background=dark
 colorscheme solarized
@@ -57,6 +56,9 @@ set statusline=%<[%n]\ %F\ \ Filetype=\%Y\ \ %r\ %1*%m%*%w%=%(Line:\ %l%)%4(%)Co
 " highlight all search search pattern matches
 set hlsearch
 
+" nicer autocompletion
+set wildmenu
+set wildmode=full
 
 " history? yes please!
 set history=5000
@@ -72,12 +74,11 @@ autocmd FileType txt setlocal textwidth=72
 autocmd FileType mail setlocal textwidth=72
 autocmd FileType tex  setlocal textwidth=0 number wrap linebreak nolist
 autocmd FileType rst  setlocal textwidth=80
-
 autocmd FileType cpp setlocal ts=4 sw=4 expandtab sts=4
 
 " numbers
-autocmd FileType cpp setlocal number
-autocmd FileType c setlocal number
+set number
+autocmd FileType mail setlocal nonumber
 
 " falten an markern als default
 set foldmethod=marker
@@ -115,38 +116,6 @@ let g:calendar_monday = 1
 cmap w!! %!sudo tee > /dev/null %
 " needed for vim outliner
 filetype plugin indent on
-
-" :wq in insert mode {{{
-function DamnedWQ()
-    let x = confirm("Insert-Mode! Did you mean ':wq'?"," &Yes \n &No",1,1)
-    if x == 1
-    silent! :wq 
-    else
-        "???
-    endif
-endfun
-iab wq <bs><esc>:call DamnedWQ()<CR>
-" }}}
-
-
- " SuperTab option for context aware completion
- "let g:SuperTabDefaultCompletionType = "context"
-"let g:SuperTabMappingForward = '<c-space>'
-"let g:SuperTabMappingBackward = '<s-c-space>'
-
-" Disable auto popup, use <Tab> to autocomplete
-let g:clang_complete_auto=0
-" " Show clang errors in the quickfix window
-let g:clang_complete_copen=1
-
-
-
-" look for tag file in current directory and go up until $HOME
-set tags+=tags;$HOME
-
-
-" remapping for jump to tag, since c-Mod4-l doesn't work (neo layout)
-noremap t <c-]>
 
 " vim powerline
 set rtp+=/home/cg/.vim/bundle/powerline/powerline/bindings/vim
