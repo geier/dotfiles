@@ -115,8 +115,6 @@ map Q gq}
 let g:calendar_monday = 1
 
 cmap w!! %!sudo tee > /dev/null %
-" needed for vim outliner
-filetype plugin indent on
 
 " vim powerline
 set rtp+=/home/cg/.vim/bundle/powerline/powerline/bindings/vim
