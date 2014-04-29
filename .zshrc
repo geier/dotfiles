@@ -302,7 +302,7 @@ export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 export WORKON_HOME=~/.virtualenvs
 export PATH=~/.local/bin:$PATH
 [ -x /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
-[ -f /etc/bash_completion.d/virtualenvwrapper ] && source /etc/bash_completion.d/virtualenvwrapper
+[ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ] && source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
 # Maschinen spezifisches {{{ 
 if [[ `uname -n` == "yvonne" || `uname -n` == "theseus" ]]
