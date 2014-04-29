@@ -17,6 +17,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'Lokaltog/powerline'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
+Plugin 'kshenoy/vim-signature'
 
 " backups into
 if has("unix")
