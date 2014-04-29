@@ -375,10 +375,7 @@ psgrep() {
 }
 
 pskill() {
-	if [[ -x /bin/pkill || -x /usr/bin/pkill ]]; then
-		echo "please get used to pkill"
-		return 1
-	elif  [ ! -z $1 ] ; then
+	if  [ ! -z $1 ] ; then
 		kill -9 `ps aux | grep $1 | grep -v grep  | awk '{ print $2}'`
 	else 
 		echo "!! Need name to grep for"
