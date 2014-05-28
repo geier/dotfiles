@@ -1,21 +1,11 @@
-# dotfiles
-
-A gitmirror of my dotfiles
-
--------------------------------------
-
-don't forget to
-
-    git submodule update --init --recursive
-    fc-cache -fv
-
+# my dotfiles
 
 ## configs for (among others)
 
  * **zsh**
- * **vim** (what else?)
+ * **vim**
  * **i3** (the window manager)
- * *powerline*
+ * **powerline**
 
 ## Mail setup uses
 
@@ -26,12 +16,12 @@ don't forget to
 
 
 
-## change to vundle cleanup
+## initialize vundle:
+# Initialization
 
-cat remove_mod.txt | xargs git submodule deinit
-cat remove_mod.txt | xargs git rm
 
-rm -rf ~/.vim/bundle/
+    git submodule update --init --recursive
+    fc-cache -fv
 
 open vim:
 	:PluginInstall
