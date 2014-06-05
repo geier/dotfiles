@@ -136,9 +136,6 @@ alias cerror='colout Error 1'
 alias errcat='less *.err(L+0)'
 #alias ipython='PAGER=more ipython'
 
-if [[ -x /usr/bin/tmux || -x /usr/local/bin/tmux ]]; then 
-	alias screen='echo "all the cool kids are using tmux!"'
-fi
 alias cs='condor_status'
 alias cq='condor_q'
 
