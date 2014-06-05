@@ -18,6 +18,10 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'Lokaltog/powerline'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'kshenoy/vim-signature'
+Plugin 'PotatoesMaster/i3-vim-syntax'   " i3-wm config
+Plugin 'godlygeek/tabular'
+
+
 
 " backups into
 if has("unix")
