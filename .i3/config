@@ -39,6 +39,8 @@ bind $mod+40 exec dmenu_run
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+bind $mod+57 exec /home/cg/bin/i3-rename-workspace
+
 
 # change focus
 bindsym $mod+n focus left
@@ -208,6 +210,7 @@ bar {
        }
 }
 
+for_window [instance="screenkey"] floating enable none
 
 exec gnome-settings-daemon &
 exec nm-applet &
@@ -218,3 +221,4 @@ exec_always xautolock -time 10 -locker 'i3lock -i ~/Pictures/lockscreen.png'
 #exec nm-applet &
 #exec gnome-power-manager &
 
+# vim:filetype=i3
