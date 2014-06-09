@@ -261,6 +261,8 @@ alias myip='lynx -dump checkip.dyndns.org | sed "s/[^0-9]*//" | fgrep .'
 
 # Completions
 
+# add custom completion scripts
+fpath=(~/.zsh/completion $fpath) 
 
 #kill completions
 #zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
