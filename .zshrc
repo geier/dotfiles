@@ -203,11 +203,12 @@ fi
 #  ! True if shell is running with privileges
 
 
-if [[ -e ~/.zsh/git-prompt/zshrc.sh ]]; then 
+if [[ -e ~/.zsh/zsh-vcs-prompt/zshrc.sh ]]; then 
 	setopt prompt_subst
-	source ~/.zsh/git-prompt/zshrc.sh
+	source ~/.zsh/zsh-vcs-prompt/zshrc.sh
+	ZSH_VCS_PROMPT_STASHED_SIGIL='⚑ '
 else
-	alias git_super_status=test
+	alias vcs_super_info=test
 fi
 
 if [ $SSH_CONNECTION ]; then SSH="%B%n%b@%B%m%b"; else SSH=""; fi
@@ -218,7 +219,7 @@ if [ $SSH_CONNECTION ]; then SSH="%B%n%b@%B%m%b"; else SSH=""; fi
 
 PROMPT='%(?..$PR_RED%?\
 
-)%{$reset_color%}%(!.$PR_RED%SROOT%s$PR_NO_COLOUR@%B%m%b.$SSH)$(git_super_status)%# '
+)%{$reset_color%}%(!.$PR_RED%SROOT%s$PR_NO_COLOUR@%B%m%b.$SSH)$(vcs_super_info)%# '
 
 RPROMPT='%~'
 
