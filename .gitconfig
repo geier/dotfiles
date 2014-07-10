@@ -6,6 +6,7 @@
 [alias]
 	undo-commit = reset --soft HEAD^
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+	hub = !xdg-open $(echo $(git config --get remote.origin.url) |perl -pe \"s|git\\@github\\.com:|https://github.com/|\")
 [color "branch"]
 	current = red
 	remote = green
