@@ -22,7 +22,7 @@ setopt glob_dots            # no leading . for explicit matching
 setopt extended_glob        # 
 setopt share_history        # share history between multiply running zsh
 setopt extended_history     # safe time and length of execution
-setopt hist_ignore_all_dups # don't save duplicates
+#setopt hist_ignore_all_dups # don't save duplicates
 setopt hist_no_store        # don't store hist and fc commands
 setopt hist_reduce_blanks   # 
 setopt append_history       # append history, don't overwrite
