@@ -56,8 +56,15 @@ export LANG=en_US.UTF-8
 export REPORTTIME=2
 
 bindkey -v # vim mode
-bindkey "^[[7~" beginning-of-line
-bindkey "^[[8~" end-of-line
+# Movement
+bindkey -a 'gg' beginning-of-buffer-or-history
+bindkey -a 'G' end-of-buffer-or-history
+# Undo
+bindkey -a 'u' undo
+bindkey -a '^R' redo
+# Backspace
+bindkey '^?' backward-delete-char
+bindkey '^H' backward-delete-char
 
 
 
