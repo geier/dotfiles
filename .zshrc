@@ -437,6 +437,25 @@ sudo() {  # sudo vi/vim => sudoedit
 }
 
 
+# Go up N directories
+# usage: up N
+# taken from https://github.com/anishathalye/dotfiles/commit/c7256407e27263abc21bed2667a81373fa958d25#diff-1f7e07657816dcfba81e81892df0eac7R30
+function up()
+{
+    if [[ "${1}" == "" ]]; then
+        cd ..
+    elif ! [[ "${1}" =~ ^[0-9]+$ ]]; then
+        echo "Error: argument must be a number"
+    elif ! [[ "${1}" -gt "0" ]]; then
+        echo "Error: argument must be positive"
+    else
+        for i in {1..${1}}; do
+            cd ..
+        done
+    fi
+}
+
+
 # taken http://stackoverflow.com/questions/171563/whats-in-your-zshrc/904023#904023
 function most_useless_use_of_zsh {
    local lines columns colour a b p q i pnew
