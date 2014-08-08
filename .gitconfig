@@ -12,3 +12,5 @@
 	remote = green
 [push]
 	default = simple
+[ghi]
+	token = !keyring_helper.py github.com ghi
