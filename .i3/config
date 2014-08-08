@@ -23,6 +23,25 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+
+# colors
+set $background #839496
+set $back-inact #073642
+set $back-urgen #CB504E
+set $border #93A1A1
+set $bor-in #073642
+set $bor-ur #424242
+set $text #002B36
+set $text #839496
+set $t-in #839496
+set $t-ur #B00011
+set $green #00FF00
+# class border background text indicator
+client.focused $border $background $text #31392F
+client.focused_inactive $bor-in $back-inact $t-in #676767
+client.unfocused $bor-in $back-inact $t-in #515151
+client.urgent $bor-ur $back-urgen $t-ur #900000
+
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
@@ -197,28 +216,29 @@ bar {
 
        status_command /home/cg/bin/my_i3status.sh
        position top
-       colors {
-               background #111111
-               #statusline #586e75
+       font pango:Droid Sans Bold
 
-               focused_workspace  #eee8d5 #586e75
-               #active_workspace   #ffffff #333333 # nur bei multi mon
-#              inactive_workspace #00000 #073642
-               inactive_workspace #586e75 #002b36
-               urgent_workspace   #ffffff #900000
 
-       }
+	colors {
+		background $back-inact
+		statusline $text
+		#border #back #text
+		focused_workspace $border $background $back-inact
+		active_workspace $border $background $text
+		inactive_workspace $bor-in $back-inact $t-in
+		urgent_workspace $bor-ur $back-urgen $t-ur
+	}
 }
 
 for_window [instance="screenkey"] floating enable none
 
+
+# start other applications
 exec gnome-settings-daemon &
 exec nm-applet &
 exec glipper &
 bindsym Mod4+Ctrl+L exec i3lock -i ~/Pictures/lockscreen.png
 exec --no-startup-id feh --bg-fill /home/cg/Pictures/Wallpapers/default.jpg
 exec_always xautolock -time 10 -locker 'i3lock -i ~/Pictures/lockscreen.png'
-#exec nm-applet &
-#exec gnome-power-manager &
 
 # vim:filetype=i3
