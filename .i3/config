@@ -23,23 +23,28 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# colors (somehow the order of these matters...)
+set $baseoiii #002B36
+set $baseoi #586E75
+set $basei #93A1A1
+set $baseii #EEE8D5
+set $baseiii #FDF6E3
+set $baseo #839496
+set $baseoii #073642
 
-# colors
-set $background #839496
-set $back-inact #073642
-set $back-urgen #CB504E
-set $border #93A1A1
-set $bor-in #073642
-set $bor-ur #424242
-set $text #002B36
-set $text #839496
-set $t-in #839496
-set $t-ur #B00011
-set $green #00FF00
+set $yellow #B58900
+set $orange #CB4B16
+set $red #DC322F
+set $magenta #D33682
+set $violet #6C71C4
+set $blue #268BD2
+set $cyan #2AA198
+set $green #859900
+
 # class border background text indicator
-client.focused $border $background $text #31392F
-client.focused_inactive $bor-in $back-inact $t-in #676767
-client.unfocused $bor-in $back-inact $t-in #515151
+client.focused $basei $baseo $baseoiii #31392F
+client.focused_inactive $bor-in $baseoii $t-in #676767
+client.unfocused $bor-in $baseoii $t-in #515151
 client.urgent $bor-ur $back-urgen $t-ur #900000
 
 # start a terminal
@@ -220,13 +225,14 @@ bar {
 
 
 	colors {
-		background $back-inact
-		statusline $text
-		#border #back #text
-		focused_workspace $border $background $back-inact
-		active_workspace $border $background $text
-		inactive_workspace $bor-in $back-inact $t-in
-		urgent_workspace $bor-ur $back-urgen $t-ur
+		background $baseoii
+		statusline $baseiii
+		separator $baseii
+		#border #background #text
+		focused_workspace $basei $baseo $baseoii
+		active_workspace $baseoiii $baseoiii $baseii
+		inactive_workspace $baseoii $baseoii $baseo
+		urgent_workspace $baseoiii $red $baseoii
 	}
 }
 
