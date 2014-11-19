@@ -66,6 +66,11 @@ bindkey -a '^R' redo
 bindkey '^?' backward-delete-char
 bindkey '^H' backward-delete-char
 
+# Edit the current command line in $EDITOR
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '\C-x\C-e' edit-command-line
+
 # Use Ctrl-x,Ctrl-l to get the output of the last command
 zmodload -i zsh/parameter
 insert-last-command-output() {
