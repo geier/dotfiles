@@ -228,19 +228,30 @@ if [[ -e ~/.zsh/zsh-vcs-prompt/zshrc.sh ]]; then
 else
 	alias vcs_super_info=test
 fi
-
 if [ $SSH_CONNECTION ]; then SSH="%B%n%b@%B%m%b"; else SSH=""; fi
 
-#PROMPT='%(?..$PR_RED%?\
-#
-#)%{$reset_color%}%(!.$PR_RED%SROOT%s.%B%n)%b@%B%{$SSH%}%b%(!.$PR_RED.)$(git_super_status)%# $PR_NO_COLOUR'
 
+function normal-mode () { echo "-- NORMAL --" }
+
+function set-prompt () {
+    case ${KEYMAP} in
+      (vicmd)      VI_MODE="$(normal-mode)" ;;
+      (main|viins) VI_MODE="%~" ;;
+      (*)          VI_MODE="%~" ;;
+    esac
 PROMPT='%(?..$PR_RED%?\
 
 )%{$reset_color%}%(!.$PR_RED%SROOT%s$PR_NO_COLOUR@%B%m%b.$SSH)$(vcs_super_info)%# '
+}
+RPROMPT='$VI_MODE'
 
-RPROMPT='%~'
+function zle-line-init zle-keymap-select {
+    set-prompt
+    zle reset-prompt
+}
 
+zle -N zle-line-init
+zle -N zle-keymap-select
 # }}}
 
 compile=(install clean remove uninstall deinstall)
