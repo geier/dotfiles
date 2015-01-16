@@ -204,8 +204,13 @@ mode "resize" {
 #neo: c, qwertz: r
 bind $mod+27 mode "resize"
 new_window 1pixel
-#bindsym Mod4+Shift+s move workspace to output DFP10
-#bindsym Mod4+s move container to output DFP10
+
+# Move workspace to left, as long as we only have two monitors this is enough (as monitor order is cyclic) (
+
+# sadly this is taken already...
+#bind $mod+Shift+43 move workspace to output right
+# neo: o, qwertz: g
+bind $mod+Shift+42 move workspace to output left
 
 ## Put this window on the presentation output.
 #bindsym Mod4+Shift+o move workspace to output DFP11
