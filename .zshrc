@@ -332,6 +332,7 @@ export WORKON_HOME=~/.virtualenvs
 export PATH=~/.local/bin:$PATH
 [ -x /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
 [ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ] && source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+[ -f ~/.local/bin/virtualenvwrapper.sh ] && source ~/.local/bin/virtualenvwrapper.sh
 
 # Maschinen spezifisches {{{ 
 if [[ `uname -n` == "yvonne" || `uname -n` == "theseus" ]]
