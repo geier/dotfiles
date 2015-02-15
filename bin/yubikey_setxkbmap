@@ -1,4 +1,4 @@
 #!/bin/sh
-ID=`xinput list --short "Yubico Yubico Yubikey II" | cut -f 2 | cut -d = -f 2`
+ID=`xinput list --short | grep Yubikey | cut -f 2 | cut -d = -f 2`
 echo $ID
 setxkbmap -device $ID us
