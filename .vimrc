@@ -48,6 +48,10 @@ Plugin 'Valloric/YouCompleteMe'
 " fuzzy file search
 Plugin 'kien/ctrlp.vim'
 
+" rst suppotr
+Plugin 'Rykka/riv.vim'
+Plugin 'Rykka/InstantRst'
+
 
 
 " backups into
