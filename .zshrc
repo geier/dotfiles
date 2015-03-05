@@ -500,3 +500,5 @@ function most_useless_use_of_zsh {
 # }}}
 
 
+# STARTUP
+if [ ! $SSH_CONNECTION ]; then eval `keychain --eval id_rsa`; fi
