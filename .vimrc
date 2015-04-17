@@ -48,9 +48,12 @@ Plugin 'Valloric/YouCompleteMe'
 " fuzzy file search
 Plugin 'kien/ctrlp.vim'
 
-" rst suppotr
+" rst support
 Plugin 'Rykka/riv.vim'
 Plugin 'Rykka/InstantRst'
+
+" Rust
+Plugin 'rust-lang/rust.vim'
 
 
 
