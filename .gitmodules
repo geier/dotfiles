@@ -31,9 +31,9 @@
 [submodule ".vim/bundle/powerline"]
 	path = .vim/bundle/powerline
 	url = https://github.com/Lokaltog/powerline.git
-[submodule ".vim/bundle/vundle"]
-	path = .vim/bundle/vundle
-	url = https://github.com/gmarik/vundle.git
 [submodule ".zsh/zsh-vcs-prompt"]
 	path = .zsh/zsh-vcs-prompt
 	url = https://github.com/yonchu/zsh-vcs-prompt.git
+[submodule ".vim/bundle/Vundle.vim"]
+	path = .vim/bundle/Vundle.vim
+	url = https://github.com/gmarik/Vundle.vim

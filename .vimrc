@@ -3,9 +3,9 @@
 
 " vundle
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Plugin 'gmarik/vundle'
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
 
 " Plugins
 "
@@ -55,6 +55,8 @@ Plugin 'Rykka/InstantRst'
 " Rust
 Plugin 'rust-lang/rust.vim'
 
+call vundle#end()
+filetype plugin indent on
 
 
 " backups into
