@@ -30,7 +30,7 @@ fileext = .ics
 
 [storage bio_remote]
 type = http
-url = https://www.mpraktikum.hiskp.uni-bonn.de/intern/termine.ical.php?kurs=18&user=geier
+url = https://www.mpraktikum.hiskp.uni-bonn.de/intern/termine.ical.php?kurs=19&user=geier
 username = tutor
 
 [pair home_calendar]
