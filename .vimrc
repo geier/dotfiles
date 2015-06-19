@@ -166,4 +166,5 @@ let g:Powerline_colorscheme = 'solarized'
 map <M-Left> <C-T>
 map <M-Right> <C-]>
 
+" alot files are mail
 au BufRead,BufNewFile *alot.* set filetype=mail
