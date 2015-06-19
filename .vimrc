@@ -46,7 +46,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'Valloric/YouCompleteMe'
 
 " fuzzy file search
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " rst support
 Plugin 'Rykka/riv.vim'
