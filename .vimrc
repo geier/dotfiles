@@ -19,7 +19,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'thomwiggers/vim-colors-solarized'
 
 " syntax checker for various programming languages
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
+Plugin 'benekastah/neomake'
 
 " indenting python properly
 Plugin 'hynek/vim-python-pep8-indent'
@@ -129,6 +130,8 @@ au BufRead,BufNewFile *.gp set filetype=gnuplot
 
 "write all files when calling :make
 set autowrite
+" run Neomake when writing a file
+autocmd! BufWritePost * Neomake
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
