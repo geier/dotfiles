@@ -29,7 +29,7 @@ Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'scrooloose/nerdcommenter'
 
 " prettier status line
-Plugin 'Lokaltog/powerline'
+Plugin 'bling/vim-airline'
 
 " lightweight LaTeX plugin
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
@@ -161,11 +161,11 @@ let g:calendar_monday = 1
 
 cmap w!! %!sudo tee > /dev/null %
 
-" vim powerline
-set rtp+=/home/cg/.vim/bundle/powerline/powerline/bindings/vim
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_stl_path_style = 'short'
-let g:Powerline_colorscheme = 'solarized'
+
+" airline config
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
 "nmap P :TagbarToggle<CR>
 " Alt-right/left to navigate forward/backward in the tags stack
 map <M-Left> <C-T>
