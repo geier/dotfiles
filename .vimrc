@@ -155,9 +155,6 @@ autocmd FileType tex imap <buffer> <M-TAB> <Plug>Tex_Completion
 map Q gq}
 " 
 "map <C-m> :make
-"
-" Calendar
-let g:calendar_monday = 1
 
 cmap w!! %!sudo tee > /dev/null %
 
