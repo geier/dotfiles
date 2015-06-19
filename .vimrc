@@ -58,6 +58,8 @@ Plugin 'Rykka/InstantRst'
 " Rust
 Plugin 'rust-lang/rust.vim'
 
+Plugin 'mhinz/vim-startify'
+
 call vundle#end()
 filetype plugin indent on
 
