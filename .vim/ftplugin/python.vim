@@ -32,7 +32,20 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_loc_list_height=5
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 
+" jedi-vim {
+let g:jedi#auto_vim_configuration = 0
 let g:jedi#popup_on_dot = 0
+let g:jedi#popup_select_first = 0
+let g:jedi#completions_enabled = 0
+let g:jedi#completions_command = ""
+let g:jedi#show_call_signatures = "1"
+
+let g:jedi#goto_assignments_command = "<leader>pa"
+let g:jedi#goto_definitions_command = "<leader>pd"
+let g:jedi#documentation_command = "<leader>pk"
+let g:jedi#usages_command = "<leader>pu"
+let g:jedi#rename_command = "<leader>pr"
+" }
 
 py << EOF
 import os.path
@@ -44,4 +57,3 @@ if 'VIRTUAL_ENV' in os.environ:
     activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
     execfile(activate_this, dict(__file__=activate_this))
 EOF
-
