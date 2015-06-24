@@ -21,12 +21,10 @@ au BufWinEnter * silent! loadview
 "autocmd VimEnter * echo "Welcome back Christian :)"
 autocmd VimLeave * echo "Cya in Hell."
 
-
 " colours, plugins
 syntax enable
 set background=dark
 colorscheme solarized
-
 
 " display control chars
 set list listchars=tab:»·,trail:·
@@ -50,7 +48,6 @@ set wildmode=full
 " history? yes please!
 set history=5000
 
-set showcmd    " display incomplete commands
 set incsearch     " do incremental searching
 "set showbreak=>>>\  
 
@@ -100,7 +97,6 @@ map Q gq}
 "map <C-m> :make
 
 cmap w!! %!sudo tee > /dev/null %
-
 
 " airline config
 let g:airline_powerline_fonts = 1
