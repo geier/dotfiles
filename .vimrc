@@ -67,9 +67,6 @@ autocmd FileType mail setlocal nonumber
 " falten an markern als default
 set foldmethod=marker
 
-au BufRead,BufNewFile *.ns set filetype=neurosim
-au BufRead,BufNewFile *.gp set filetype=gnuplot
-
 "write all files when calling :make
 set autowrite
 " run Neomake when writing a file
