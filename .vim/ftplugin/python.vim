@@ -46,6 +46,11 @@ let g:jedi#documentation_command = "<leader>pk"
 let g:jedi#usages_command = "<leader>pu"
 let g:jedi#rename_command = "<leader>pr"
 " }
+"
+let g:neomake_python_flake8_maker = {
+    \ 'args': ['--ignore=E501'],
+    \ }
+let g:neomake_python_enabled_makers = ['flake8']
 
 py << EOF
 import os.path
