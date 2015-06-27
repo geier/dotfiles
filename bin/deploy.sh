@@ -3,7 +3,7 @@
 # deploying the dotfiles
 cd ~/.dotfiles
 
-for file in `find . -name .git -prune -o -name local -prune -o -type f -o -type l -print`;
+for file in `find . -name .git -prune -o -name local -prune -o -type f -o -type l -o -print`;
 do
 	file=${file#./}
 
