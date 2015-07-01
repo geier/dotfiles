@@ -90,7 +90,9 @@ if [[ $OSTYPE == linux-gnu ]] || [[ $OSTYPE == linux ]]; then
     alias lssmall='/bin/ls -alhS |tail -n12 | head -n10'
     alias lsbig='/bin/ls -alhS |head -n11'
     # solarized dircolors
-    eval `dircolors ~/.dircolors.256dark`
+   if [[ -e ~/.dircolors.256dark ]]; then
+       eval `dircolors ~/.dircolors.256dark`
+   fi
 
 else
     alias ls='/bin/ls -Gp'
