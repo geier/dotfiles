@@ -1,63 +1,9 @@
-" we want Vim, not Vi
- set nocompatible
+ set nocompatible "Vim, not vi
 
-" vundle
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
-
-" Plugins
-"
-" showing the git status of lines (modified, new, deleted lines after this line)
-Plugin 'airblade/vim-gitgutter'
-
-" git plugin (commiting, blame, diff, etc.)
-Plugin 'tpope/vim-fugitive'
-
-" my favorite color scheme
-Plugin 'thomwiggers/vim-colors-solarized'
-
-" syntax checker for various programming languages
-Plugin 'scrooloose/syntastic'
-
-" indenting python properly
-Plugin 'hynek/vim-python-pep8-indent'
-
-" easy commenting out of code
-Plugin 'scrooloose/nerdcommenter'
-
-" prettier status line
-Plugin 'Lokaltog/powerline'
-
-" lightweight LaTeX plugin
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
-
-" display marks
-Plugin 'kshenoy/vim-signature'
-
-" highlighting for i3-wm's config file
-Plugin 'PotatoesMaster/i3-vim-syntax'
-
-" nicer editing of table in rst, markdown, etc.
-Plugin 'godlygeek/tabular'
-
-" completion plugin for several languages
-Plugin 'Valloric/YouCompleteMe'
-
-" fuzzy file search
-Plugin 'ctrlpvim/ctrlp.vim'
-
-" rst support
-Plugin 'Rykka/riv.vim'
-Plugin 'Rykka/InstantRst'
-
-" Rust
-Plugin 'rust-lang/rust.vim'
-
-call vundle#end()
-filetype plugin indent on
-
+" plugin setup done in extra file
+if filereadable(expand("~/.vim/plugins"))
+	source ~/.vim/plugins
+endif
 
 " backups into
 if has("unix")
@@ -75,12 +21,10 @@ au BufWinEnter * silent! loadview
 "autocmd VimEnter * echo "Welcome back Christian :)"
 autocmd VimLeave * echo "Cya in Hell."
 
-
 " colours, plugins
 syntax enable
 set background=dark
 colorscheme solarized
-
 
 " display control chars
 set list listchars=tab:»·,trail:·
@@ -104,7 +48,6 @@ set wildmode=full
 " history? yes please!
 set history=5000
 
-set showcmd    " display incomplete commands
 set incsearch     " do incremental searching
 "set showbreak=>>>\  
 
@@ -124,11 +67,10 @@ autocmd FileType mail setlocal nonumber
 " falten an markern als default
 set foldmethod=marker
 
-au BufRead,BufNewFile *.ns set filetype=neurosim
-au BufRead,BufNewFile *.gp set filetype=gnuplot
-
 "write all files when calling :make
 set autowrite
+" run Neomake when writing a file
+autocmd! BufWritePost * Neomake
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -150,20 +92,19 @@ autocmd FileType tex imap <buffer> <M-TAB> <Plug>Tex_Completion
 map Q gq}
 " 
 "map <C-m> :make
-"
-" Calendar
-let g:calendar_monday = 1
 
 cmap w!! %!sudo tee > /dev/null %
 
-" vim powerline
-set rtp+=/home/cg/.vim/bundle/powerline/powerline/bindings/vim
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_stl_path_style = 'short'
-let g:Powerline_colorscheme = 'solarized'
+" airline config
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
 "nmap P :TagbarToggle<CR>
 " Alt-right/left to navigate forward/backward in the tags stack
 map <M-Left> <C-T>
 map <M-Right> <C-]>
 
+" alot files are mail
 au BufRead,BufNewFile *alot.* set filetype=mail
+
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
