@@ -40,7 +40,31 @@ prefer_plaintext = True
   Q = exit
   [[search]]
     S = toggletags spam
+    t = toggletags todo
+    B = toggletags bug
+  
+  [[thread]]
+     A = pipeto 'pycard-import -a abook'
+     $ = call hooks.github(ui)
+     U = call hooks.unsubscribe()
 
-[[thread]]
-   A = pipeto 'pycard-import -a abook'
-
+[tags]
+  [[inbox]]
+    translated = 📥
+  [[unread]]
+    translated = ✉
+  [[replied]]
+    translated = ⏎
+  [[sent]]
+    translated = ↗
+  [[attachment]]
+    translated = 📎
+  [[lists]]
+    translated = 📃
+  [[bug]]
+    translated = 🐜
+    normal = "", "", "dark red", "", "light red", ""
+  [[encrypted]]
+    translated = 🔒
+  [[spam]]
+    translated = ♻
