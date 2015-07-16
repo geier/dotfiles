@@ -36,7 +36,9 @@ prefer_plaintext = True
         ignorecase = True
 
 [bindings]
-[[search]]
+  q = 
+  Q = exit
+  [[search]]
     S = toggletags spam
 
 [[thread]]
