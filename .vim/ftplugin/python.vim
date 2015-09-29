@@ -8,13 +8,10 @@ setlocal formatoptions=croql
 setlocal number
 
 " Start python on F5
-map <F5> :w<CR>:!python "%"<CR>
+map <F5> :w<CR>:!ipython "%"<CR>
 
 autocmd BufWritePre * :%s/\s\+$//e
 
-" rebuild pythontags 
-"map <C-c> :!ctags -R -f ./pythontags `python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()"`<CR>
-"
 iab ipdb import ipdb; ipdb.set_trace()
 iab iipdb from IPython.core.debugger import Tracer
 iab iplt import matplotlib.pyplot as plt
@@ -23,7 +20,7 @@ iab inp import numpy as np
 setlocal textwidth=80
 setlocal colorcolumn=80
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
-match OverLength /\%81v.*/
+match OverLength /\%106v.*/
 
 let g:syntastic_python_checkers=['flake8']
 let g:syntastic_python_flake8_args='--ignore=E501'
@@ -47,10 +44,10 @@ let g:jedi#usages_command = "<leader>pu"
 let g:jedi#rename_command = "<leader>pr"
 " }
 "
-let g:neomake_python_flake8_maker = {
-    \ 'args': ['--ignore=E501'],
-    \ }
-let g:neomake_python_enabled_makers = ['flake8']
+let g:neomake_python_enabled_makers = ['flake8', 'pep8']
+" E501 is line length of 80 characters
+let g:neomake_python_flake8_maker = { 'args': ['--ignore=E501'], }
+let g:neomake_python_pep8_maker = { 'args': ['--max-line-length=105'], }
 
 py << EOF
 import os.path
