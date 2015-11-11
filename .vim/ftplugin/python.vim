@@ -45,10 +45,11 @@ let g:jedi#rename_command = "<leader>pr"
 " }
 "
 let g:neomake_python_enabled_makers = ['flake8', 'pep8']
-" E501 is line length of 80 characters
+" E501 is line length of 80 characters, I don't want to see all those errors
 let g:neomake_python_flake8_maker = { 'args': ['--ignore=E501'], }
 let g:neomake_python_pep8_maker = { 'args': ['--max-line-length=105'], }
 
+" to make jedi etc. work properly in virtual environments
 py << EOF
 import os.path
 import sys
