@@ -37,7 +37,7 @@ username = tutor
 a = home_calendar_local
 b = home_calendar_remote
 conflict_resolution = b wins
-collections = ["home", "work" ,"freundin"]
+collections = ["home", "work" ,"freundin", "events"]
 
 [storage home_calendar_local]
 type = filesystem
