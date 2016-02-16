@@ -26,7 +26,8 @@ Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'scrooloose/nerdcommenter'
 
 " prettier status line
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " lightweight LaTeX plugin
 Plugin 'LaTeX-Box-Team/LaTeX-Box'

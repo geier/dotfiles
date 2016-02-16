@@ -101,6 +101,7 @@ cmap w!! %!sudo tee > /dev/null %
 " airline config
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='solarized'
 
 "nmap P :TagbarToggle<CR>
 " Alt-right/left to navigate forward/backward in the tags stack
