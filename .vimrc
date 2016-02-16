@@ -1,8 +1,8 @@
  set nocompatible "Vim, not vi
 
 " plugin setup done in extra file
-if filereadable(expand("~/.vim/plugins"))
-	source ~/.vim/plugins
+if filereadable(expand("~/.vim/plugins.vim"))
+	source ~/.vim/plugins.vim
 endif
 
 " backups into
