@@ -24,7 +24,7 @@ autocmd VimLeave * echo "Cya in Hell."
 " colours, plugins
 syntax enable
 set background=dark
-colorscheme solarized
+:silent! colorscheme solarized
 
 " display control chars
 set list listchars=tab:»·,trail:·
@@ -69,8 +69,11 @@ set foldmethod=marker
 
 "write all files when calling :make
 set autowrite
+
 " run Neomake when writing a file
-autocmd! BufWritePost * Neomake
+if exists(':Neomake')
+  autocmd! BufWritePost * Neomake
+endif
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
