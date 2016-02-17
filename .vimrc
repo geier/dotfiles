@@ -70,10 +70,16 @@ set foldmethod=marker
 "write all files when calling :make
 set autowrite
 
-" run Neomake when writing a file
-if exists(':Neomake')
-  autocmd! BufWritePost * Neomake
-endif
+" run Neomake when writing a file if it is installed
+" as plugins are only loaded after the vimrc is processed,
+" if_exists(':Neomake') will always be false if called from within
+" the vimrc
+function Run_neomake()
+	if exists(':Neomake')
+		Neomake
+	endif
+endfunction
+autocmd! BufWritePost * call Run_neomake()
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
