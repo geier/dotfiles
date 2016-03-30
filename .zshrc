@@ -70,6 +70,7 @@ bindkey '^H' backward-delete-char
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
+bindkey '\e.' insert-last-word
 
 # Use Ctrl-x,Ctrl-l to get the output of the last command
 zmodload -i zsh/parameter
