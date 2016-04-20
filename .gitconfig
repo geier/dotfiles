@@ -16,3 +16,5 @@
 	token = !keyring_helper.py github.com ghi
 [merge]
 	conflictstyle = diff3
+[rebase]
+	autostash = true
