@@ -16,8 +16,7 @@ map <F5> :w<CR>:!ipython "%"<CR>
 " remove trailing whitespace on writing buffer
 autocmd BufWritePre * :%s/\s\+$//e
 
-iab ipdb import ipdb; ipdb.set_trace()
-iab iipdb from IPython.core.debugger import Tracer
+iab pdbpp import pdb; pdb.set_trace()
 iab iplt import matplotlib.pyplot as plt
 iab inp import numpy as np
 
