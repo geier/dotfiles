@@ -13,6 +13,7 @@ set iskeyword-=_
 " Start python on F5
 map <F5> :w<CR>:!ipython "%"<CR>
 
+" remove trailing whitespace on writing buffer
 autocmd BufWritePre * :%s/\s\+$//e
 
 iab ipdb import ipdb; ipdb.set_trace()
@@ -22,6 +23,8 @@ iab inp import numpy as np
 
 setlocal textwidth=80
 setlocal colorcolumn=80
+
+" highlight all characters after column 105 in bright red
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
 match OverLength /\%106v.*/
 
