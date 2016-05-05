@@ -7,9 +7,6 @@ setlocal smarttab
 setlocal formatoptions=croql
 setlocal number
 
-" treat `_` as a word boundary (but not WORD boundary)
-set iskeyword-=_
-
 " Start python on F5
 map <F5> :w<CR>:!ipython "%"<CR>
 
