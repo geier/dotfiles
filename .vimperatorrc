@@ -1,0 +1,5 @@
+" bind ctrl-shift-i to launch the editor as some sites capture ctrl-i, e.g., github
+js mappings.addUserMap([modes.INSERT], ["<C-S-i>"], "Launch the external editor.", function() { editor.editFieldExternally(); })
+
+" firefox keeps setting full zoom back to false on every update...
+set! browser.zoom.full=true
