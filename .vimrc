@@ -23,6 +23,9 @@ autocmd VimLeave * echo "Cya in Hell."
 
 " colours, plugins
 syntax enable
+if exists("+termguicolors")
+	set termguicolors
+endif
 set background=dark
 :silent! colorscheme solarized
 
