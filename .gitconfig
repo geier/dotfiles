@@ -18,3 +18,5 @@
 	conflictstyle = diff3
 [rebase]
 	autostash = true
+[diff]
+	compactionHeuristic = true
