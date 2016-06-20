@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Set maildirs
 maildirs="$HOME/Mail/*/INBOX/new/"
 
