@@ -227,7 +227,14 @@ fi
 if [[ -e ~/.zsh/zsh-vcs-prompt/zshrc.sh ]]; then 
 	setopt prompt_subst
 	source ~/.zsh/zsh-vcs-prompt/zshrc.sh
-	ZSH_VCS_PROMPT_STASHED_SIGIL='⚑ '
+	ZSH_VCS_PROMPT_AHEAD_SIGIL='↑'
+	ZSH_VCS_PROMPT_BEHIND_SIGIL='↓'
+	ZSH_VCS_PROMPT_STAGED_SIGIL='●'
+	ZSH_VCS_PROMPT_CONFLICTS_SIGIL='✖'
+	ZSH_VCS_PROMPT_UNSTAGED_SIGIL='✚'
+	ZSH_VCS_PROMPT_UNTRACKED_SIGIL='…'
+	ZSH_VCS_PROMPT_STASHED_SIGIL='⚑'
+	ZSH_VCS_PROMPT_CLEAN_SIGIL='✔'
 else
 	alias vcs_super_info=test
 fi
