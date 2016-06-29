@@ -1,0 +1,40 @@
+---
+
+- name: ensure ~/.fonts
+  file:
+        state: directory
+        path: ~/.fonts
+
+- name: ensure /tmp/iosevka
+  file:
+        state: directory
+        path: /tmp/iosevka
+        
+
+- name: download
+  get_url:
+          url: "{{iosevka_url}}"
+          dest: "{{iosevka_tmp_zip}}"
+
+- name: unzip
+  unarchive:
+          src: "{{iosevka_tmp_zip}}"
+          dest: "{{iosevka_tmp_unzip}}"
+
+- name: remove zip file
+  file:
+          path: "{{iosevka_tmp_zip}}"
+          state: absent
+
+- name: move
+  synchronize:
+         src: "{{iosevka_tmp_unzip}}"
+         dest: "~/.fonts/"
+
+  #- name: run fc-cache
+  #command: fc-cache -vf ~/.fonts/
+
+
+- name: set up gnome terminal to use iosevka
+  command: sh ~/.dotfiles/bin/gnome_terminal_setup.sh
+

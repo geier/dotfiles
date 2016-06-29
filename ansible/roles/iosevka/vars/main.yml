@@ -1,0 +1,6 @@
+---
+
+iosevka_version: 1.9.1
+iosevka_url: "https://github.com/be5invis/Iosevka/releases/download/v{{iosevka_version}}/02.iosevka-term-{{iosevka_version}}.zip"
+iosevka_tmp_zip: "/tmp/iosevka/02.iosveka-term-{{iosevka_version}}.zip"
+iosevka_tmp_unzip: "/tmp/iosevka/"

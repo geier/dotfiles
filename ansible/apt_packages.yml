@@ -1,0 +1,126 @@
+- hosts: all
+  user: root
+  vars:
+    apt_keys_desktop:
+      - {name: mendeley, id: "D800C7D66F036044"}
+      - {name: owncloud, id: "BA684223"}
+
+    apt_repos_desktop:
+      - {name: mendeley, repo: "deb http://desktop-download.mendeley.com/download/apt stable main"}
+      - {name: neovim, repo: "ppa:neovim-ppa/unstable"}
+      - {name: owncloud, repo: "deb http://download.opensuse.org/repositories/isv:/ownCloud:/desktop/Ubuntu_{{ ansible_distribution_version }}/ /"}
+      - {name: partner, repo: "deb http://archive.canonical.com/ubuntu {{ansible_distribution_release}} partner"}
+      - {name: partner-src, repo: "deb-src http://archive.canonical.com/ubuntu {{ansible_distribution_release}} partner"}
+
+
+    packages_base:
+      - {name: ack-grep}
+      - {name: ansible, state: latest, default_release: "{{ ansible_distribution_release }}-backports"}
+      - {name: ansible}
+      - {name: apt-file}
+      - {name: aptitude}
+      - {name: aspell-de}
+      - {name: fsarchiver}
+      - {name: git}
+      - {name: iotop}
+      - {name: iperf}
+      - {name: openvpn}
+      - {name: parallel}
+      - {name: rsync}
+      - {name: subversion}
+      - {name: tig}
+      - {name: tmux}
+      - {name: tree}
+      - {name: unrar}
+      - {name: vim, state: latest}
+      - {name: whois}
+      - {name: zsh, state: latest, default_release: "{{ ansible_distribution_release }}-backports"}
+
+    packages_desktop:
+      - {name: cifs-utils}
+      - {name: feh}
+      - {name: pavucontrol}
+      - {name: keychain}
+      - {name: i3}
+      - {name: suckless-tools}
+      - {name: dunst, state: absent}
+      - {name: indicator-sound-gtk2}
+      - {name: keychain}
+      - {name: keepass2}
+      - {name: latex-mk}
+      - {name: mendeleydesktop}
+      - {name: neovim, state: latest}
+      - {name: nfs-common}
+      - {name: okular}
+      - {name: owncloud-client}
+      - {name: pidgin-otr}
+      - {name: pidgin}
+      - {name: sshfs}
+      - {name: texlive-full}
+      - {name: xautolock}
+      - {name: vpnc}
+
+    packages_programming:
+      - {name: asciidoc}
+      - {name: autoconf}
+      - {name: build-essential}
+      - {name: clang}
+      - {name: cmake}
+      - {name: cython}
+      - {name: flake8, state: latest}
+      - {name: ipython, state: latest}
+      - {name: ipython-notebook, state: latest,build-dep}
+      - {name: pandoc}
+      - {name: pep8, state: latest}
+      - {name: pylint, state: latest}
+      - {name: python-dev, state: latest}
+      - {name: python-h5py, state: latest}
+      - {name: python-ipdb, state: latest}
+      - {name: python-matplotlib, state: latest}
+      - {name: python-numpy, state: latest,build-dep}
+      - {name: python-pandas, state: latest,build-dep}
+      - {name: python-pip, state: latest}
+      - {name: python-scipy, state: latest,build-dep}
+      - {name: python-tables, state: latest}
+      - {name: python3-pip, state: latest}
+      - {name: virtualenvwrapper, state: latest}
+
+  tasks:
+    - name: add desktop repositories keys
+      apt_key: >
+           keyserver="{{item.keyserver|default('keyserver.ubuntu.com')}}"
+           id="{{item.id|default(none)}}"
+           url="{{item.url|default(none)}}"
+      with_items: apt_keys_desktop
+      when: inventory_hostname in groups['workstations']
+
+    - name: add desktop repositories
+      apt_repository: >
+           repo="{{item.repo}}"
+           state="{{item.state|default('present')}}"
+      with_items: apt_repos_desktop
+      when: inventory_hostname in groups['workstations']
+
+    - name: apt-get update and upgrade
+      apt: update_cache=yes
+           upgrade=yes
+           cache_valid_time=300
+
+    - name: install base packages
+      apt: name="{{item.name}}"
+           state="{{item.state|default('present')}}"
+           default_release="{{item.default_release|default(none)}}"
+           install_recommends=yes
+      with_items: packages_base
+
+    - name: install workstation packages
+      apt: name="{{item.name}}"
+           state="{{item.state|default('present')}}"
+           default_release="{{item.default_release|default(none)}}"
+           install_recommends=yes
+      with_items: "{{ packages_desktop + packages_programming }}"
+      when: inventory_hostname in groups['workstations']
+
+  handlers:
+    - name: update cache
+      apt: update_cache=yes

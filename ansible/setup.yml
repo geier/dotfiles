@@ -1,0 +1,5 @@
+- name: setup my machine just how I like it
+  hosts: local
+  connection: local
+  roles:
+    - iosevka
