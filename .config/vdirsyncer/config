@@ -16,23 +16,9 @@ fileext = .vcf
 type = carddav
 url = https://brutus.lostpackets.de/davical/caldav.php/cgeier/
 username = cgeier
-verify_fingerprint = "36:B0:8B:AD:66:C6:FB:B0:1B:4E:CC:8A:07:C8:FF:37:49:AD:87:DE"
+password.fetch = ["command", "keyring_helper.py", "brutus.lostpackets.de", "cgeier"]
 
 # CALENDAR
-[pair biopraktikum]
-a = bio_local
-b = bio_remote
-
-[storage bio_local]
-type = filesystem
-path = ~/.local/share/khal/calendars/biopraktikum/
-fileext = .ics
-
-[storage bio_remote]
-type = http
-url = https://www.mpraktikum.hiskp.uni-bonn.de/intern/termine.ical.php?kurs=19&user=geier
-username = tutor
-
 [pair home_calendar]
 a = home_calendar_local
 b = home_calendar_remote
@@ -47,5 +33,5 @@ fileext = .ics
 [storage home_calendar_remote]
 type = caldav
 url = https://brutus.lostpackets.de/davical/caldav.php/cgeier/
-verify_fingerprint = "36:B0:8B:AD:66:C6:FB:B0:1B:4E:CC:8A:07:C8:FF:37:49:AD:87:DE"
 username = cgeier
+password.fetch = ["command", "keyring_helper.py", "brutus.lostpackets.de", "cgeier"]
