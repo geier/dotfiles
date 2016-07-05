@@ -54,8 +54,9 @@ function fish_prompt --description 'Write out the prompt'
 	end
 
 	if set -q VIRTUAL_ENV
-		set -g __fish_virtual_env_status "("(set_color blue white)(basename "$VIRTUAL_ENV")(set_color normal)")"
+		echo -n -s (set_color blue) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal)
 	end
+
 	
 	# TODO: red username if run as root
 	if set -q SSH_CONNECTION
