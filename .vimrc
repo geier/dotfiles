@@ -17,10 +17,6 @@ set backupdir=~/tmp
 au BufWinLeave * silent! mkview
 au BufWinEnter * silent! loadview
 
-
-"autocmd VimEnter * echo "Welcome back Christian :)"
-autocmd VimLeave * echo "Cya in Hell."
-
 " colours, plugins
 syntax enable
 if exists("+termguicolors")
