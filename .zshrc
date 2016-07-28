@@ -344,31 +344,6 @@ export PATH=~/.local/bin:$PATH
 [ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ] && source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 [ -f ~/.local/bin/virtualenvwrapper.sh ] && source ~/.local/bin/virtualenvwrapper.sh
 
-# Maschinen spezifisches {{{ 
-if [[ `uname -n` == "yvonne" || `uname -n` == "theseus" ]]
-    then
-        export CPLUS_INCLUDE_PATH=/usr/local/include/:$CPLUS_INCLUDE_PATH
-        #source /usr/condor/condor.sh
-        export LIBRARY_PATH=/usr/local/lib/:$LIBRARY_PATH
-        alias pidgin='pidgin -f'
-fi
-
-if [[ `uname -n` == "oberon" ]]
-    then
-        #export LIBRARY_PATH="/sw/include:/sw/lib"
-        #alias vim="vim -X"
-fi
-
-if [[ `uname -n` == "brutus.lostpackets.de" ]]
-    then
-        # für abby ocr
-        export LD_LIBRARY_PATH=/opt/ABBYYOCR:$LD_LIBRARY_PATH
-	#alias rm='trash-put'
-	export PATH=/usr/local/texlive/2012/bin/amd64-freebsd:$PATH
-    fi
-
-#}}}
-
 
 # Funktionen {{{
 # Usage: extract <file>
