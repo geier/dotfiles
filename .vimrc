@@ -117,3 +117,6 @@ map <M-Right> <C-]>
 au BufRead,BufNewFile *alot.* set filetype=mail
 
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
+
+" using fish shell doesn't work properly with Vundle
+set shell=sh
