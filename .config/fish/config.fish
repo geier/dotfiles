@@ -72,3 +72,7 @@ alias errcat='less *.err(L+0)'
 
 alias cs='condor_status'
 alias cq='condor_q'
+
+if status --is-interactive
+  keychain --eval --quiet -Q id_rsa | source
+end
