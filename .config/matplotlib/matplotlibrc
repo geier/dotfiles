@@ -1,0 +1,30 @@
+ytick.direction: out
+xtick.direction: out
+
+# arrrrrg!
+#xtick.top: False
+#ytick.right: False
+#axes.xaxis.right: True
+
+# why this love for blue?
+boxplot.boxprops.color: black
+boxplot.whiskerprops.color: black
+boxplot.whiskerprops.linestyle: -
+boxplot.medianprops.color: black
+boxplot.meanprops.color: black
+
+legend.scatterpoints: 1
+legend.numpoints: 1
+legend.frameon: 1
+legend.fancybox: 1
+legend.framealpha: .5
+
+image.interpolation: nearest
+
+savefig.dpi: 300
+savefig.transparent: True
+
+# epilepsia
+#axes.prop_cycle    : cycler('color', [ 'a30134', '677718', '00535e', '0076c0', 'ffde75', 'e37c1d', ])
+# own
+axes.prop_cycle    : cycler('color', [ 'a30135', 'b8a93b', '0175a3', '00535e', 'ffde75', 'e37c1d', ])
