@@ -253,10 +253,8 @@ function set-prompt () {
       (main|viins) VI_MODE="%~" ;;
       (*)          VI_MODE="%~" ;;
     esac
-PROMPT='%(?..$PR_RED%?\
-
-)%{$reset_color%}%(!.$PR_RED%SROOT%s$PR_NO_COLOUR@%B%m%b.$SSH)$(vcs_super_info)%# '
-}
+    }
+PROMPT='%{$reset_color%}%(!.$PR_RED%SROOT%s$PR_NO_COLOUR@%B%m%b.$SSH)$(vcs_super_info)%(?..[$PR_RED%?$reset_color])%# '
 RPROMPT='$VI_MODE'
 
 function zle-line-init zle-keymap-select {
