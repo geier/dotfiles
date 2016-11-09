@@ -60,6 +60,9 @@ Plugin 'mhinz/vim-startify'
 
 Plugin 'dag/vim-fish'
 
+" Make the yanked region apparent!
+Plugin 'machakann/vim-highlightedyank'
+
 call vundle#end()
 filetype plugin indent on
 
