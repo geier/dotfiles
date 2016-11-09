@@ -5,13 +5,14 @@ if filereadable(expand("~/.vim/plugins.vim"))
      source ~/.vim/plugins.vim
 endif
 
-" backups into
+" put backup, swp, and undo files into central location
 if has("unix")
-    if !isdirectory(expand("~/tmp/."))
-        !mkdir -p ~/tmp/
-    endif
+    silent !mkdir -p ~/.vim/{backup,swp,undo}/
 endif
-set backupdir=~/tmp
+set backupdir=~/.vim/backup/
+set directory=~/.vim/swp/
+set undodir=~/.vim/undo/
+set undofile
 
 " auto folds schreiben und laden
 au BufWinLeave * silent! mkview
@@ -83,10 +84,6 @@ autocmd! BufWritePost * call Run_neomake()
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-if v:version >= 703
-    set undodir=~/.vim/undo " where to save undo histories
-    set undofile                " Save undo's after file closes
-endif
 
 " latex plugin stuff
 filetype plugin on
