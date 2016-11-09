@@ -2,7 +2,7 @@
 
 " plugin setup done in extra file
 if filereadable(expand("~/.vim/plugins.vim"))
-	source ~/.vim/plugins.vim
+     source ~/.vim/plugins.vim
 endif
 
 " backups into
@@ -20,7 +20,7 @@ au BufWinEnter * silent! loadview
 " colours, plugins
 syntax enable
 if exists("+termguicolors")
-	set termguicolors
+    set termguicolors
 endif
 set background=dark
 :silent! colorscheme solarized
@@ -74,9 +74,9 @@ set autowrite
 " if_exists(':Neomake') will always be false if called from within
 " the vimrc
 function Run_neomake()
-	if exists(':Neomake')
-		Neomake
-	endif
+    if exists(':Neomake')
+        Neomake
+    endif
 endfunction
 autocmd! BufWritePost * call Run_neomake()
 
@@ -84,8 +84,8 @@ autocmd! BufWritePost * call Run_neomake()
 set backspace=indent,eol,start
 
 if v:version >= 703
-	set undodir=~/.vim/undo " where to save undo histories
-	set undofile                " Save undo's after file closes
+    set undodir=~/.vim/undo " where to save undo histories
+    set undofile                " Save undo's after file closes
 endif
 
 " latex plugin stuff
