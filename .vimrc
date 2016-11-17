@@ -41,6 +41,9 @@ set statusline=%<[%n]\ %F\ \ Filetype=\%Y\ \ %r\ %1*%m%*%w%=%(Line:\ %l%)%4(%)Co
 " highlight all search search pattern matches
 set hlsearch
 
+" allow project specific vimrc files
+set exrc
+
 " nicer autocompletion
 set wildmenu
 set wildmode=full
