@@ -53,6 +53,9 @@ set history=5000
 
 set incsearch     " do incremental searching
 "set showbreak=>>>\  
+if exists('&inccommand')  " use live substitution if available (neovim)
+  set inccommand=split
+endif
 
 " wrap
 set textwidth=0
