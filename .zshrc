@@ -269,7 +269,6 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
-[ $DISPLAY ] || export DISPLAY=:0.0
 
 export LESS=XFRaeiM
 
