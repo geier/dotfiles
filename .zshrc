@@ -205,6 +205,7 @@ export TERM=xterm-256color
 # %(x.true-text.false-text) left ( may be preceded or followed by an int N
 #  ? True if exit code of last command was N
 #  ! True if shell is running with privileges
+# %f resets foreground color
 
 
 if [[ -e ~/.zsh/zsh-vcs-prompt/zshrc.sh ]]; then 
@@ -232,7 +233,7 @@ function set-prompt () {
       (*)          VI_MODE="%~" ;;
     esac
     }
-PROMPT='%{$reset_color%}%(!.$PR_RED%SROOT%s$PR_NO_COLOUR@%B%m%b.$SSH)$(vcs_super_info)%(?..[$PR_RED%?$reset_color])%# '
+PROMPT='%(!.%F{red}%SROOT%s%f@%B%m%b.$SSH)$(vcs_super_info)%(?..[%F{red}%?%f])%# '
 RPROMPT='$VI_MODE'
 
 function zle-line-init zle-keymap-select {
