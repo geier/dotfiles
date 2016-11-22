@@ -193,29 +193,8 @@ for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
 done
 PR_NO_COLOUR="%{$terminfo[sgr0]%}"
 
-###
-# Decide if we need to set titlebar text.
-case $TERM in
-xterm*)
-    PR_TITLEBAR=$'%{\e]0;%(!.-=*[ROOT]*=- | .)%n@%m:%~ | ${COLUMNS}x${LINES} | %y\a%}'
-;;
-screen)
-    PR_TITLEBAR=$'%{\e_screen \005 (\005t) | %(!.-=[ROOT]=- | .)%n@%m:%~ | ${COLUMNS}x${LINES} | %y\e\\%}'
-;;
-*)
-    PR_TITLEBAR=''
-;;
-esac
-
 
 export TERM=xterm-256color
-###
-# Decide whether to set a screen title
-if [[ "$TERM" == "screen" ]]; then
-PR_STITLE=$'%{\ekzsh\e\\%}'
-else
-PR_STITLE=''
-fi
 
 # %n, $USERNAME username
 # %m hostname up to first .
