@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from __future__ import print_function
 import keyring
 import sys
 
@@ -12,4 +13,4 @@ def get_password(service, username):
     return password
 
 if __name__ == "__main__":
-    print get_password(sys.argv[1:2][0], sys.argv[2:3][0])
+    print(get_password(sys.argv[1:2][0], sys.argv[2:3][0]))
