@@ -208,7 +208,6 @@ export TERM=xterm-256color
 
 
 if [[ -e ~/.zsh/zsh-vcs-prompt/zshrc.sh ]]; then 
-	setopt prompt_subst
 	source ~/.zsh/zsh-vcs-prompt/zshrc.sh
 	ZSH_VCS_PROMPT_AHEAD_SIGIL='↑'
 	ZSH_VCS_PROMPT_BEHIND_SIGIL='↓'
