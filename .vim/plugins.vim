@@ -12,8 +12,13 @@ Plugin 'airblade/vim-gitgutter'
 " git plugin (commiting, blame, diff, etc.)
 Plugin 'tpope/vim-fugitive'
 
-" my favorite color scheme
-Plugin 'thomwiggers/vim-colors-solarized'
+" colorschemes
+Plugin 'ericbn/vim-colors-solarized'
+Plugin 'fcpg/vim-fahrenheit'
+Plugin 'iCyMind/NeoSolarized'
+Plugin 'joshdick/onedark.vim'
+Plugin 'morhetz/gruvbox'
+Plugin 'mhartington/oceanic-next'
 
 " syntax checker for various programming languages
 "Plugin 'scrooloose/syntastic'

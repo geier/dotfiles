@@ -24,9 +24,12 @@ if exists("+termguicolors")
     set termguicolors
 endif
 set background=dark
-:silent! colorscheme solarized
 
-" display control chars
+let g:gruvbox_italic=1
+let g:gruvbox_contrast='medium'
+:silent! colorscheme gruvbox
+
+" isplay control chars
 set list listchars=tab:»·,trail:·
 "highlight the cursor line
 set cursorline
