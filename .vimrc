@@ -126,3 +126,6 @@ nnoremap <leader>jd :YcmCompleter GoTo<CR>
 
 " using fish shell doesn't work properly with Vundle
 set shell=sh
+
+
+let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md', }]
