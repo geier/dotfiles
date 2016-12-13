@@ -64,5 +64,5 @@ Plug 'dag/vim-fish'
 " Make the yanked region apparent!
 Plug 'machakann/vim-highlightedyank'
 
-Plug 'vimwiki/vimwiki'
+Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 call plug#end()
