@@ -4,6 +4,3 @@
 [submodule ".zsh/zsh-vcs-prompt"]
 	path = .zsh/zsh-vcs-prompt
 	url = https://github.com/yonchu/zsh-vcs-prompt.git
-[submodule ".vim/bundle/Vundle.vim"]
-	path = .vim/bundle/Vundle.vim
-	url = https://github.com/gmarik/Vundle.vim
