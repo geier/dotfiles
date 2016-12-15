@@ -1,5 +1,5 @@
-ytick.direction: out
-xtick.direction: out
+#ytick.direction: out
+#xtick.direction: out
 
 # arrrrrg!
 #xtick.top: False
