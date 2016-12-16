@@ -1,4 +1,4 @@
- set nocompatible "Vim, not vi 
+ set nocompatible "Vim, not vi   " in neovim
 
 " plugin setup done in extra file
 if filereadable(expand("~/.vim/plugins.vim"))
@@ -9,9 +9,9 @@ endif
 if has("unix")
     silent !mkdir -p ~/.vim/{backup,swp,undo}/
 endif
-set backupdir=~/.vim/backup/
-set directory=~/.vim/swp/
-set undodir=~/.vim/undo/
+set backupdir=~/.vim/backup/  " in neovim (different location)
+set directory=~/.vim/swp/  " in neovim (different location)
+set undodir=~/.vim/undo/  " in neovim (different location)
 set undofile
 "}}}
 
@@ -33,19 +33,17 @@ let g:gruvbox_contrast='medium'
 
 " general settings {{{
 " display control chars
-set list listchars=tab:»·,trail:·
-set showbreak=>>>\  
+set list listchars=tab:»·,trail:·,nbsp:+  " in neovim (
+set showbreak=>>>\
 
 "highlight the cursor line
 set cursorline
 set modeline
-set laststatus=2
+set laststatus=2  " in neovim
 " show command in statusline
 set showcmd
 set statusline=%<[%n]\ %F\ \ Filetype=\%Y\ \ %r\ %1*%m%*%w%=%(Line:\ %l%)%4(%)Column:\ %5(%c%V/%{strlen(getline(line('.')))}%)\ %4(%)%p%%
 
-" highlight all search search pattern matches
-set hlsearch
 " numbers
 set number
 
@@ -53,7 +51,7 @@ set number
 set exrc
 
 " nicer autocompletion
-set wildmenu
+set wildmenu  " in neovim
 set wildmode=full
 
 " falten an markern als default
@@ -68,8 +66,11 @@ set history=5000
 " don't insert newlines automatically
 set textwidth=0
 
-set incsearch     " do incremental searching
+set hlsearch " highlight all search search pattern matches in neovim
+set incsearch " do incremental searching  " in neovim
 
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start  " in neovim
 
 " using fish shell doesn't work properly with Vundle, fugitive and probably
 " other stuff
@@ -80,6 +81,7 @@ if exists('&inccommand')  " use live substitution if available (neovim)
 endif
 "}}}
 
+" Filetype specific settings {{{
 " alot files are mail
 au BufRead,BufNewFile *alot.* set filetype=mail
 au BufRead,BufFilePre,BufNewFile *.md set filetype=markdown
@@ -90,27 +92,21 @@ autocmd FileType mail setlocal textwidth=72 nonumber
 autocmd FileType tex  setlocal textwidth=0 number wrap linebreak nolist
 autocmd FileType rst  setlocal textwidth=80
 autocmd FileType cpp setlocal ts=4 sw=4 expandtab sts=4
+"}}}
 
-" switch to next/previous buffer with Tab/shift+Tab
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprevious<CR>
-
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-
-
-" latex plugin stuff
+" latex plugin stuff {{{
 filetype plugin on
 set grepprg=grep\ -nH\ $*
 filetype indent on
 let g:tex_flavor='latex'
 " Tex completion on alt+tab
-autocmd FileType tex imap <buffer> <M-TAB> <Plug>Tex_Completion 
+autocmd FileType tex imap <buffer> <M-TAB> <Plug>Tex_Completion
+" }}}
 
 " mappings {{{
 " Don't use Ex mode, use Q for formatting
 map Q gq}
-" 
+"
 "map <C-m> :make
 
 cmap w!! %!sudo tee > /dev/null %
@@ -119,8 +115,11 @@ cmap w!! %!sudo tee > /dev/null %
 " Alt-right/left to navigate forward/backward in the tags stack
 map <M-Left> <C-T>
 map <M-Right> <C-]>
-"}}}
 
+" switch to next/previous buffer with Tab/shift+Tab
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
+"}}}
 
 " Plugin Configuration {{{
 " run Neomake when writing a file if it is installed
