@@ -70,6 +70,11 @@ set textwidth=0
 
 set incsearch     " do incremental searching
 
+
+" using fish shell doesn't work properly with Vundle, fugitive and probably
+" other stuff
+set shell=sh
+
 if exists('&inccommand')  " use live substitution if available (neovim)
   set inccommand=split
 endif
@@ -114,9 +119,6 @@ cmap w!! %!sudo tee > /dev/null %
 map <M-Left> <C-T>
 map <M-Right> <C-]>
 "}}}
-
-" using fish shell doesn't work properly with Vundle
-set shell=sh
 
 
 " Plugin Configuration {{{
