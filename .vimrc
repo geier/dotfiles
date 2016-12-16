@@ -82,7 +82,7 @@ endif
 
 " alot files are mail
 au BufRead,BufNewFile *alot.* set filetype=mail
-au BufRead,BufNewFile *.md set filetype=markdown
+au BufRead,BufFilePre,BufNewFile *.md set filetype=markdown
 
 autocmd FileType text setlocal textwidth=72
 autocmd FileType txt setlocal textwidth=72
