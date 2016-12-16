@@ -24,28 +24,24 @@ setlocal colorcolumn=80
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
 match OverLength /\%106v.*/
 
-let g:syntastic_python_checkers=['flake8']
-let g:syntastic_python_flake8_args='--ignore=E501'
-let g:syntastic_check_on_open = 1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_loc_list_height=5
-let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
-
-" jedi-vim {
+" jedi-vim {{{
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
 let g:jedi#completions_enabled = 1
 let g:jedi#smart_auto_mappings = 0
-let g:jedi#completions_command = ""
+let g:jedi#completions_command = "<C-Space>"  "default, remove after getting used to
 let g:jedi#show_call_signatures = "1"
 
 let g:jedi#goto_assignments_command = "<leader>pa"
 let g:jedi#goto_definitions_command = "<leader>pd"
-let g:jedi#documentation_command = "<leader>pk"
+let g:jedi#documentation_command = "K"  "default, remove after getting used to
 let g:jedi#usages_command = "<leader>pu"
 let g:jedi#rename_command = "<leader>pr"
-" }
+
+" don't show docstring window during completion
+setlocal completeopt-=preview
+" }}}
 "
 let g:neomake_python_enabled_makers = ['flake8', 'pep8']
 " E501 is line length of 80 characters, I don't want to see all those errors
