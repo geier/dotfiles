@@ -23,6 +23,9 @@ Plug 'benekastah/neomake'
 " indenting python properly
 Plug 'hynek/vim-python-pep8-indent'
 
+" proper folding for python
+Plug 'tmhedberg/SimpylFold'
+
 " easy commenting out of code
 Plug 'scrooloose/nerdcommenter'
 
