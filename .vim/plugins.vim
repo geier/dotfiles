@@ -21,10 +21,17 @@ Plug 'mhartington/oceanic-next'
 Plug 'benekastah/neomake'
 
 " indenting python properly
-Plug 'hynek/vim-python-pep8-indent'
+"Plug 'hynek/vim-python-pep8-indent'
 
 " proper folding for python
 Plug 'tmhedberg/SimpylFold'
+
+" text objects for indented languages (python)
+" and indenting
+Plug 'tweekmonster/braceless.vim'
+
+" Motions for CamelCase and snake_case
+Plug 'bkad/CamelCaseMotion'
 
 " easy commenting out of code
 Plug 'scrooloose/nerdcommenter'

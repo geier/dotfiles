@@ -42,7 +42,11 @@ let g:jedi#rename_command = "<leader>pr"
 " don't show docstring window during completion
 setlocal completeopt-=preview
 " }}}
+
+" Braceless
 "
+BracelessEnable +indent
+
 let g:neomake_python_enabled_makers = ['flake8', 'pep8']
 " E501 is line length of 80 characters, I don't want to see all those errors
 let g:neomake_python_flake8_maker = { 'args': ['--ignore=E501'], }

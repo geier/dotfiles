@@ -142,10 +142,15 @@ let g:airline_theme='gruvbox'
 " vimwiki
 let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md', }]
 let g:vimwiki_global_ext = 0  " not all .md files are vimwiki files
+let g:vimwiki_map_prefix = '<Leader>e'
+
 
 " YouCompleteMe
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
 let g:ycm_filetype_blacklist = {
 	\ 'python': 1,
 	\}
+
+" using CamelCaseMotion with leader
+call camelcasemotion#CreateMotionMappings('<leader>')
 "}}}
