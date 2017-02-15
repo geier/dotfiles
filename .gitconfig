@@ -1,6 +1,7 @@
 [user]
 	name = Christian Geier
 	email = geier@lostpackets.de
+	signingkey = 63D4D665561FFEEC
 [color]
 	ui = true
 [alias]
