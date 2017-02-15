@@ -169,6 +169,10 @@ if [[ -x /usr/bin/ack-grep ]]; then
 	alias ack='ack-grep'
 fi
 
+if type nvim > /dev/null; then
+    export EDITOR=nvim
+fi
+
   #read documents
 alias -s pdf=zathura
 alias -s PDF=zathura
