@@ -48,5 +48,7 @@ remoteuser = geier@lostpackets.de
 remotepasseval = get_password("mail.lostpackets.de", "geier@lostpackets.de")
 nametrans = lambda foldername: re.sub('^INBOX.', '', foldername)
 cert_fingerprint = b985a8c4f8b6757abf379613bb78331e9cfb3a57
+cert_fingerprint = 2e0964a10d81bfbdf9f45013f0829a9155187882
+
 idlefolders = ['INBOX']
 
