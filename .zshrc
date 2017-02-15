@@ -38,7 +38,7 @@ autoload -U colors && colors
 autoload zmv
 autoload -U compinit && compinit
 
-export PATH="/opt/local/bin:/opt/local/sbin:$HOME/bin:/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/games:/usr/X11/bin:$HOME/bin/android/tools"
+export PATH="/opt/local/bin:/opt/local/sbin:$HOME/bin:$HOME/.cargo/bin:/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/games:/usr/X11/bin:$HOME/bin/android/tools"
 
 
 #eval `dircolors`
