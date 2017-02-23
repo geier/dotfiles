@@ -8,11 +8,13 @@ import urllib2
 def github(ui):
     msg = ui.current_buffer.get_selected_message()
     msgtext = str(msg.get_email())
-    r = r'img src=\'(https://github.com/notifications/beacon/.*.gif)\''
+    r = '<img alt="" height="1" src="(https://github.com/notifications/beacon/.*.gif)"'
     beacons = re.findall(r, msgtext)
     if beacons:
         urllib2.urlopen(beacons[0])
         ui.notify('removed from github notifications:\n %s' % beacons[0])
+    else:
+        ui.notify('no beacon found')
 
 
 # tooks this from pazz alot config
