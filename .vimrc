@@ -79,6 +79,11 @@ set shell=sh
 if exists('&inccommand')  " use live substitution if available (neovim)
   set inccommand=split
 endif
+
+" ignore pattern for files: ignore that TeX crap
+set wildignore+=*.*~,*.acn,*.acr,*.alg,*.aux,*.bbl,*.bcf,*.blg,*.dvi,*.fdb_latexmk,*.fls,
+set wildignore+=*.glg,*.glo,*.gls,*.ist,*.latexmain,*.log,*.nav,*.nlo,*.out,*.pdf*,
+set wildignore+=*.run.xml,*.slg,*.snm,*.syg,*.syi,*.synctex.gz,*.tdo,*.toc,
 "}}}
 
 " Filetype specific settings {{{
