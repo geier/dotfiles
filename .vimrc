@@ -124,6 +124,13 @@ map <M-Right> <C-]>
 " switch to next/previous buffer with Tab/shift+Tab
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
+
+" make ctrl-l remove highlights and re-apply syntax highlighting
+nnoremap <C-l> :nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>
+
+" make n and N always go in the same direction
+nnoremap <expr> n  'Nn'[v:searchforward]
+nnoremap <expr> N  'nN'[v:searchforward]
 "}}}
 
 " Plugin Configuration {{{
