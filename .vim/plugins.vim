@@ -74,4 +74,10 @@ Plug 'dag/vim-fish'
 Plug 'machakann/vim-highlightedyank'
 
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+
+" nice wrapper around your favorite (installed) grep-like tool
+" call `:Grepper` (hit enter), type search pattern
+Plug 'mhinz/vim-grepper'
+
+
 call plug#end()
