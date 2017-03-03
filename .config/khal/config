@@ -38,6 +38,10 @@ multiple = yellow
 
 [default]
 highlight_event_days = True
+default_calendar = home
+print_new = path
+#timedelta = 3d
+
 
 [view]
-frame = True
+frame = top
