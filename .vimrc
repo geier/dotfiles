@@ -116,6 +116,9 @@ map Q gq}
 
 cmap w!! %!sudo tee > /dev/null %
 
+" make Y work as C or D
+map Y y$
+
 "nmap P :TagbarToggle<CR>
 " Alt-right/left to navigate forward/backward in the tags stack
 map <M-Left> <C-T>
