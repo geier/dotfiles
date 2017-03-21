@@ -15,6 +15,12 @@ set nolist
 set virtualedit=
 set display+=lastline
 
+" make vim show latex symbols as unicode symbols in normal mode
+set conceallevel=2
+" concealing in lines where the cursor is makes the cursor stutter when moving
+"set concealcursor=nvc
+let g:tex_conceal="abdgms"  " accents, bold, delimiters, greek, math, sub/superscript
+
 " navigieren wie angezeigt:
 noremap  <buffer> <silent> <Up>   gk
 noremap  <buffer> <silent> <Down> gj
