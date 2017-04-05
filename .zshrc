@@ -1,6 +1,4 @@
-
 fpath=(~/zsh/ $fpath)
-
 
 # options {{{
 HISTFILE=$HOME/.zsh_history
@@ -45,9 +43,6 @@ export PATH="/opt/local/bin:/opt/local/sbin:$HOME/bin:$HOME/.cargo/bin:/usr/loca
 
 # solarized dircolors
 # eval `dircolors ~/.dircolors.256dark`
-
-
-
 
 export EDITOR=vim
 export PAGER=less
@@ -106,14 +101,10 @@ else
     alias ll='/bin/ls -alhp | /usr/bin/less'
 fi
 
-
 alias lsnew='/bin/ls -lhtp | head'
 alias lsold='/bin/ls -lhtp | tail'
 
-
 alias c='clear'
-
-
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -181,8 +172,6 @@ alias -s djvu=djview
 
 
 # }}}
-
-
 
 ###
 # See if we can use colors.

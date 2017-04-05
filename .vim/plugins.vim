@@ -1,5 +1,4 @@
 call plug#begin('~/.vim/plugged')
-
 " Plugs
 "
 " showing the git status of lines (modified, new, deleted lines after this line)

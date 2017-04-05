@@ -220,12 +220,9 @@ bind $mod+Shift+42 move workspace to output left
 
 font pango:Ubuntu Mono 12
 
-
-
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-
        status_command /home/cg/bin/my_i3status.sh
        position top
        font pango:Droid Sans Bold
