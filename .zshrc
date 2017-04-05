@@ -403,6 +403,7 @@ fi
 # cannot remember where I stole it from
 tm() {
 	[[ -z "$1" ]] && { echo "usage: tm <session>" >&2; return 1; }
+	print -Pn "\e]0;tmux: $1\a"  # set the icon and terminal's title
 	tmux has -t $1 && tmux attach -t $1 || tmux new -s $1
 }
 
@@ -470,4 +471,19 @@ function most_useless_use_of_zsh {
 
 
 # STARTUP
-if [ ! $SSH_CONNECTION ]; then eval `keychain --eval id_rsa`; fi
+zstyle :omz:plugins:ssh-agent identities id_rsa id_github
+
+# set the terminal's title to the current command
+# despite its name, it works in most terminals
+autoload -Uz add-zsh-hook
+function xterm_title_precmd () {
+	print -Pn '\e]0;%~ \a'
+}
+function xterm_title_preexec () {
+	print -Pn '\e]0;%~: '
+	print -n "${(q)1}\a"
+}
+if [[ "$TERM" == (screen*|xterm*|rxvt*|tmux*) ]]; then
+	add-zsh-hook -Uz precmd xterm_title_precmd
+	add-zsh-hook -Uz preexec xterm_title_preexec
+fi
