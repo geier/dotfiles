@@ -1,52 +1,52 @@
 [general]
-status_path = ~/.local/share/.vdirsyncer/status/
+status_path = "~/.local/share/vdirsyncer/status/"
 
 # CONTACTS
 [pair contacts]
-a = home_contacts_local
-b = home_contacts_remote
+a = "home_contacts_local"
+b = "home_contacts_remote"
 collections = ["abook"]
 
 [storage home_contacts_local]
-type = filesystem
-path = ~/.local/share/contacts/
-fileext = .vcf
+type = "filesystem"
+path = "~/.local/share/khal/calendars/contacts/"
+fileext = ".vcf"
 
 [storage home_contacts_remote]
-type = carddav
-url = https://brutus.lostpackets.de/davical/caldav.php/cgeier/
-username = cgeier
+type = "carddav"
+url = "https://brutus.lostpackets.de/davical/caldav.php/cgeier/"
+username = "cgeier"
 password.fetch = ["command", "keyring_helper.py", "brutus.lostpackets.de", "cgeier"]
 
 # CALENDAR
 [pair home_calendar]
-a = home_calendar_local
-b = home_calendar_remote
-conflict_resolution = b wins
+a = "home_calendar_local"
+b = "home_calendar_remote"
+conflict_resolution = "b wins"
 collections = ["home", "work" ,"freundin", "events"]
 metadata = ["color", "displayname"]
 
 [storage home_calendar_local]
-type = filesystem
-path = ~/.local/share/khal/calendars/lostpackets/
-fileext = .ics
+type = "filesystem"
+path = "~/.local/share/khal/calendars/lostpackets/"
+fileext = ".ics"
 
 [storage home_calendar_remote]
-type = caldav
-url = https://brutus.lostpackets.de/davical/caldav.php/cgeier/
-username = cgeier
+type = "caldav"
+url = "https://brutus.lostpackets.de/davical/caldav.php/cgeier/"
+username = "cgeier"
 password.fetch = ["command", "keyring_helper.py", "brutus.lostpackets.de", "cgeier"]
 
 [pair meetup]
-a = meetup_local
-b = meetup_remote
+a = "meetup_local"
+b = "meetup_remote"
 collections = null
 
 [storage meetup_local]
-type = filesystem
-path = ~/.local/share/khal/calendars/meetup/
-fileext = .ics
+type = "filesystem"
+path = "~/.local/share/khal/calendars/meetup/"
+fileext = ".ics"
 
 [storage meetup_remote]
-type = http
-url = http://www.meetup.com/events/ical/187180616/7c56207bd484fb08a0433e5fea84b2004e3e50da/going
+type = "http"
+url = "http://www.meetup.com/events/ical/187180616/7c56207bd484fb08a0433e5fea84b2004e3e50da/going"
