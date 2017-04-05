@@ -5,7 +5,6 @@
  * **zsh**
  * **vim**
  * **i3** (the window manager)
- * **powerline**
 
 ## Mail setup uses
 
@@ -19,9 +18,9 @@
 ## initialize vundle:
 # Initialization
 
-
     git submodule update --init --recursive
     fc-cache -fv
+    
 
 open vim:
-	:PluginInstall
+     :PlugInstall
