@@ -79,5 +79,10 @@ Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 " call `:Grepper` (hit enter), type search pattern
 Plug 'mhinz/vim-grepper'
 
+" Move current selection up (down) with A-k (A-j)
+Plug 'matze/vim-move'
+
+" change/add/delete `sourroundings`
+Plug 'tpope/vim-surround'
 
 call plug#end()
