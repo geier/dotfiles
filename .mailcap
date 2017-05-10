@@ -1,0 +1,3 @@
+application/pdf; zathura '%s'; nametemplate=%s.pdf; test=test -n "$DISPLAY"; nametemplate=%s.pdf
+application/pdf; pdftotext -layout '%s' - ; nametemplate=%s.pdf; copiousoutput
+text/html; w3m -I %{charset} -T text/html; copiousoutput;
