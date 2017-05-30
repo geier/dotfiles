@@ -20,4 +20,4 @@
 [rebase]
 	autostash = true
 [diff]
-	compactionHeuristic = true
+	indentHeuristic = true
