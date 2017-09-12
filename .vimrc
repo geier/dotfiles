@@ -170,5 +170,5 @@ let g:ycm_filetype_blacklist = {
 call camelcasemotion#CreateMotionMappings('<leader>')
 
 runtime autoload/grepper.vim
-let g:grepper.tools = ['rg', 'ag', 'ack', 'grep']
+let g:grepper  = {'tools': ['rg', 'ag', 'ack', 'grep']}
 "}}}
