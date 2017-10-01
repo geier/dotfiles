@@ -51,28 +51,33 @@ client.urgent $bor-ur $back-urgen $t-ur #900000
 bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
-# neo:x, qwertz: q
+# neo: x, qwertz: q
 bind $mod+Shift+24 kill
 
 
 # start dmenu (a program launcher)
-# neo:a, qwertz: d
-bind $mod+40 exec /home/cg/bin/rofi -show combi
+# neo: a, qwertz: d
+bind $mod+40 exec rofi -show combi
 # tab
-bind $mod+23 exec /home/cg/bin/rofi -show window
+bind $mod+23 exec rofi -show window
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+# neo: b; qwertz: n
 bind $mod+57 exec /home/cg/bin/i3-rename-workspace
 
 
 # change focus
-bindsym $mod+n focus left
-bindsym $mod+r focus down
-bindsym $mod+t focus up
-bindsym $mod+d focus right
+# neo: n, qwertz: j
+bind $mod+44 focus left
+# neo: r, qwertz: k
+bind $mod+45 focus down
+# neo: t, qwertz: l
+bind $mod+46 focus up
+# neo: d, qwertz: ö
+bind $mod+47 focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -81,10 +86,14 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+N move left
-bindsym $mod+Shift+R move down
-bindsym $mod+Shift+T move up
-bindsym $mod+Shift+D move right
+# neo: N, qwertz: J
+bind $mod+Shift+44 move left  
+# neo: R, qwertz: K
+bind $mod+Shift+45 move down
+# neo: T, qwertz: L
+bind $mod+Shift+46 move up
+# neo: D, qwertz: Ö
+bind $mod+Shift+47 move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -119,7 +128,8 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+u focus parent
+# neo: u, qwertz: a
+bindsym $mod+38 focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -171,10 +181,10 @@ bindsym Mod4+Shift+F10 move container to workspace number 20
 #
 # reload the configuration file
 # neo: ä, qwertz: c
-bind Mod4+Shift+54 reload
+bind $mod+Shift+54 reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 # #neo: c, qwertz: r
-bind Mod4+Shift+27 restart
+bind $mod+Shift+27 restart
 # exit i3 (logs you out of your X session)
 # neo:l, qwertz: e
 bind Mod4+Shift+26 exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
