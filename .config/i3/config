@@ -129,7 +129,7 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 # neo: u, qwertz: a
-bindsym $mod+38 focus parent
+bind $mod+38 focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
