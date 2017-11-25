@@ -164,6 +164,10 @@ if type nvim > /dev/null; then
     export EDITOR=nvim
 fi
 
+# use neomutt and neovim instead of mutt and vim if available
+which neomutt &> /dev/null && alias mutt=neomutt || true
+which nvim &> /dev/null && alias vim=nvim || true
+
   #read documents
 alias -s pdf=zathura
 alias -s PDF=zathura
