@@ -76,6 +76,9 @@ set backspace=indent,eol,start  " in neovim
 " other stuff
 set shell=sh
 
+" if joining commenting lines with `J`, fix comment characters
+set formatoptions+=j
+
 if exists('&inccommand')  " use live substitution if available (neovim)
   set inccommand=split
 endif
