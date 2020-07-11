@@ -47,9 +47,6 @@ Plug 'kshenoy/vim-signature'
 " highlighting for i3-wm's config file
 Plug 'PotatoesMaster/i3-vim-syntax'
 
-" nicer editing of table in rst, markdown, etc.
-Plug 'godlygeek/tabular'
-
 " completion plugin for several languages
 Plug 'Valloric/YouCompleteMe'
 " and for python
@@ -61,6 +58,12 @@ Plug 'ctrlpvim/ctrlp.vim'
 " rst support
 Plug 'Rykka/riv.vim'
 Plug 'Rykka/InstantRst'
+
+" Table Mode
+Plug 'dhruvasagar/vim-table-mode'
+
+" Markdown preview
+"Plug 'shime/vim-livedown'
 
 " Rust
 Plug 'rust-lang/rust.vim'
@@ -83,5 +86,11 @@ Plug 'matze/vim-move'
 
 " change/add/delete `sourroundings`
 Plug 'tpope/vim-surround'
+
+" semantic highlighter for python code
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+
+Plug 'tell-k/vim-autopep8'
+
 
 call plug#end()

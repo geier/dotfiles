@@ -158,9 +158,11 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_theme='gruvbox'
 
 " vimwiki
-let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md', }]
+let g:vimwiki_list = [{'path': '~/workspace/wiki', 'syntax': 'markdown', 'ext': '.md', }]
 let g:vimwiki_global_ext = 0  " not all .md files are vimwiki files
 let g:vimwiki_map_prefix = '<Leader>e'
+let g:vimwiki_table_mappings = 0  " we use table mode
+let g:vimwiki_table_auto_fmt = 0  " we use table mode
 
 
 " YouCompleteMe
