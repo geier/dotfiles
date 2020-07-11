@@ -68,6 +68,9 @@ Plug 'dhruvasagar/vim-table-mode'
 " Rust
 Plug 'rust-lang/rust.vim'
 
+" Typescript
+Plug 'leafgarland/typescript-vim'
+
 Plug 'mhinz/vim-startify'
 
 Plug 'dag/vim-fish'

@@ -176,4 +176,8 @@ call camelcasemotion#CreateMotionMappings('<leader>')
 
 runtime autoload/grepper.vim
 let g:grepper  = {'tools': ['rg', 'ag', 'ack', 'grep']}
+
+"CtrlP ignore some directories
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
 "}}}
