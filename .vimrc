@@ -66,7 +66,7 @@ set history=5000
 " don't insert newlines automatically
 set textwidth=0
 
-set hlsearch " highlight all search search pattern matches in neovim
+set hlsearch " highlight all search pattern matches " in neovim
 set incsearch " do incremental searching  " in neovim
 
 " allow backspacing over everything in insert mode
@@ -160,9 +160,10 @@ let g:airline_theme='gruvbox'
 " vimwiki
 let g:vimwiki_list = [{'path': '~/workspace/wiki', 'syntax': 'markdown', 'ext': '.md', }]
 let g:vimwiki_global_ext = 0  " not all .md files are vimwiki files
-let g:vimwiki_map_prefix = '<Leader>e'
+let g:vimwiki_map_prefix = '<Leader>e'  " <Leader>w is take by CamelMotion
 let g:vimwiki_table_mappings = 0  " we use table mode
 let g:vimwiki_table_auto_fmt = 0  " we use table mode
+let g:vimwiki_auto_header = 1  " automatically set header for new files
 
 
 " YouCompleteMe

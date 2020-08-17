@@ -1,4 +1,9 @@
+" this is the syntax for vim-plug
+" install via 
+" curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
+
 " Plugs
 "
 " showing the git status of lines (modified, new, deleted lines after this line)
@@ -54,6 +59,8 @@ Plug 'davidhalter/jedi-vim'
 
 " fuzzy file search
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " rst support
 Plug 'Rykka/riv.vim'
@@ -78,11 +85,13 @@ Plug 'dag/vim-fish'
 " Make the yanked region apparent!
 Plug 'machakann/vim-highlightedyank'
 
-Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+Plug 'vimwiki/vimwiki'  ", { 'branch': 'dev' }
 
 " nice wrapper around your favorite (installed) grep-like tool
 " call `:Grepper` (hit enter), type search pattern
 Plug 'mhinz/vim-grepper'
+
+Plug 'majutsushi/tagbar'
 
 " Move current selection up (down) with A-k (A-j)
 Plug 'matze/vim-move'
@@ -90,10 +99,19 @@ Plug 'matze/vim-move'
 " change/add/delete `sourroundings`
 Plug 'tpope/vim-surround'
 
+
 " semantic highlighter for python code
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+"Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
 Plug 'tell-k/vim-autopep8'
 
+Plug 'junegunn/fzf.vim'
+Plug 'BurntSushi/ripgrep'
 
+Plug 'ihsanturk/neuron.vim'
+
+" Better spell checking
+Plug 'vigoux/LanguageTool.nvim'
+
+"Plug 'tbabej/taskwiki'
 call plug#end()
