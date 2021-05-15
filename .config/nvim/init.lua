@@ -35,6 +35,7 @@ function U.map(mode, key, result, opts)
 
     api.nvim_set_keymap(mode, key, result, opts)
 end
+
 -------------
 -- Options --
 -------------
@@ -130,15 +131,12 @@ end
 
 local plugins = {
 	'airblade/vim-gitgutter',
+
     -- git plugin (commiting, blame, diff, etc.)
 	'tpope/vim-fugitive',
+
     -- colorschemes
-	'ericbn/vim-colors-solarized',
-	'fcpg/vim-fahrenheit',
-	'iCyMind/NeoSolarized',
-	'joshdick/onedark.vim',
 	'morhetz/gruvbox',
-	'mhartington/oceanic-next',
 
     -- syntax checker for various programming languages
     -- 'scrooloose/syntastic'
@@ -164,7 +162,7 @@ local plugins = {
 	'vim-airline/vim-airline-themes',
 
     -- lightweight LaTeX plugin
-	'LaTeX-Box-Team/LaTeX-Box',
+	--'LaTeX-Box-Team/LaTeX-Box',
 
     -- display marks
 	'kshenoy/vim-signature',
@@ -226,8 +224,8 @@ local plugins = {
 
 	'tell-k/vim-autopep8',
 
-	'junegunn/fzf.vim',
-	'BurntSushi/ripgrep',
+	--'junegunn/fzf.vim',
+	--'BurntSushi/ripgrep',
 
 	--'ihsanturk/neuron.vim',
 
@@ -262,7 +260,7 @@ local lightline_theme = theme
 
 vim.api.nvim_command('colorscheme ' .. theme)
 
--------
+-----------
 -- Mappings
 -----------
 
@@ -271,37 +269,17 @@ U.map('n', 'w!!', '%!sudo tee > /dev/null %')
 U.map('n', 'Y', 'y$')  -- make Y work as C or D,
 -- make ctrl-l remove highlights and re-apply syntax highlighting
 U.map('n', '<C-l>', ':nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>')
+-- switch to next/previous buffer with Tab/shift+Tab
 U.map('n', '<Tab>', ':bnext<CR>')
 U.map('n', '<S-Tab>', ':bprevious<CR>')
-
-
-
--- switch to next/previous buffer with Tab/shift+Tab
---nnoremap <Tab> :bnext<CR>
---nnoremap <S-Tab> :bprevious<CR>
 
 -- make n and N always go in the same direction
 -- nnoremap <expr> n  'Nn'[v:searchforward]
 -- nnoremap <expr> N  'nN'[v:searchforward]
 
-
-
-
--------
--- Telescope
---
--- Find files using Telescope command-line sugar.
---nnoremap <leader>ff <cmd>Telescope find_files<cr>
---nnoremap <leader>fg <cmd>Telescope live_grep<cr>
---nnoremap <leader>fb <cmd>Telescope buffers<cr>
---nnoremap <leader>fh <cmd>Telescope help_tags<cr>
---
----- Using lua functions
---nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
---nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
---nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
---nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
-
+---------
+-- Neuron
+---------
 require'neuron'.setup {
     virtual_titles = true,
     mappings = true,
@@ -312,6 +290,7 @@ require'neuron'.setup {
 
 ------------
 -- Telescope
+------------
 
 local finders = require "telescope.builtin"
 local actions = require "telescope.actions"
@@ -353,7 +332,6 @@ U.map("n", "<leader>ff", "<CMD>lua require('telescope.builtin').find_files()<CR>
 U.map("n", "<leader>fg", "<CMD>lua require('telescope.builtin').live_grep()<CR>")
 U.map("n", "<leader>fb", "<CMD>lua require('telescope.builtin').buffers()<CR>")
 U.map("n", "<leader>fh", "<CMD>lua require('telescope.builtin').help_tags()<CR>")
-
 
 ----------
 -- vimwiki
