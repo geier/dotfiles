@@ -260,6 +260,15 @@ local lightline_theme = theme
 
 vim.api.nvim_command('colorscheme ' .. theme)
 
+---------------
+-- Autocommands
+---------------
+
+-- Save cursor position, folds etc on leaving a buffer
+vim.cmd('autocmd BufWinLeave * silent! mkview')
+-- and reload on entering it
+vim.cmd('autocmd BufWinEnter * silent! loadview')
+
 -----------
 -- Mappings
 -----------
