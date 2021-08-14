@@ -37,6 +37,15 @@ autoload zmv
 autoload -U compinit && compinit
 
 export PATH="/opt/local/bin:/opt/local/sbin:$HOME/bin:$HOME/.cargo/bin:/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/games:/usr/X11/bin:$HOME/bin/android/tools"
+export PATH=~/.local/bin:$PATH
+
+# nix
+if [ -f $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
+  . $HOME/.nix-profile/etc/profile.d/nix.sh
+fi
+# End Nix
+#
+export PATH="/Users/cg/miniconda3/bin:$PATH"
 
 
 #eval `dircolors`
