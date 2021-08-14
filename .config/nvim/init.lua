@@ -308,7 +308,6 @@ local sorters = require "telescope.sorters"
 require("telescope").setup(
     {
         defaults = {
-            prompt_position = "top",
             prompt_prefix = " ❯ ",
             sorting_strategy = "ascending",
             mappings = {
@@ -323,6 +322,9 @@ require("telescope").setup(
                         return
                     end
                 }
+            },
+            layout_config = {
+                 prompt_position = "top",
             },
             file_sorter = sorters.get_fzy_sorter,
             generic_sorter = sorters.get_fzy_sorter
