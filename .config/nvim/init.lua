@@ -130,7 +130,7 @@ end
 -------------
 
 local plugins = {
-	'airblade/vim-gitgutter',
+	--'airblade/vim-gitgutter',
 
     -- git plugin (commiting, blame, diff, etc.)
 	'tpope/vim-fugitive',
@@ -140,7 +140,7 @@ local plugins = {
 
     -- syntax checker for various programming languages
     -- 'scrooloose/syntastic'
-	'benekastah/neomake',
+	--'benekastah/neomake',
 
     -- indenting python properly
 	'hynek/vim-python-pep8-indent',
@@ -170,12 +170,7 @@ local plugins = {
     -- highlighting for i3-wm's config file
 	'PotatoesMaster/i3-vim-syntax',
 
-    -- completion plugin for several languages
-	--'Valloric/YouCompleteMe',
-    -- and for python
-	--'davidhalter/jedi-vim',
-
-    -- fuzzy file search
+    -- File Browser
 	'scrooloose/nerdtree',
 	'Xuyuanp/nerdtree-git-plugin',
 
@@ -192,6 +187,7 @@ local plugins = {
     -- Typescript
 	'leafgarland/typescript-vim',
 
+    -- Showing recently used files when starting neovim
 	'mhinz/vim-startify',
 
 	'dag/vim-fish',
@@ -199,6 +195,7 @@ local plugins = {
     -- Make the yanked region apparent!
 	'machakann/vim-highlightedyank',
 
+    -- wiki functionality for vim
 	'vimwiki/vimwiki', --{ 'branch': 'dev' }
 
     -- telescope is a fuzzy finder for filenames, their contents and more
@@ -206,14 +203,16 @@ local plugins = {
 	'nvim-lua/plenary.nvim',  -- dependency of telescope
 	'nvim-lua/popup.nvim',  -- dependency of telescope
 
+    -- integration for neuron
 	'oberblastmeister/neuron.nvim',
 
-	'majutsushi/tagbar',
+	--'majutsushi/tagbar',
 
+    -- show content of registers on pressing `""`
 	'gennaro-tedesco/nvim-peekup',
 
     -- Move current selection up (down) with A-k (A-j)
-	'matze/vim-move',
+	'matze/vim-move',  -- does not work on mac os
 
     -- change/add/delete `sourroundings`
 	'tpope/vim-surround',
@@ -224,17 +223,26 @@ local plugins = {
 
 	'tell-k/vim-autopep8',
 
-	--'junegunn/fzf.vim',
-	--'BurntSushi/ripgrep',
-
-	--'ihsanturk/neuron.vim',
-
     -- Better spell checking
 	'vigoux/LanguageTool.nvim',
 
-    -- NeoVim LSP config
+    -- NeoVim lsp config
     'neovim/nvim-lspconfig',
     'hrsh7th/nvim-compe',
+
+    -- Pretty list of diagnostics and references
+    'folke/trouble.nvim',
+
+    '~/workspace/clipboard-image.nvim/',
+
+    'kyazdani42/nvim-web-devicons',
+
+
+    'nvim-lua/plenary.nvim',
+    'lewis6991/gitsigns.nvim',
+
+    'folke/which-key.nvim'
+
 }
 
 
@@ -420,7 +428,19 @@ local on_attach = function(client, bufnr)
   end
 end
 
--- Use a loop to conveniently both setup defined servers 
+local function preview_location_callback(_, _, result)
+  if result == nil or vim.tbl_isempty(result) then
+    return nil
+  end
+  vim.lsp.util.preview_location(result[1])
+end
+
+function PeekDefinition()
+  local params = vim.lsp.util.make_position_params()
+  return vim.lsp.buf_request(0, 'textDocument/definition', params, preview_location_callback)
+end
+
+-- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
 local servers = { "pyright", "rust_analyzer", "tsserver" }
 for _, lsp in ipairs(servers) do
