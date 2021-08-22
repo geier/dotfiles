@@ -325,10 +325,11 @@ export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
 [ -d ~/python ] && export PYTHONPATH=~/python
 export WORKON_HOME=~/.virtualenvs
-export PATH=~/.local/bin:$PATH
-[ -x /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
+
+# find virtualenwrapper.sh, if it exists, source it
+which virtualenvwrapper.sh > /dev/null && source `which virtualenvwrapper.sh`
 [ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ] && source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
-[ -f ~/.local/bin/virtualenvwrapper.sh ] && source ~/.local/bin/virtualenvwrapper.sh
+[ -x /usr/local/bin/virtualenvwrapper.sh ] && sourcVe /usr/local/bin/virtualenvwrapper.sh
 
 
 # Funktionen {{{
