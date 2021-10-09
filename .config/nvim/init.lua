@@ -230,7 +230,7 @@ g.vimwiki_table_auto_fmt = 0  -- we use table mode
 -- gruvbox (color scheme)
 --------------------------
 g.gruxbox_italic = 1
-g.gruvbox_contrast = 'medium'
+g.gruvbox_contrast_dark = 'medium'
 
 ------------------------
 -- airline (status bar)
