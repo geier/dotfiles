@@ -149,6 +149,10 @@ U.map('n', '<C-l>', ':nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-
 U.map('n', '<Tab>', ':bnext<CR>')
 U.map('n', '<S-Tab>', ':bprevious<CR>')
 
+U.map('n', '<C-q>', 'a<C-R>=strftime("%Y-%m-%d")<CR><Esc>')
+U.map('i', '<C-q>', '<C-R>=strftime("%Y-%m-%d")<CR>')
+U.map('c', '<C-q>', '<C-R>=strftime("%Y-%m-%d")<CR>')
+
 -- make n and N always go in the same direction
 -- nnoremap <expr> n  'Nn'[v:searchforward]
 -- nnoremap <expr> N  'nN'[v:searchforward]
