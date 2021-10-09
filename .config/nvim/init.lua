@@ -1,20 +1,13 @@
---------------------------------------------------------------------------------
--- Check if Plug is installed and download it if not
---------------------------------------------------------------------------------
-local vim_plug_install_path = vim.fn['stdpath']('config') .. '/autoload/plug.vim'
 
-local f = io.open(vim_plug_install_path, 'r')
-if f == nil then
-    os.execute(('curl -fLo %s --create-dirs %s'):format(
-		vim_plug_install_path,
-		'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-	))
-    vim.api.nvim_command('autocmd VimEnter * PlugInstall --sync | source $MYVIMRC')
-else
-	f:close()
-end
+local fn = vim.fn
+local cmd = vim.cmd
+cmd [[command! PackerInstall packadd packer.nvim | lua require('plugins').install()]]
+cmd [[command! PackerUpdate packadd packer.nvim | lua require('plugins').update()]]
+cmd [[command! PackerSync packadd packer.nvim | lua require('plugins').sync()]]
+cmd [[command! PackerClean packadd packer.nvim | lua require('plugins').clean()]]
+cmd [[command! PackerCompile packadd packer.nvim | lua require('plugins').compile()]]
 
-------------
+----------------------
 local api = vim.api
 local cmd = api.nvim_command
 
@@ -124,140 +117,6 @@ for k, v in pairs(win_opts) do
     -- vim.api.nvim_set_option(k, v)
     -- vim.api.nvim_win_set_option(0, k, v)
 end
-
--------------
--- Plugins --
--------------
-
-local plugins = {
-	--'airblade/vim-gitgutter',
-
-    -- git plugin (commiting, blame, diff, etc.)
-	'tpope/vim-fugitive',
-
-    -- colorschemes
-	'gruvbox-community/gruvbox',
-
-    -- syntax checker for various programming languages
-    -- 'scrooloose/syntastic'
-	--'benekastah/neomake',
-
-    -- indenting python properly
-	'hynek/vim-python-pep8-indent',
-
-    -- proper folding for python
-	'tmhedberg/SimpylFold',
-
-    -- text objects for indented languages (python)
-	'tweekmonster/braceless.vim',
-
-    -- Motions for CamelCase and snake_case
-	'bkad/CamelCaseMotion',
-
-    -- easy commenting out of code
-	'scrooloose/nerdcommenter',
-
-    -- prettier status line
-	'vim-airline/vim-airline',
-	'vim-airline/vim-airline-themes',
-
-    -- lightweight LaTeX plugin
-	--'LaTeX-Box-Team/LaTeX-Box',
-
-    -- display marks
-	'kshenoy/vim-signature',
-
-    -- highlighting for i3-wm's config file
-	'PotatoesMaster/i3-vim-syntax',
-
-    -- File Browser
-	'scrooloose/nerdtree',
-	'Xuyuanp/nerdtree-git-plugin',
-
-    -- rst support
-	'Rykka/riv.vim',
-	'Rykka/InstantRst',
-
-    -- Table Mode
-	'dhruvasagar/vim-table-mode',
-
-    -- Rust
-	'rust-lang/rust.vim',
-
-    -- Typescript
-	'leafgarland/typescript-vim',
-
-    -- Showing recently used files when starting neovim
-	'mhinz/vim-startify',
-
-	'dag/vim-fish',
-
-    -- Make the yanked region apparent!
-	'machakann/vim-highlightedyank',
-
-    -- wiki functionality for vim
-	'vimwiki/vimwiki', --{ 'branch': 'dev' }
-
-    -- telescope is a fuzzy finder for filenames, their contents and more
-	'nvim-telescope/telescope.nvim',
-	'nvim-lua/plenary.nvim',  -- dependency of telescope
-	'nvim-lua/popup.nvim',  -- dependency of telescope
-
-    -- integration for neuron
-	'oberblastmeister/neuron.nvim',
-
-	--'majutsushi/tagbar',
-
-    -- show content of registers on pressing `""`
-	'gennaro-tedesco/nvim-peekup',
-
-    -- Move current selection up (down) with A-k (A-j)
-	'matze/vim-move',  -- does not work on mac os
-
-    -- change/add/delete `sourroundings`
-	'tpope/vim-surround',
-
-
-    -- semantic highlighter for python code
-    --	'numirias/semshi', {'do': ':UpdateRemotePlugins'},
-
-	'tell-k/vim-autopep8',
-
-    -- Better spell checking
-	'vigoux/LanguageTool.nvim',
-
-    -- NeoVim lsp config
-    'neovim/nvim-lspconfig',
-    'hrsh7th/nvim-compe',
-
-    -- Pretty list of diagnostics and references
-    'folke/trouble.nvim',
-
-    '~/workspace/clipboard-image.nvim/',
-
-    'kyazdani42/nvim-web-devicons',
-
-
-    'nvim-lua/plenary.nvim',
-    'lewis6991/gitsigns.nvim',
-
-    'folke/which-key.nvim'
-
-}
-
-
-local path = vim.fn['stdpath']('data') .. '/plugged'
-vim.fn['plug#begin'](path)
-
-for _,p in pairs(plugins) do
-    if type(p) == 'table' then
-        vim.fn['plug#'](unpack(p))
-    else
-        vim.fn['plug#'](p)
-    end
-end
-
-vim.fn['plug#end']()
 
 ---------
 -- Colors
