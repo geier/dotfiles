@@ -2,28 +2,24 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function()
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+    -- Packer can manage itself
+    use 'wbthomason/packer.nvim'
+
     -- git plugin (commiting, blame, diff, etc.)
 	use 'tpope/vim-fugitive'
 
-	--'airblade/vim-gitgutter'
-
     -- colorschemes
 	use 'gruvbox-community/gruvbox'
-
-    -- syntax checker for various programming languages
-    -- 'scrooloose/syntastic'
-	--'benekastah/neomake'
+    use 'rebelot/kanagawa.nvim'
 
     -- indenting python properly
 	use 'hynek/vim-python-pep8-indent'
 
     -- proper folding for python
-	use 'tmhedberg/SimpylFold'
+	use 'tmhedberg/SimpylFold'  -- can probably me replaced by braceless
 
     -- text objects for indented languages (python)
-	use 'tweekmonster/braceless.vim'
+	use 'tweekmonster/braceless.vim'   -- TODO enable
 
     -- Motions for CamelCase and snake_case
 	use 'bkad/CamelCaseMotion'
@@ -32,8 +28,7 @@ return require('packer').startup(function()
 	use 'scrooloose/nerdcommenter'
 
     -- prettier status line
-	use 'vim-airline/vim-airline'
-	use 'vim-airline/vim-airline-themes'
+    use 'nvim-lualine/lualine.nvim'
 
     -- lightweight LaTeX plugin
 	--'LaTeX-Box-Team/LaTeX-Box'
@@ -66,9 +61,6 @@ return require('packer').startup(function()
 
 	use 'dag/vim-fish'
 
-    -- Make the yanked region apparent!
-	use 'machakann/vim-highlightedyank'
-
     -- wiki functionality for vim
 	use 'vimwiki/vimwiki' --{ 'branch': 'dev' }
 
@@ -80,7 +72,9 @@ return require('packer').startup(function()
     -- integration for neuron
 	use 'oberblastmeister/neuron.nvim'
 
-	--'majutsushi/tagbar'
+	-- 'majutsushi/tagbar'
+    -- alternative to tagbar/ctags
+    use 'simrat39/symbols-outline.nvim'
 
     -- show content of registers on pressing `""`
 	use 'gennaro-tedesco/nvim-peekup'
@@ -91,6 +85,8 @@ return require('packer').startup(function()
     -- change/add/delete `sourroundings`
 	use 'tpope/vim-surround'
 
+    -- make some plugins (like vim-surround) repeatable with .
+    use 'tpope/vim-repeat'
 
     -- semantic highlighter for python code
     --	'numirias/semshi', {'do': ':UpdateRemotePlugins'}
@@ -110,17 +106,45 @@ return require('packer').startup(function()
     --'~/workspace/clipboard-image.nvim/'
     use 'kyazdani42/nvim-web-devicons'
 
+    -- show changed, added and deleted lines in the markers column
+    use {'lewis6991/gitsigns.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim'
+        },
+        config = function()
+            require('gitsigns').setup()
+        end
+    }
 
-    use 'lewis6991/gitsigns.nvim'
-
+    -- show which keys can be pressed (after one press)
     use 'folke/which-key.nvim'
 
-    -- lsp signature hint when you type 
+    -- lsp signature hint when you type
     use 'ray-x/lsp_signature.nvim'
 
     use 'nvim-treesitter/nvim-treesitter'
 
-    use 'kristijanhusak/orgmode.nvim'
+    use 'nvim-orgmode/orgmode'
 
+    -- navigate between tmux and vim splits with the same keybindings
+    use { 'alexghergh/nvim-tmux-navigation', config = function()
+        require'nvim-tmux-navigation'.setup {
+            disable_when_zoomed = true -- defaults to false
+        }
+
+        vim.api.nvim_set_keymap('n', "<C-a><Left>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateLeft()<cr>", { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('n', "<C-a><Down>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateDown()<cr>", { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('n', "<C-a><Up>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateUp()<cr>", { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('n', "<C-a><Right>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateRight()<cr>", { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('n', "<C-a><C-a>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateLastActive()<cr>", { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('n', "<C-Space>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateNext()<cr>", { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('n', "<C-h>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateLeft()<cr>", { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('n', "<C-j>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateDown()<cr>", { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('n', "<C-k>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateUp()<cr>", { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('n', "<C-l>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateRight()<cr>", { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('n', "<C-\\>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateLastActive()<cr>", { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('n', "<C-Space>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateNext()<cr>", { noremap = true, silent = true })
+    end
+}
 
 end)

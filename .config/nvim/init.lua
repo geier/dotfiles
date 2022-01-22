@@ -1,6 +1,7 @@
-
 local fn = vim.fn
 local cmd = vim.cmd
+
+require('plugins')
 cmd [[command! PackerInstall packadd packer.nvim | lua require('plugins').install()]]
 cmd [[command! PackerUpdate packadd packer.nvim | lua require('plugins').update()]]
 cmd [[command! PackerSync packadd packer.nvim | lua require('plugins').sync()]]
@@ -77,7 +78,7 @@ local global_opts = {
 }
 
 local win_opts = {
-    cursorline = true,
+    cursorline = false,
     number     = true,
     foldmethod = 'expr',
     foldexpr   = 'nvim_treesitter#foldexpr()',
@@ -122,7 +123,7 @@ end
 -- Colors
 ---------
 
-local theme = 'gruvbox'
+local theme = 'kanagawa'
 local lightline_theme = theme
 
 vim.api.nvim_command('colorscheme ' .. theme)
@@ -140,9 +141,9 @@ vim.cmd('autocmd BufWinEnter * silent! loadview')
 -- Mappings
 -----------
 
-U.map('n', 'Q', 'gq}')  -- don't use ex mode, use Q for formatting 
+U.map('n', 'Q', 'gq}')  -- don't use ex mode, use Q for formatting
 U.map('n', 'w!!', '%!sudo tee > /dev/null %')
-U.map('n', 'Y', 'y$')  -- make Y work as C or D,
+U.map('n', 'Y', 'y$')  -- make Y work as C or D
 -- make ctrl-l remove highlights and re-apply syntax highlighting
 U.map('n', '<C-l>', ':nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>')
 -- switch to next/previous buffer with Tab/shift+Tab
@@ -203,7 +204,6 @@ require("telescope").setup(
     }
 )
 
-
 function TelescopeOpen(fn)
     finders[fn]()
 end
@@ -226,6 +226,11 @@ g.vimwiki_table_mappings = 0  -- we use table mode
 g.vimwiki_table_auto_fmt = 0  -- we use table mode
 --g.vimwiki_auto_header = 1  -- automatically set header for new files
 
+------------
+-- CamelCase
+------------
+g.camelcasemotion_key = '<leader>'
+
 --------------------------
 -- gruvbox (color scheme)
 --------------------------
@@ -235,11 +240,10 @@ g.gruvbox_contrast_dark = 'medium'
 ------------------------
 -- airline (status bar)
 ------------------------
-g.airline_powerline_fonts = 1
-g["airline#extensions#tabline#enabled"] = 1
-g["airline#extensions#tabline#fnamemod"] = ':t'
-g.airline_theme = 'gruvbox'
-
+--g.airline_powerline_fonts = 1
+--g["airline#extensions#tabline#enabled"] = 1
+--g["airline#extensions#tabline#fnamemod"] = ':t'
+--g.airline_theme = 'gruvbox'
 
 ------------
 -- lspconfig
@@ -335,8 +339,162 @@ require'compe'.setup {
     nvim_lua = true;
     vsnip = false;
     ultisnips = false;
+    orgmode = true;
   };
 }
 
 local function keymap(k,m) vim.api.nvim_set_keymap('i', k, m, {noremap=true, silent=true, expr=true}) end
 keymap('<C-Space>', 'compe#complete()')
+
+
+----------
+-- lualine
+----------
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'auto',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {},
+    always_divide_middle = true,
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {
+      lualine_a = {'buffers'},
+      lualine_b = {'branch'},
+      lualine_c = {'filename'},
+      lualine_x = {},
+      lualine_y = {},
+      lualine_z = {}
+    },
+  extensions = {}
+}
+
+-------------
+-- Which key
+-------------
+require("which-key").setup {
+  }
+local wk = require('which-key')
+wk.register({
+    o = {
+        a = "orgmode agenda prompt",
+        c = "orgmode capture prompt",
+    },
+    c = 'NERD Commenter',
+    w = 'vimwiki',
+    t = 'tablemode',
+    h = 'gitsigns',
+    f = 'telecsope',
+}, {prefix = '<leader>' })
+
+vim.cmd('autocmd FileType * lua setKeybinds()')
+function setKeybinds()
+    local fileTy = vim.api.nvim_buf_get_option(0, "filetype")
+
+    if fileTy == 'org' then
+        wk.register({
+            o = {
+                a = 'orgmode agenda',
+                r = 'Refile current headline to destination',
+                o = 'Open hyperlink under cursor',
+                t = 'Set tags on current headline',
+                A = 'Toggle "Archive" tag on current headline',
+                e = 'Open export options',
+                K = 'Move current headline + its content up by one headline',
+                J = 'Move current headline + its content down by one headline',
+             -- $ = 'Archive current headline to archive location',
+            },
+        }, {prefix = '<leader>'})
+    end
+end
+
+---------
+-- bug fix for neovim <0.5 release
+---------
+--
+-- Neovim is trying to Automatically detect terminal background and set bg=dark
+-- or bg=light, only occurs for me on Mac OS in tmux
+-- This leads to nvim opening a file and changing the first character to g and
+-- starts entering a command as if from one types :0000/2b2b/3636^G from normal
+-- mode.
+--
+-- This is a know issue, see https://github.com/neovim/neovim/issues/11393
+--vim.cmd('cnoremap 3636 <c-u>undo<CR>')
+
+----------
+-- orgmode 
+----------
+require('orgmode').setup({
+  org_agenda_files = {'~/org/*', },
+  org_default_notes_file = '~/org/refile.org',
+
+  org_todo_keywords = {'TODO', 'WAITING', '|', 'DONE', 'DELEGATED',
+    'private',
+    'ga', 'internal', 'ca',
+    'mbp', 'mo360', 'vabe',
+},
+  org_todo_keyword_faces = {
+    ga = ':foreground #458588 :weight bold',
+    internal = ':foreground #458588 :weight bold',
+    ca = ':foreground #458588 :weight bold',
+    mbp = ':foreground #458588 :weight bold',
+    vabe = ':foreground #458588 :weight bold',
+    mo360 = ':foreground #458588 :weight bold',
+    sales = ':foreground #458588 :weight bold',
+    recruiting = ':foreground #458588 :weight bold',
+    nerdistan = ':foreground #458588 :weight bold',
+    private = ':foreground #458588 :weight bold',
+    A = ':foreground #fb4934 :weight bold'
+  }
+})
+
+
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.org = {
+  install_info = {
+    url = 'https://github.com/milisims/tree-sitter-org',
+    revision = 'f110024d539e676f25b72b7c80b0fd43c34264ef',
+    files = {'src/parser.c', 'src/scanner.cc'},
+  },
+  filetype = 'org',
+}
+
+require'nvim-treesitter.configs'.setup {
+  -- If TS highlights are not enabled at all, or disabled via `disable` prop, highlighting will fallback to default Vim syntax highlighting
+  highlight = {
+    enable = true,
+    disable = {'org'}, -- Remove this to use TS highlighter for some of the highlights (Experimental)
+    additional_vim_regex_highlighting = {'org'}, -- Required since TS highlighter doesn't support all syntax features (conceal)
+  },
+  ensure_installed = {'org'}, -- Or run :TSUpdate org
+}
+
+vim.api.nvim_set_keymap('n', "<C-a><Left>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateLeft()<cr>", { noremap = true, silent = false })
+vim.api.nvim_set_keymap('n', "<C-a><Down>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateDown()<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', "<C-a><Up>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateUp()<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', "<C-a><Right>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateRight()<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', "<C-a><C-a>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateLastActive()<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', "<C-Space>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateNext()<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', "<C-h>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateLeft()<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', "<C-j>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateDown()<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', "<C-k>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateUp()<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', "<C-l>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateRight()<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', "<C-\\>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateLastActive()<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', "<C-Space>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateNext()<cr>", { noremap = true, silent = true })
