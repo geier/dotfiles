@@ -15,6 +15,9 @@ return require('packer').startup(function()
     -- indenting python properly
 	use 'hynek/vim-python-pep8-indent'
 
+    -- javascript and react
+    use 'maxmellon/vim-jsx-pretty'
+
     -- proper folding for python
 	use 'tmhedberg/SimpylFold'  -- can probably me replaced by braceless
 
