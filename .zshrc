@@ -98,7 +98,7 @@ if [[ $OSTYPE == linux-gnu ]] || [[ $OSTYPE == linux ]]; then
    if [[ -e ~/.dircolors.256dark ]]; then
        eval `dircolors ~/.dircolors.256dark`
    fi
-elif [[ $OSTYPE == freebsd* ]]; then
+elif [[ $OSTYPE == freebsd* ]] || [[ $OSTYPE == darwin* ]]; then
     alias ls='/bin/ls -Gp'
     alias la='/bin/ls -alhGp'
     alias l='/bin/ls -lhGp'
