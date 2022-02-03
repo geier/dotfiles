@@ -74,6 +74,8 @@ local global_opts = {
 
     formatoptions = 'jcroql',  -- see `help fo-table` for meaning
 
+    mouse = 'a', -- sometimes the mouse does help e.g. split resizing
+
 
 }
 
