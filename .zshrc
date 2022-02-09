@@ -44,8 +44,9 @@ if [ -f $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
   . $HOME/.nix-profile/etc/profile.d/nix.sh
 fi
 # End Nix
-#
-export PATH="/Users/cg/miniconda3/bin:$PATH"
+
+
+export PATH="$HOME/miniconda3/bin:$HOME/mambaforge/bin/:$PATH"
 
 
 #eval `dircolors`
@@ -490,3 +491,18 @@ if [[ "$TERM" == (screen*|xterm*|rxvt*|tmux*) ]]; then
 	add-zsh-hook -Uz precmd xterm_title_precmd
 	add-zsh-hook -Uz preexec xterm_title_preexec
 fi
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/cg/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/cg/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/Users/cg/mambaforge/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/cg/mambaforge/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
