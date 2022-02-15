@@ -1,0 +1,13 @@
+" I prefer vimperator hint mode
+set hintfiltermode vimperator
+set hintchars 1234567890
+set hintnames numeric
+set theme default
+set update.lastchecktime 1644781572767
+
+" binding / to search 
+bind / fillcmdline find
+
+" using neo2 means I need to re-set all defaults that use modifiers
+bind <A-:> fillcmdline_notrail
+bind <A-/> fillcmdline find
