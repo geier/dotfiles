@@ -36,18 +36,30 @@ autoload -U colors && colors
 autoload zmv
 autoload -U compinit && compinit
 
-export PATH="/opt/local/bin:/opt/local/sbin:$HOME/bin:$HOME/.cargo/bin:/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/games:/usr/X11/bin:$HOME/bin/android/tools:$PATH"
-export PATH=~/.local/bin:$PATH
+# Setting and exporting PATH
+path=(
+    "$HOME/.nixprofile/bin/" "/nix/var/nix/profiles/default/bin"  "/run/current-system/sw/bin"
+    "$HOME/bin"
+    "$HOME/.local/bin"
+    "$HOME/.cargo/bin"
+    "$HOME/miniconda3/bin"
+    "$HOME/mambaforge/bin/"
+    "$HOME/bin/android/tools"
+    "/opt/local/bin" "/opt/local/sbin"
+    "/usr/local/bin" "/usr/local/sbin"
+    "/bin" "/sbin"
+    "/usr/bin" "/usr/sbin"
+    "/usr/games"
+    "/usr/X11/bin"
+    "$PATH"
+)
+export PATH
 
 # nix
 if [ -f $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
   . $HOME/.nix-profile/etc/profile.d/nix.sh
 fi
 # End Nix
-
-
-export PATH="$HOME/miniconda3/bin:$HOME/mambaforge/bin/:$PATH"
-
 
 #eval `dircolors`
 
@@ -88,7 +100,6 @@ bindkey "^X^L" insert-last-command-output
 # alias {{{
 # bsd und gnu ls fressen verschiedene optionen *kotz* 
 if [[ $OSTYPE == linux-gnu ]] || [[ $OSTYPE == linux ]]; then
-
     alias ls='/bin/ls -p --color'
     alias la='/bin/ls -alhp --color'
     alias l='/bin/ls -lhp --color'
