@@ -429,8 +429,8 @@ ls
   zle -N complete-or-list
   bindkey '^I' complete-or-list
 
-sudo() {  # sudo vi/vim => sudoedit
-	[[ $1 == (vi|vim) ]] && shift && sudoedit "$@" || command sudo "$@";
+sudo() {  # sudo vi/vim => sudoedit (only if sudoedit exists)
+    [[ $1 == (vi|vim) ]] && (( $+commands[sudoedit] )) && shift && sudoedit "$@" || command sudo "$@";
 }
 
 
