@@ -154,17 +154,6 @@ alias Ar='sudo aptitude remove'
 alias Au='sudo aptitude update'
 alias Ag='sudo aptitude upgrade'
 alias Ad='sudo aptitude dist-upgrade'
-alias pi='pip install'
-
-alias cok='colout OK 28'
-alias cerror='colout Error 1'
-
-alias errcat='less *.err(L+0)'
-#alias ipython='PAGER=more ipython'
-
-alias cs='condor_status'
-alias cq='condor_q'
-
 
 if type ack-grep > /dev/null; then
 	alias ack='ack-grep'
