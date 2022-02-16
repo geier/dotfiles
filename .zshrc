@@ -24,7 +24,7 @@ setopt extended_history     # safe time and length of execution
 setopt hist_no_store        # don't store hist and fc commands
 setopt hist_reduce_blanks   # 
 setopt append_history       # append history, don't overwrite
-setopt hist_ignore_space    # don't save lines with blank as first charakter, good for clear passwds
+setopt hist_ignore_space    # don't save lines with blank as first character, good for clear passwds
 setopt notify               # report on background job status immediately
 setopt check_jobs           # report on job status when leaving zsh
 setopt long_list_jobs       #
@@ -166,7 +166,7 @@ alias cs='condor_status'
 alias cq='condor_q'
 
 
-if [[ -x /usr/bin/ack-grep ]]; then
+if type ack-grep > /dev/null; then
 	alias ack='ack-grep'
 fi
 
@@ -178,7 +178,7 @@ fi
 which neomutt &> /dev/null && alias mutt=neomutt || true
 which nvim &> /dev/null && alias vim=nvim || true
 
-  #read documents
+#  read documents
 alias -s pdf=zathura
 alias -s PDF=zathura
 alias -s chm=xchm
