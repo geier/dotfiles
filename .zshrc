@@ -200,8 +200,12 @@ for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
 done
 PR_NO_COLOUR="%{$terminfo[sgr0]%}"
 
-
 export TERM=xterm-256color
+
+# source fzf history bindings if found
+if [[ -e ~/.zsh/fzf/key-bindings.zsh ]]; then
+	source ~/.zsh/fzf/key-bindings.zsh
+fi
 
 # %n, $USERNAME username
 # %m hostname up to first .
