@@ -1,4 +1,3 @@
-fpath=(~/zsh/ $fpath)
 
 # options {{{
 HISTFILE=$HOME/.zsh_history
@@ -30,21 +29,22 @@ setopt check_jobs           # report on job status when leaving zsh
 setopt long_list_jobs       #
 setopt cdable_vars          # try to extend args to cd
 setopt prompt_subst         # needed for colored prompt
-setopt nobeep               # no beeping, honking, whistling... }}}
+setopt nobeep               # no beeping, honking, whistling... 
+# }}}
 
 autoload -U colors && colors
 autoload zmv
-autoload -U compinit && compinit
 
-# Setting and exporting PATH
+# Setting and exporting PATH {{{
 path=(
-    "$HOME/.nixprofile/bin/" "/nix/var/nix/profiles/default/bin"  "/run/current-system/sw/bin"
+    "$HOME/.nixprofile/bin/" "/nix/var/nix/profiles/default/bin"  "/run/current-system/sw/bin"  # setting this here probably shows I don't understand nix well enough yet
     "$HOME/bin"
     "$HOME/.local/bin"
     "$HOME/.cargo/bin"
     "$HOME/miniconda3/bin"
     "$HOME/mambaforge/bin/"
     "$HOME/bin/android/tools"
+    "$HOME/.npm-packages/bin"
     "/opt/local/bin" "/opt/local/sbin"
     "/usr/local/bin" "/usr/local/sbin"
     "/bin" "/sbin"
@@ -54,24 +54,27 @@ path=(
     "$PATH"
 )
 export PATH
+# }}}
 
-# nix
+# nix {{{
 if [ -f $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
   . $HOME/.nix-profile/etc/profile.d/nix.sh
 fi
-# End Nix
+# End Nix }}}
 
 #eval `dircolors`
-
 # solarized dircolors
 # eval `dircolors ~/.dircolors.256dark`
 
+# variables {{{
 export EDITOR=vim
 export PAGER=less
 export BROWSER=firefox
 export LANG=en_US.UTF-8
 export REPORTTIME=2
+# }}}
 
+# bindkeys {{{
 bindkey -v # vim mode
 # Movement
 bindkey -a 'gg' beginning-of-buffer-or-history
@@ -96,6 +99,20 @@ LBUFFER+="$(eval $history[$((HISTCMD-1))])"
 }
 zle -N insert-last-command-output
 bindkey "^X^L" insert-last-command-output
+
+bindkey "^[[A" history-beginning-search-backward            # [arrow-up]
+bindkey "^[[B" history-beginning-search-forward      # [arrow-down]
+bindkey "^?" backward-delete-char
+bindkey "^[[3~" delete-char
+bindkey "^Z"    which-command               # <STRG>-Z
+bindkey "\e[1~" beginning-of-line
+bindkey "\e[4~" end-of-line
+
+run-with-sudo() { LBUFFER="sudo $LBUFFER" }
+zle -N run-with-sudo
+bindkey '^Xs' run-with-sudo
+
+# }}}
 
 # alias {{{
 # bsd und gnu ls fressen verschiedene optionen *kotz* 
@@ -184,10 +201,11 @@ alias -s PDF=zathura
 alias -s chm=xchm
 alias -s djvu=djview
 
+# eigene IP im WAN, falls hinter router
+alias myip='lynx -dump checkip.dyndns.org | sed "s/[^0-9]*//" | fgrep .'
 
 # }}}
 
-###
 # See if we can use colors.
 autoload colors zsh/terminfo
 if [[ "$terminfo[colors]" -ge 8 ]]; then
@@ -207,6 +225,7 @@ if [[ -e ~/.zsh/fzf/key-bindings.zsh ]]; then
 	source ~/.zsh/fzf/key-bindings.zsh
 fi
 
+# Prompt {{{
 # %n, $USERNAME username
 # %m hostname up to first .
 # %? return code of last command
@@ -218,8 +237,7 @@ fi
 #  ! True if shell is running with privileges
 # %f resets foreground color
 
-
-if [[ -e ~/.zsh/zsh-vcs-prompt/zshrc.sh ]]; then 
+if [[ -e ~/.zsh/zsh-vcs-prompt/zshrc.sh ]]; then
 	source ~/.zsh/zsh-vcs-prompt/zshrc.sh
 	ZSH_VCS_PROMPT_AHEAD_SIGIL='↑'
 	ZSH_VCS_PROMPT_BEHIND_SIGIL='↓'
@@ -233,7 +251,6 @@ else
 	alias vcs_super_info=test
 fi
 if [ $SSH_CONNECTION ]; then SSH="%B%n%b@%B%m%b"; else SSH=""; fi
-
 
 function normal-mode () { echo "-- NORMAL --" }
 
@@ -256,22 +273,6 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 # }}}
 
-compile=(install clean remove uninstall deinstall)
-compctl -k compile make
-
-bindkey "^[[A" history-beginning-search-backward            # [arrow-up]
-bindkey "^[[B" history-beginning-search-forward      # [arrow-down]
-bindkey "^?" backward-delete-char
-bindkey "^[[3~" delete-char
-bindkey "^Z"    which-command               # <STRG>-Z
-bindkey "\e[1~" beginning-of-line
-bindkey "\e[4~" end-of-line
-
-
-run-with-sudo() { LBUFFER="sudo $LBUFFER" }
-zle -N run-with-sudo
-bindkey '^Xs' run-with-sudo
-
 # farbige man-pages
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
@@ -286,14 +287,9 @@ export LESS=XFRaeiM
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
 
-
-# eigene IP im WAN, falls hinter router
-alias myip='lynx -dump checkip.dyndns.org | sed "s/[^0-9]*//" | fgrep .'
-
-# Completions
-
+# Completions {{{
 # add custom completion scripts
-fpath=(~/.zsh/completion $fpath) 
+fpath=(~/.zsh/completion ~/zsh/ $fpath)
 
 #kill completions
 #zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
@@ -308,7 +304,6 @@ zstyle ':completion::complete:*' rehash true
 zstyle ':completion:*:kill:*:processes' command 'ps -u $USER -o pid,s,nice,stime,args'
 
 # The following lines were added by compinstall
-
 zstyle ':completion:*' format 'completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' ignore-parents parent pwd
@@ -318,16 +313,16 @@ zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'r:|[._-]=** r:|=**' '+m:
 zstyle ':completion:*' menu select=long-list select=1
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 
+compile=(install clean remove uninstall deinstall)
+compctl -k compile make
 
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
-
+# }}}
 
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
-#PYTHON
-
+# python {{{
 [ -d ~/python ] && export PYTHONPATH=~/python
 export WORKON_HOME=~/.virtualenvs
 
@@ -336,6 +331,22 @@ which virtualenvwrapper.sh > /dev/null && source `which virtualenvwrapper.sh`
 [ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ] && source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 [ -x /usr/local/bin/virtualenvwrapper.sh ] && sourcVe /usr/local/bin/virtualenvwrapper.sh
 
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/cg/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/cg/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/Users/cg/mambaforge/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/cg/mambaforge/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# }}}
 
 # Funktionen {{{
 # Usage: extract <file>
@@ -456,7 +467,6 @@ function up()
     fi
 }
 
-
 # taken http://stackoverflow.com/questions/171563/whats-in-your-zshrc/904023#904023
 function most_useless_use_of_zsh {
    local lines columns colour a b p q i pnew
@@ -471,17 +481,14 @@ function most_useless_use_of_zsh {
         done
         echo
     done
-
 }
 
-
 # }}}
-
 
 # STARTUP
 zstyle :omz:plugins:ssh-agent identities id_rsa id_github
 
-# set the terminal's title to the current command
+# set the terminal's title to the current command {{{
 # despite its name, it works in most terminals
 autoload -Uz add-zsh-hook
 function xterm_title_precmd () {
@@ -495,18 +502,6 @@ if [[ "$TERM" == (screen*|xterm*|rxvt*|tmux*) ]]; then
 	add-zsh-hook -Uz precmd xterm_title_precmd
 	add-zsh-hook -Uz preexec xterm_title_preexec
 fi
+# }}}
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/cg/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/cg/mambaforge/etc/profile.d/conda.sh" ]; then
-        . "/Users/cg/mambaforge/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/cg/mambaforge/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+# vim: foldmethod=marker
