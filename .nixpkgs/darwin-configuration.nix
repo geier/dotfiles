@@ -9,11 +9,35 @@
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages =
-    [ pkgs.vim
+    [
+      pkgs.age
+      pkgs.coreutils
+      pkgs.du-dust
+      pkgs.duf
+      pkgs.fzf
+      pkgs.git
+      pkgs.git-extras
+      pkgs.haskellPackages.pandoc-sidenote
+      pkgs.imagemagick  # needed for experiments with images in vim
+      pkgs.jq
+      pkgs.moreutils
       pkgs.neovim
+      pkgs.nodePackages.npm
+      pkgs.nodePackages.pyright
+      pkgs.nodejs
+      pkgs.pandoc
       pkgs.ripgrep
+      pkgs.rsync   # rsync shipped with Mac OS is really old
+      pkgs.sops
+      pkgs.tig
       pkgs.tmux
       pkgs.tree
+      pkgs.vim
+      pkgs.visidata
+      pkgs.yq
+      pkgs.zk
+      pkgs.zsh
+      pkgs.zsh-completions
     ];
 
   # Use a custom configuration.nix location.
