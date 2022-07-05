@@ -380,9 +380,16 @@ extract () {
 }
 
 rmtex() {
-	find . -maxdepth 1 -regex ".*\(\~\|\.log\|\.nav\|\.snm\|\.toc\|\.cp\|\.fn\|\.tp\|\.vr\|\.pg\|\.bbl\|\#\|\.blg\|\.ilg\|\.dvi\|\.out\|\-blx.bib\|\.bcf\|\.fls\|\.fdb_latexmk\|\.aux\)" -exec rm -vf {} \; ; find . -maxdepth 1 -type d -name "auto" -exec rm -vfr {} \;
+    if [[ $OSTYPE == linux-gnu ]] || [[ $OSTYPE == linux ]]; then
+        FIRSTARG=''
+        SECONDARG=('-regextype' 'posix-extended')
+    elif [[ $OSTYPE == freebsd* ]] || [[ $OSTYPE == darwin* ]]; then
+        FIRSTARG='-E'
+        SECONDARG=''
+    fi
+    find $FIRSTARG . -maxdepth 1 $SECONDARG -regex '.*\.(log|nav|snm|toc|cp|fn|tp|vr|pg|bbl|#|blg|ilg|dvi|out|-blx.bib|bcf|fls|fdb_latexmk|aux)' -exec rm -vf {} \;
+    find . -maxdepth 1 -type d -name "auto" -exec rm -vfr {} \;
 }
-
 
 psgrep() {
 	if [ ! -z $1 ] ; then
