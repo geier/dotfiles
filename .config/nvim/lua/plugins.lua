@@ -98,12 +98,20 @@ return require('packer').startup(function()
     -- Better spell checking
 	use 'vigoux/LanguageTool.nvim'
 
+    ------------------------------------------------------------------
+    -- LSP
+    ------------------------------------------------------------------
     -- NeoVim lsp config
     use 'neovim/nvim-lspconfig'
     use 'hrsh7th/nvim-compe'
 
+    -- lsp signature hint when you type
+    use 'ray-x/lsp_signature.nvim'
+    cfg = {}
+    require "lsp_signature".setup(cfg)
     -- Pretty list of diagnostics and references
     use 'folke/trouble.nvim'
+    ------------------------------------------------------------------
 
     --'~/workspace/clipboard-image.nvim/'
     use 'kyazdani42/nvim-web-devicons'
