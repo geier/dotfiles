@@ -43,8 +43,7 @@ return require('packer').startup(function()
 	use 'PotatoesMaster/i3-vim-syntax'
 
     -- File Browser
-	use 'scrooloose/nerdtree'
-	use 'Xuyuanp/nerdtree-git-plugin'
+    use 'ms-jpq/chadtree'
 
     -- rst support
 	use 'Rykka/riv.vim'
