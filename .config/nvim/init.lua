@@ -245,6 +245,17 @@ g.camelcasemotion_key = '<leader>'
 g.gruxbox_italic = 1
 g.gruvbox_contrast_dark = 'medium'
 
+
+-------------------------
+-- Calendar
+-------------------------
+g.calendar_keys = { goto_next_month = '<C-Right>', goto_prev_month = '<C-Left>',
+                    goto_next_year = '<C-Down>', goto_prev_year = '<C-Up>',
+}
+g.calendar_monday = 1
+g.calendar_diary = '/Users/cg/workspace/wiki/diary'
+
+
 ------------------------
 -- airline (status bar)
 ------------------------
