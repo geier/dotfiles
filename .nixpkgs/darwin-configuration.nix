@@ -1,8 +1,6 @@
 #
 # After editing, run `darwin-rebuild switch`
 #
-
-
 { config, pkgs, ... }:
 
 {
