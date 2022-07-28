@@ -21,3 +21,5 @@
 	autostash = true
 [diff]
 	indentHeuristic = true
+[core]
+	quotepath = off
