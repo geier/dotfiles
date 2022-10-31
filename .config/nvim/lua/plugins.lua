@@ -45,10 +45,6 @@ return require('packer').startup(function()
     -- File Browser
     use 'ms-jpq/chadtree'
 
-    -- rst support
-	use 'Rykka/riv.vim'
-	use 'Rykka/InstantRst'
-
     -- Table Mode
 	use 'dhruvasagar/vim-table-mode'
 
