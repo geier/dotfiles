@@ -72,9 +72,6 @@ return require('packer').startup(function()
 	use 'nvim-lua/plenary.nvim'  -- dependency of telescope
 	use 'nvim-lua/popup.nvim'  -- dependency of telescope
 
-    -- integration for neuron
-	use 'oberblastmeister/neuron.nvim'
-
 	-- 'majutsushi/tagbar'
     -- alternative to tagbar/ctags
     use 'simrat39/symbols-outline.nvim'

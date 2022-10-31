@@ -166,17 +166,6 @@ U.map('c', '<C-q>', '<C-R>=strftime("%Y-%m-%d")<CR>')
 -- nnoremap <expr> n  'Nn'[v:searchforward]
 -- nnoremap <expr> N  'nN'[v:searchforward]
 
----------
--- Neuron
----------
-require'neuron'.setup {
-    virtual_titles = true,
-    mappings = true,
-    run = nil, -- function to run when in neuron dir
-    neuron_dir = "~/workspace/wiki", -- the directory of all of your notes, expanded by default (currently supports only one directory for notes, find a way to detect neuron.dhall to use any directory)
-    leader = "gz", -- the leader key to for all mappings, remember with 'go zettel'
-}
-
 ------------
 -- Telescope
 ------------
