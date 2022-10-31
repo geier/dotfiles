@@ -71,6 +71,9 @@ local global_opts = {
     hlsearch      = true,
     incsearch     = true,
 
+    list          = true,
+    listchars     = 'tab:▶ ,trail:●,nbsp:⎵',
+
     -- virtualedit   = 'block',
     backspace     = 'indent,eol,start',
 
