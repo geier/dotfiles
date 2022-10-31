@@ -64,9 +64,8 @@ return require('packer').startup(function()
     use 'mattn/calendar-vim'
 
     -- telescope is a fuzzy finder for filenames, their contents and more
-	use 'nvim-telescope/telescope.nvim'
 	use 'nvim-lua/plenary.nvim'  -- dependency of telescope
-	use 'nvim-lua/popup.nvim'  -- dependency of telescope
+	use 'nvim-telescope/telescope.nvim'
 
 	-- 'majutsushi/tagbar'
     -- alternative to tagbar/ctags
