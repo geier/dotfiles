@@ -9,17 +9,25 @@
   environment.systemPackages =
     [
       pkgs.age
+      pkgs.ansible
+      pkgs.cargo
       pkgs.coreutils
       pkgs.du-dust
       pkgs.duf
       pkgs.fzf
       pkgs.git
       pkgs.git-extras
+      pkgs.git-filter-repo
+      pkgs.go
       pkgs.haskellPackages.pandoc-sidenote
       pkgs.imagemagick  # needed for experiments with images in vim
+      pkgs.istioctl
       pkgs.jq
+      pkgs.k9s
+      pkgs.lua
       pkgs.moreutils
       pkgs.neovim
+      pkgs.neuron-notes
       pkgs.nodePackages.npm
       pkgs.nodePackages.pyright
       pkgs.nodejs
@@ -32,7 +40,7 @@
       pkgs.tree
       pkgs.vim
       pkgs.visidata
-      pkgs.yq
+      pkgs.yq-go
       pkgs.zk
       pkgs.zsh
       pkgs.zsh-completions
