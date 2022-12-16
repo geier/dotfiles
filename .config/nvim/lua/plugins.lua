@@ -111,7 +111,8 @@ return require('packer').startup(function()
     use 'folke/trouble.nvim'
     ------------------------------------------------------------------
 
-    --'~/workspace/clipboard-image.nvim/'
+    use 'ekickx/clipboard-image.nvim'
+
     use 'kyazdani42/nvim-web-devicons'
 
     -- show changed, added and deleted lines in the markers column
