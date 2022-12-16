@@ -226,6 +226,24 @@ g.vimwiki_table_mappings = 0  -- we use table mode
 g.vimwiki_table_auto_fmt = 0  -- we use table mode
 --g.vimwiki_auto_header = 1  -- automatically set header for new files
 
+-----------
+-- wiki.vim
+-----------
+local g = vim.g
+g.wiki_filetypes = {'md'}
+g.wiki_link_extension = 'md'
+g.wiki_link_target_type = 'md'
+g.wiki_root = '~/workspace/wiki/'
+g.vimwiki_use_calendar = 0
+
+-------
+-- mkdx
+-------
+g['mkdx#settings'] =  {
+    highlight = { enable = 1 },
+    links = { conceal = 1 },
+}
+
 ------------
 -- CamelCase
 ------------

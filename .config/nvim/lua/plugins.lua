@@ -62,6 +62,11 @@ return require('packer').startup(function()
     -- wiki functionality for vim
 	use 'vimwiki/vimwiki' --{ 'branch': 'dev' }
     use 'mattn/calendar-vim'
+    --use 'lervag/wiki.vim'
+    -- use 'SidOfc/mkdx'
+    use {
+    'bouk/vim-markdown', branch = 'wikilinks',
+    }
 
     -- telescope is a fuzzy finder for filenames, their contents and more
 	use 'nvim-lua/plenary.nvim'  -- dependency of telescope
