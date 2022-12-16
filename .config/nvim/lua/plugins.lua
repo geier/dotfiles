@@ -39,9 +39,6 @@ return require('packer').startup(function()
     -- display marks
 	use 'kshenoy/vim-signature'
 
-    -- highlighting for i3-wm's config file
-	use 'PotatoesMaster/i3-vim-syntax'
-
     -- File Browser
     use 'ms-jpq/chadtree'
 
