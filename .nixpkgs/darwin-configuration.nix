@@ -14,6 +14,7 @@
       pkgs.coreutils
       pkgs.du-dust
       pkgs.duf
+      pkgs.emanote
       pkgs.fzf
       pkgs.git
       pkgs.git-extras
@@ -27,7 +28,6 @@
       pkgs.lua
       pkgs.moreutils
       pkgs.neovim
-      pkgs.neuron-notes
       pkgs.nodePackages.npm
       pkgs.nodePackages.pyright
       pkgs.nodejs
