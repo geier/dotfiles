@@ -1,6 +1,14 @@
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
+-- Use a protected call so we don't error out on first use
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+	vim.notify("Packer not found")
+	return
+end
+
+
 return require('packer').startup(function()
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
@@ -41,6 +49,7 @@ return require('packer').startup(function()
 
     -- File Browser
     use 'ms-jpq/chadtree'
+    use 'nvim-tree/nvim-tree.lua'
 
     -- Table Mode
 	use 'dhruvasagar/vim-table-mode'
@@ -94,18 +103,29 @@ return require('packer').startup(function()
 	use 'vigoux/LanguageTool.nvim'
 
     ------------------------------------------------------------------
-    -- LSP
+    -- LSP and automcomplete
     ------------------------------------------------------------------
     -- NeoVim lsp config
     use 'neovim/nvim-lspconfig'
-    use 'hrsh7th/nvim-compe'
+
+    use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
+    use({ "hrsh7th/cmp-buffer" }) -- buffer completions
+    use({ "hrsh7th/cmp-path" }) -- path completions
+    use({ "hrsh7th/cmp-nvim-lsp" })
+    use({ "hrsh7th/cmp-nvim-lua" })
 
     -- lsp signature hint when you type
     use 'ray-x/lsp_signature.nvim'
-    cfg = {}
-    require "lsp_signature".setup(cfg)
+    require "lsp_signature".setup({})
     -- Pretty list of diagnostics and references
     use 'folke/trouble.nvim'
+
+    -- mason
+    use({
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "jose-elias-alvarez/null-ls.nvim",
+    })
     ------------------------------------------------------------------
 
     use 'ekickx/clipboard-image.nvim'
@@ -122,15 +142,19 @@ return require('packer').startup(function()
         end
     }
 
+    use {'akinsho/git-conflict.nvim', config = function()
+        require('git-conflict').setup()
+    end}
+
     -- show which keys can be pressed (after one press)
     use 'folke/which-key.nvim'
 
-    -- lsp signature hint when you type
-    use 'ray-x/lsp_signature.nvim'
-
     use 'nvim-treesitter/nvim-treesitter'
+    vim.g.table_mode_map_prefix = "<leader>tm",
 
     use 'nvim-orgmode/orgmode'
+
+    use 'romgrk/hologram.nvim'
 
     -- navigate between tmux and vim splits with the same keybindings
     use { 'alexghergh/nvim-tmux-navigation', config = function()

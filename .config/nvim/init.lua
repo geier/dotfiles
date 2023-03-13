@@ -113,14 +113,11 @@ local buf_opts = {
 
 for k, v in pairs(global_opts) do
 	vim.o[k] = v
-    -- vim.api.nvim_set_option(k, v)
 end
 
 for k, v in pairs(buf_opts) do
 	vim.o[k] = v
 	vim.bo[k] = v
-    -- vim.api.nvim_set_option(k, v)
-    -- vim.api.nvim_buf_set_option(0, k, v)
 end
 
 for k, v in pairs(win_opts) do
@@ -343,37 +340,37 @@ for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
 
---------
--- compe
---------
-require'compe'.setup {
-  enabled = true;
-  autocomplete = false;
-  debug = false;
-  min_length = 1;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = true;
+----------
+---- compe
+----------
+--require'compe'.setup {
+--  enabled = true;
+--  autocomplete = false;
+--  debug = false;
+--  min_length = 1;
+--  preselect = 'enable';
+--  throttle_time = 80;
+--  source_timeout = 200;
+--  incomplete_delay = 400;
+--  max_abbr_width = 100;
+--  max_kind_width = 100;
+--  max_menu_width = 100;
+--  documentation = true;
+--
+--  source = {
+--    path = true;
+--    buffer = true;
+--    calc = true;
+--    nvim_lsp = true;
+--    nvim_lua = true;
+--    vsnip = false;
+--    ultisnips = false;
+--    orgmode = true;
+--  };
+--}
 
-  source = {
-    path = true;
-    buffer = true;
-    calc = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    vsnip = false;
-    ultisnips = false;
-    orgmode = true;
-  };
-}
-
-local function keymap(k,m) vim.api.nvim_set_keymap('i', k, m, {noremap=true, silent=true, expr=true}) end
-keymap('<C-Space>', 'compe#complete()')
+--local function keymap(k,m) vim.api.nvim_set_keymap('i', k, m, {noremap=true, silent=true, expr=true}) end
+--keymap('<C-Space>', 'compe#complete()')
 
 
 ----------
@@ -494,6 +491,8 @@ require('orgmode').setup({
   }
 })
 
+require('orgmode').setup_ts_grammar()
+
 
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.org = {
@@ -527,3 +526,11 @@ vim.api.nvim_set_keymap('n', "<C-k>", ":lua require'nvim-tmux-navigation'.NvimTm
 vim.api.nvim_set_keymap('n', "<C-l>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateRight()<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', "<C-\\>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateLastActive()<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', "<C-Space>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateNext()<cr>", { noremap = true, silent = true })
+
+
+
+------------------
+-- require configs
+------------------
+require "nvim-conf.cmp"
+require "nvim-conf.nvim-tree"
