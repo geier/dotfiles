@@ -53,6 +53,7 @@ return require('packer').startup(function()
 
     -- Table Mode
 	use 'dhruvasagar/vim-table-mode'
+    vim.g.table_mode_map_prefix = "<leader>tm",
 
     -- Typescript
 	use 'leafgarland/typescript-vim'
@@ -147,7 +148,6 @@ return require('packer').startup(function()
     use 'folke/which-key.nvim'
 
     use 'nvim-treesitter/nvim-treesitter'
-    vim.g.table_mode_map_prefix = "<leader>tm",
 
     use 'nvim-orgmode/orgmode'
 
