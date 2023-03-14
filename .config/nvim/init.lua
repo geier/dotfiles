@@ -123,8 +123,6 @@ end
 for k, v in pairs(win_opts) do
 	vim.o[k] = v
 	vim.wo[k] = v
-    -- vim.api.nvim_set_option(k, v)
-    -- vim.api.nvim_win_set_option(0, k, v)
 end
 
 ---------
