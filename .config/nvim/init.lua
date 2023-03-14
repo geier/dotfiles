@@ -94,17 +94,17 @@ local buf_opts = {
 }
 
 for k, v in pairs(global_opts) do
-	vim.o[k] = v
+    vim.o[k] = v
 end
 
 for k, v in pairs(buf_opts) do
-	vim.o[k] = v
-	vim.bo[k] = v
+    vim.o[k] = v
+    vim.bo[k] = v
 end
 
 for k, v in pairs(win_opts) do
-	vim.o[k] = v
-	vim.wo[k] = v
+    vim.o[k] = v
+    vim.wo[k] = v
 end
 
 ---------

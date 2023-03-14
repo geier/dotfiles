@@ -4,8 +4,8 @@ vim.cmd [[packadd packer.nvim]]
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
-	vim.notify("Packer not found")
-	return
+    vim.notify("Packer not found")
+    return
 end
 
 
@@ -14,55 +14,55 @@ return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
 
     -- git plugin (commiting, blame, diff, etc.)
-	use 'tpope/vim-fugitive'
+    use 'tpope/vim-fugitive'
 
     -- colorschemes
-	use 'gruvbox-community/gruvbox'
+    use 'gruvbox-community/gruvbox'
     use 'rebelot/kanagawa.nvim'
 
     -- indenting python properly
-	use 'hynek/vim-python-pep8-indent'
+    use 'hynek/vim-python-pep8-indent'
 
     -- javascript and react
     use 'maxmellon/vim-jsx-pretty'
 
     -- proper folding for python
-	use 'tmhedberg/SimpylFold'  -- can probably me replaced by braceless
+    use 'tmhedberg/SimpylFold'  -- can probably me replaced by braceless
 
     -- text objects for indented languages (python)
-	use 'tweekmonster/braceless.vim'   -- TODO enable
+    use 'tweekmonster/braceless.vim'   -- TODO enable
 
     -- Motions for CamelCase and snake_case
-	use 'bkad/CamelCaseMotion'
+    use 'bkad/CamelCaseMotion'
 
     -- easy commenting out of code
-	use 'scrooloose/nerdcommenter'
+    use 'scrooloose/nerdcommenter'
 
     -- prettier status line
     use 'nvim-lualine/lualine.nvim'
 
     -- lightweight LaTeX plugin
-	--'LaTeX-Box-Team/LaTeX-Box'
+    --'LaTeX-Box-Team/LaTeX-Box'
 
     -- display marks
-	use 'kshenoy/vim-signature'
+    use 'kshenoy/vim-signature'
 
     -- File Browser
     use 'ms-jpq/chadtree'
     use 'nvim-tree/nvim-tree.lua'
 
     -- Table Mode
-	use 'dhruvasagar/vim-table-mode'
+    use 'dhruvasagar/vim-table-mode'
     vim.g.table_mode_map_prefix = "<leader>tm",
 
     -- Typescript
-	use 'leafgarland/typescript-vim'
+    use 'leafgarland/typescript-vim'
 
     -- Showing recently used files when starting neovim
-	use 'mhinz/vim-startify'
+    use 'mhinz/vim-startify'
 
     -- wiki functionality for vim
-	use 'vimwiki/vimwiki' --{ 'branch': 'dev' }
+    use 'vimwiki/vimwiki' --{ 'branch': 'dev' }
     use 'mattn/calendar-vim'
     --use 'lervag/wiki.vim'
     -- use 'SidOfc/mkdx'
@@ -71,34 +71,34 @@ return require('packer').startup(function()
     }
 
     -- telescope is a fuzzy finder for filenames, their contents and more
-	use 'nvim-lua/plenary.nvim'  -- dependency of telescope
-	use 'nvim-telescope/telescope.nvim'
-	use 'nvim-telescope/telescope-fzy-native.nvim'
+    use 'nvim-lua/plenary.nvim'  -- dependency of telescope
+    use 'nvim-telescope/telescope.nvim'
+    use 'nvim-telescope/telescope-fzy-native.nvim'
 
-	-- 'majutsushi/tagbar'
+    -- 'majutsushi/tagbar'
     -- alternative to tagbar/ctags
     use 'simrat39/symbols-outline.nvim'
     use 'stevearc/aerial.nvim'
 
     -- show content of registers on pressing `""`
-	use 'gennaro-tedesco/nvim-peekup'
+    use 'gennaro-tedesco/nvim-peekup'
 
     -- Move current selection up (down) with A-k (A-j)
-	use 'matze/vim-move'  -- does not work on mac os
+    use 'matze/vim-move'  -- does not work on mac os
 
     -- change/add/delete `sourroundings`
-	use 'tpope/vim-surround'
+    use 'tpope/vim-surround'
 
     -- make some plugins (like vim-surround) repeatable with .
     use 'tpope/vim-repeat'
 
     -- semantic highlighter for python code
-    --	'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+    --    'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
-	use 'tell-k/vim-autopep8'
+    use 'tell-k/vim-autopep8'
 
     -- Better spell checking
-	use 'vigoux/LanguageTool.nvim'
+    use 'vigoux/LanguageTool.nvim'
 
     ------------------------------------------------------------------
     -- LSP and automcomplete

@@ -1,7 +1,7 @@
 local telescope_status_ok, telescope = pcall(require, "telescope")
 if not telescope_status_ok then
-	vim.notify("failed to load telescope")
-	return
+    vim.notify("failed to load telescope")
+    return
 end
 
 local finders = require "telescope.builtin"
@@ -32,6 +32,7 @@ require("telescope").setup(
             },
             file_sorter = sorters.get_fzy_sorter,
             generic_sorter = sorters.get_fzy_sorter
+
         }
     }
 )
