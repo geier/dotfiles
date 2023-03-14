@@ -77,6 +77,7 @@ return require('packer').startup(function()
     -- telescope is a fuzzy finder for filenames, their contents and more
 	use 'nvim-lua/plenary.nvim'  -- dependency of telescope
 	use 'nvim-telescope/telescope.nvim'
+	use 'nvim-telescope/telescope-fzy-native.nvim'
 
 	-- 'majutsushi/tagbar'
     -- alternative to tagbar/ctags
