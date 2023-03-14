@@ -166,51 +166,6 @@ U.map('c', '<C-q>', '<C-R>=strftime("%Y-%m-%d")<CR>')
 -- nnoremap <expr> n  'Nn'[v:searchforward]
 -- nnoremap <expr> N  'nN'[v:searchforward]
 
-------------
--- Telescope
-------------
-
-local finders = require "telescope.builtin"
-local actions = require "telescope.actions"
-local sorters = require "telescope.sorters"
-
-require("telescope").setup(
-    {
-        defaults = {
-            prompt_prefix = " ❯ ",
-            sorting_strategy = "ascending",
-            mappings = {
-                i = {
-                    ["<ESC>"] = actions.close,
-                    ["<C-j>"] = actions.move_selection_next,
-                    ["<C-k>"] = actions.move_selection_previous,
-                    ["<C-o>"] = function()
-                        return
-                    end,
-                    ["<TAB>"] = function()
-                        return
-                    end
-                }
-            },
-            layout_config = {
-                 prompt_position = "top",
-            },
-            file_sorter = sorters.get_fzy_sorter,
-            generic_sorter = sorters.get_fzy_sorter
-        }
-    }
-)
-
-function TelescopeOpen(fn)
-    finders[fn]()
-end
-
--- Ctrl-p = fuzzy finder
-U.map("n", "<C-P>", "<CMD>lua require('telescope.builtin').find_files()<CR>")
-U.map("n", "<leader>ff", "<CMD>lua require('telescope.builtin').find_files()<CR>")
-U.map("n", "<leader>fg", "<CMD>lua require('telescope.builtin').live_grep()<CR>")
-U.map("n", "<leader>fb", "<CMD>lua require('telescope.builtin').buffers()<CR>")
-U.map("n", "<leader>fh", "<CMD>lua require('telescope.builtin').help_tags()<CR>")
 
 ----------
 -- vimwiki
@@ -514,23 +469,10 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = {'org'}, -- Or run :TSUpdate org
 }
 
-vim.api.nvim_set_keymap('n', "<C-a><Left>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateLeft()<cr>", { noremap = true, silent = false })
-vim.api.nvim_set_keymap('n', "<C-a><Down>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateDown()<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', "<C-a><Up>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateUp()<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', "<C-a><Right>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateRight()<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', "<C-a><C-a>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateLastActive()<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', "<C-Space>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateNext()<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', "<C-h>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateLeft()<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', "<C-j>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateDown()<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', "<C-k>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateUp()<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', "<C-l>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateRight()<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', "<C-\\>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateLastActive()<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', "<C-Space>", ":lua require'nvim-tmux-navigation'.NvimTmuxNavigateNext()<cr>", { noremap = true, silent = true })
-
-
 
 ------------------
 -- require configs
 ------------------
 require "nvim-conf.cmp"
 require "nvim-conf.nvim-tree"
+require "nvim-conf.telescope"
