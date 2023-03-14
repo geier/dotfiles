@@ -54,16 +54,11 @@ return require('packer').startup(function()
     -- Table Mode
 	use 'dhruvasagar/vim-table-mode'
 
-    -- Rust
-	use 'rust-lang/rust.vim'
-
     -- Typescript
 	use 'leafgarland/typescript-vim'
 
     -- Showing recently used files when starting neovim
 	use 'mhinz/vim-startify'
-
-	use 'dag/vim-fish'
 
     -- wiki functionality for vim
 	use 'vimwiki/vimwiki' --{ 'branch': 'dev' }
