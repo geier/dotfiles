@@ -18,24 +18,6 @@ cmd [[command! PackerCompile packadd packer.nvim | lua require('plugins').compil
 local api = vim.api
 local cmd = api.nvim_command
 
-local U = {}
-
--- Key mapping
-function U.map(mode, key, result, opts)
-    opts =
-        vim.tbl_extend(
-        "keep",
-        opts or {},
-        {
-            noremap = true,
-            silent = true,
-            expr = false
-        }
-    )
-
-    api.nvim_set_keymap(mode, key, result, opts)
-end
-
 -------------
 -- Options --
 -------------
@@ -142,28 +124,6 @@ vim.api.nvim_command('colorscheme ' .. theme)
 vim.cmd('autocmd BufWinLeave * silent! mkview')
 -- and reload on entering it
 vim.cmd('autocmd BufWinEnter * silent! loadview')
-
------------
--- Mappings
------------
-
-U.map('n', 'Q', 'gq}')  -- don't use ex mode, use Q for formatting
-U.map('n', 'w!!', '%!sudo tee > /dev/null %')
-U.map('n', 'Y', 'y$')  -- make Y work as C or D
--- make ctrl-l remove highlights and re-apply syntax highlighting
-U.map('n', '<C-l>', ':nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>')
--- switch to next/previous buffer with Tab/shift+Tab
-U.map('n', '<Tab>', ':bnext<CR>')
-U.map('n', '<S-Tab>', ':bprevious<CR>')
-
-U.map('n', '<C-q>', 'a<C-R>=strftime("%Y-%m-%d")<CR><Esc>')
-U.map('i', '<C-q>', '<C-R>=strftime("%Y-%m-%d")<CR>')
-U.map('c', '<C-q>', '<C-R>=strftime("%Y-%m-%d")<CR>')
-
--- make n and N always go in the same direction
--- nnoremap <expr> n  'Nn'[v:searchforward]
--- nnoremap <expr> N  'nN'[v:searchforward]
-
 
 ----------
 -- vimwiki
@@ -365,44 +325,6 @@ require('lualine').setup {
   extensions = {}
 }
 
--------------
--- Which key
--------------
-require("which-key").setup {
-  }
-local wk = require('which-key')
-wk.register({
-    o = {
-        a = "orgmode agenda prompt",
-        c = "orgmode capture prompt",
-    },
-    c = 'NERD Commenter',
-    w = 'vimwiki',
-    t = 'tablemode',
-    h = 'gitsigns',
-    f = 'telecsope',
-}, {prefix = '<leader>' })
-
-vim.cmd('autocmd FileType * lua setKeybinds()')
-function setKeybinds()
-    local fileTy = vim.api.nvim_buf_get_option(0, "filetype")
-
-    if fileTy == 'org' then
-        wk.register({
-            o = {
-                a = 'orgmode agenda',
-                r = 'Refile current headline to destination',
-                o = 'Open hyperlink under cursor',
-                t = 'Set tags on current headline',
-                A = 'Toggle "Archive" tag on current headline',
-                e = 'Open export options',
-                K = 'Move current headline + its content up by one headline',
-                J = 'Move current headline + its content down by one headline',
-             -- $ = 'Archive current headline to archive location',
-            },
-        }, {prefix = '<leader>'})
-    end
-end
 
 ---------
 -- bug fix for neovim <0.5 release
@@ -476,3 +398,4 @@ require "nvim-conf.nvim-tree"
 require "nvim-conf.aerial"
 require "nvim-conf.mason"
 require "nvim-conf.telescope"
+require "nvim-conf.whichkey"  -- better load it last, also contains most mappings
