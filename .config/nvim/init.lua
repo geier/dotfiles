@@ -124,6 +124,8 @@ vim.api.nvim_command('colorscheme ' .. theme)
 vim.cmd('autocmd BufWinLeave * silent! mkview')
 -- and reload on entering it
 vim.cmd('autocmd BufWinEnter * silent! loadview')
+-- Highlight yanked area for 500ms
+vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500} ')
 
 ----------
 -- vimwiki
