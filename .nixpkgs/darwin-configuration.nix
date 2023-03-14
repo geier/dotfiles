@@ -10,12 +10,16 @@
     [
       pkgs.age
       pkgs.ansible
+      pkgs.bat
       pkgs.cargo
       pkgs.coreutils
       pkgs.du-dust
       pkgs.duf
+      pkgs.dyff
       pkgs.emanote
+      pkgs.fish
       pkgs.fzf
+      pkgs.fzy
       pkgs.git
       pkgs.git-extras
       pkgs.git-filter-repo
