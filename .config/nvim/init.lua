@@ -1,22 +1,18 @@
-local fn = vim.fn
-local cmd = vim.cmd
+------------
+-- Packer --
+------------
 
-local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+  packer_bootstrap = vim.fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
 require('plugins')
-cmd [[command! PackerInstall packadd packer.nvim | lua require('plugins').install()]]
-cmd [[command! PackerUpdate packadd packer.nvim | lua require('plugins').update()]]
-cmd [[command! PackerSync packadd packer.nvim | lua require('plugins').sync()]]
-cmd [[command! PackerClean packadd packer.nvim | lua require('plugins').clean()]]
-cmd [[command! PackerCompile packadd packer.nvim | lua require('plugins').compile()]]
-
-----------------------
-local api = vim.api
-local cmd = api.nvim_command
+vim.cmd [[command! PackerInstall packadd packer.nvim | lua require('plugins').install()]]
+vim.cmd [[command! PackerUpdate packadd packer.nvim | lua require('plugins').update()]]
+vim.cmd [[command! PackerSync packadd packer.nvim | lua require('plugins').sync()]]
+vim.cmd [[command! PackerClean packadd packer.nvim | lua require('plugins').clean()]]
+vim.cmd [[command! PackerCompile packadd packer.nvim | lua require('plugins').compile()]]
 
 -------------
 -- Options --
@@ -168,23 +164,14 @@ g.gruxbox_italic = 1
 g.gruvbox_contrast_dark = 'medium'
 
 
--------------------------
+-----------
 -- Calendar
--------------------------
+-----------
 g.calendar_keys = { goto_next_month = '<C-Right>', goto_prev_month = '<C-Left>',
                     goto_next_year = '<C-Down>', goto_prev_year = '<C-Up>',
 }
 g.calendar_monday = 1
 g.calendar_diary = '/Users/cg/workspace/wiki/diary'
-
-
-------------------------
--- airline (status bar)
-------------------------
---g.airline_powerline_fonts = 1
---g["airline#extensions#tabline#enabled"] = 1
---g["airline#extensions#tabline#fnamemod"] = ':t'
---g.airline_theme = 'gruvbox'
 
 ------------
 -- lspconfig
@@ -256,39 +243,6 @@ for _, lsp in ipairs(servers) do
 end
 
 ----------
----- compe
-----------
---require'compe'.setup {
---  enabled = true;
---  autocomplete = false;
---  debug = false;
---  min_length = 1;
---  preselect = 'enable';
---  throttle_time = 80;
---  source_timeout = 200;
---  incomplete_delay = 400;
---  max_abbr_width = 100;
---  max_kind_width = 100;
---  max_menu_width = 100;
---  documentation = true;
---
---  source = {
---    path = true;
---    buffer = true;
---    calc = true;
---    nvim_lsp = true;
---    nvim_lua = true;
---    vsnip = false;
---    ultisnips = false;
---    orgmode = true;
---  };
---}
-
---local function keymap(k,m) vim.api.nvim_set_keymap('i', k, m, {noremap=true, silent=true, expr=true}) end
---keymap('<C-Space>', 'compe#complete()')
-
-
-----------
 -- lualine
 ----------
 require('lualine').setup {
@@ -327,22 +281,8 @@ require('lualine').setup {
   extensions = {}
 }
 
-
----------
--- bug fix for neovim <0.5 release
----------
---
--- Neovim is trying to Automatically detect terminal background and set bg=dark
--- or bg=light, only occurs for me on Mac OS in tmux
--- This leads to nvim opening a file and changing the first character to g and
--- starts entering a command as if from one types :0000/2b2b/3636^G from normal
--- mode.
---
--- This is a know issue, see https://github.com/neovim/neovim/issues/11393
---vim.cmd('cnoremap 3636 <c-u>undo<CR>')
-
 ----------
--- orgmode 
+-- orgmode
 ----------
 require('orgmode').setup({
   org_agenda_files = {'~/org/*', },
