@@ -474,4 +474,5 @@ require'nvim-treesitter.configs'.setup {
 require "nvim-conf.cmp"
 require "nvim-conf.nvim-tree"
 require "nvim-conf.aerial"
+require "nvim-conf.mason"
 require "nvim-conf.telescope"
