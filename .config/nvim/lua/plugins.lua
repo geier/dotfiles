@@ -81,6 +81,7 @@ return require('packer').startup(function()
 	-- 'majutsushi/tagbar'
     -- alternative to tagbar/ctags
     use 'simrat39/symbols-outline.nvim'
+    use 'stevearc/aerial.nvim'
 
     -- show content of registers on pressing `""`
 	use 'gennaro-tedesco/nvim-peekup'
