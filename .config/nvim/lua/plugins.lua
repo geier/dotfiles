@@ -19,6 +19,7 @@ return require('packer').startup(function()
     -- colorschemes
     use 'gruvbox-community/gruvbox'
     use 'rebelot/kanagawa.nvim'
+    use 'folke/tokyonight.nvim'
 
     -- indenting python properly
     use 'hynek/vim-python-pep8-indent'
