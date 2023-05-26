@@ -153,6 +153,8 @@ return require('packer').startup(function()
 
     use 'romgrk/hologram.nvim'
 
+    use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
+
     -- yaml support, for k8s
     use {
       "someone-stole-my-name/yaml-companion.nvim",

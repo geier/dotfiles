@@ -300,6 +300,7 @@ require "nvim-conf.cmp"
 require "nvim-conf.nvim-tree"
 require "nvim-conf.lualine"
 require "nvim-conf.aerial"
+require "nvim-conf.bufferline"
 require "nvim-conf.mason"
 require "nvim-conf.telescope"
 require "nvim-conf.whichkey"  -- better load it last, also contains most mappings
