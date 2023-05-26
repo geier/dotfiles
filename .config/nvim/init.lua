@@ -297,7 +297,7 @@ require'nvim-treesitter.configs'.setup {
 -- require configs
 ------------------
 require "nvim-conf.cmp"
-require "nvim-conf.nvim-tree"
+require "nvim-conf.neo-tree"
 require "nvim-conf.lualine"
 require "nvim-conf.aerial"
 require "nvim-conf.bufferline"
