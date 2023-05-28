@@ -63,6 +63,8 @@ local global_opts = {
 
     mouse = 'a', -- sometimes the mouse does help e.g. split resizing
 
+    scrolloff     = 8,
+
 
 }
 
