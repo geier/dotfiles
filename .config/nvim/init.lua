@@ -304,3 +304,4 @@ require "nvim-conf.bufferline"
 require "nvim-conf.mason"
 require "nvim-conf.telescope"
 require "nvim-conf.whichkey"  -- better load it last, also contains most mappings
+require "nvim-conf.treesitter"
