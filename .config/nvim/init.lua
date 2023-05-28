@@ -139,7 +139,6 @@ g.vimwiki_table_auto_fmt = 0  -- we use table mode
 -----------
 -- wiki.vim
 -----------
-local g = vim.g
 g.wiki_filetypes = {'md'}
 g.wiki_link_extension = 'md'
 g.wiki_link_target_type = 'md'

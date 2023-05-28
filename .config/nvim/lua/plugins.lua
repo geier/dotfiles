@@ -9,7 +9,10 @@ if not status_ok then
 end
 
 
-return require('packer').startup(function()
+return require('packer').startup(function(use)
+    -- to shut up lsp over the use of `use`
+    use {'plugin'}
+
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 

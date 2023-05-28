@@ -9,7 +9,6 @@ end
 -------------
 require("which-key").setup {}
 
-local wk = require('which-key')
 wk.register({
     o = {
         a = "orgmode agenda prompt",
