@@ -38,6 +38,7 @@ autoload zmv
 
 # Setting and exporting PATH {{{
 path=(
+    "${KREW_ROOT:-$HOME/.krew}/bin"
     "$HOME/.nixprofile/bin/" "/nix/var/nix/profiles/default/bin"  "/run/current-system/sw/bin"  # setting this here probably shows I don't understand nix well enough yet
     "$HOME/bin"
     "$HOME/.local/bin"
