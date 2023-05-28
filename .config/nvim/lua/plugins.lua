@@ -111,27 +111,29 @@ return require('packer').startup(function()
     ------------------------------------------------------------------
     -- LSP and automcomplete
     ------------------------------------------------------------------
-    -- NeoVim lsp config
-    use 'neovim/nvim-lspconfig'
+    use {
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v2.x',
+        requires = {
+            -- LSP Support
+            {'neovim/nvim-lspconfig'},             -- Required
+            {                                      -- Optional
+            'williamboman/mason.nvim',
+            run = function()
+                pcall(vim.cmd, 'MasonUpdate')
+            end,
+        },
+        {'williamboman/mason-lspconfig.nvim'}, -- Optional
+        {'onsails/lspkind.nvim'}, -- for symbols
 
-    use({ "hrsh7th/nvim-cmp" }) -- The completion plugin
-    use({ "hrsh7th/cmp-buffer" }) -- buffer completions
-    use({ "hrsh7th/cmp-path" }) -- path completions
-    use({ "hrsh7th/cmp-nvim-lsp" })
-    use({ "hrsh7th/cmp-nvim-lua" })
-
-    -- lsp signature hint when you type
-    use 'ray-x/lsp_signature.nvim'
-    require "lsp_signature".setup({})
+        -- Autocompletion
+        {'hrsh7th/nvim-cmp'},     -- Required
+        {'hrsh7th/cmp-nvim-lsp'}, -- Required
+        {'L3MON4D3/LuaSnip'},     -- Required
+    }
+}
     -- Pretty list of diagnostics and references
     use 'folke/trouble.nvim'
-
-    -- mason
-    use({
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
-        "jose-elias-alvarez/null-ls.nvim",
-    })
     ------------------------------------------------------------------
 
     use 'ekickx/clipboard-image.nvim'
