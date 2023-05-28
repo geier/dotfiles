@@ -45,9 +45,6 @@ return require('packer').startup(function(use)
     -- prettier status line
     use 'nvim-lualine/lualine.nvim'
 
-    -- lightweight LaTeX plugin
-    --'LaTeX-Box-Team/LaTeX-Box'
-
     -- display marks
     use 'kshenoy/vim-signature'
 
@@ -66,9 +63,6 @@ return require('packer').startup(function(use)
     use 'dhruvasagar/vim-table-mode'
     vim.g.table_mode_map_prefix = "<leader>tm",
 
-    -- Typescript
-    use 'leafgarland/typescript-vim'
-
     -- Showing recently used files when starting neovim
     use 'mhinz/vim-startify'
 
@@ -86,9 +80,7 @@ return require('packer').startup(function(use)
     use 'nvim-telescope/telescope.nvim'
     use 'nvim-telescope/telescope-fzy-native.nvim'
 
-    -- 'majutsushi/tagbar'
-    -- alternative to tagbar/ctags
-    use 'simrat39/symbols-outline.nvim'
+    -- alternative to tagbar/ctags/symbols-outline
     use 'stevearc/aerial.nvim'
 
     -- show content of registers on pressing `""`
