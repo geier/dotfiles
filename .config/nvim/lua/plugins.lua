@@ -48,6 +48,9 @@ return require('packer').startup(function(use)
     -- display marks
     use 'kshenoy/vim-signature'
 
+    -- status column
+    use 'luukvbaal/statuscol.nvim'
+
     -- File Browser
     use {
       "nvim-neo-tree/neo-tree.nvim",
@@ -140,9 +143,6 @@ return require('packer').startup(function(use)
         requires = {
             'nvim-lua/plenary.nvim'
         },
-        config = function()
-            require('gitsigns').setup()
-        end
     }
 
     use {'akinsho/git-conflict.nvim', config = function()
