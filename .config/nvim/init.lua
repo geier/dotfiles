@@ -210,11 +210,13 @@ require('orgmode').setup_ts_grammar()
 ------------------
 -- require configs
 ------------------
-require "nvim-conf.neo-tree"
-require "nvim-conf.lualine"
-require "nvim-conf.lsp"
 require "nvim-conf.aerial"
+require "nvim-conf.noice"
 require "nvim-conf.bufferline"
+require "nvim-conf.lsp"
+require "nvim-conf.lualine"
+require "nvim-conf.neo-tree"
+require "nvim-conf.statuscolumn"
 require "nvim-conf.telescope"
-require "nvim-conf.whichkey"  -- better load it last, also contains most mappings
 require "nvim-conf.treesitter"
+require "nvim-conf.whichkey"  -- better load it last, also contains most mappings

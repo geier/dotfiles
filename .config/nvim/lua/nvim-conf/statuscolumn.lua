@@ -52,4 +52,4 @@ require("statuscol").setup({
 })
 
 
-require('gitsigns').setup()
+    require('gitsigns').setup()
