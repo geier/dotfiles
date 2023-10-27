@@ -9,20 +9,79 @@ if not status_ok then
 end
 
 
-return require('packer').startup(function(use)
+return packer.startup(function(use)
     -- to shut up lsp over the use of `use`
     use {'plugin'}
 
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    -- git plugin (commiting, blame, diff, etc.)
-    use 'tpope/vim-fugitive'
-
+    ------------------
+    -- UI plugins --
+    ------------------
     -- colorschemes
     use 'gruvbox-community/gruvbox'
     use 'rebelot/kanagawa.nvim'
     use 'folke/tokyonight.nvim'
+    use { 'catppuccin/nvim', as = 'catppuccin' }
+    use 'marko-cerovac/material.nvim'
+    use 'sainnhe/sonokai'
+    use 'sainnhe/edge'
+    use 'loctvl842/monokai-pro.nvim'
+    use 'projekt0n/github-nvim-theme'
+
+    -- prettier status line
+    use 'nvim-lualine/lualine.nvim'
+
+    -- status column
+    use 'luukvbaal/statuscol.nvim'
+
+    -- display marks
+    use 'kshenoy/vim-signature'
+
+    -- bufferline
+    use 'akinsho/nvim-bufferline.lua'
+
+    -- show icons, needs patched font
+    use 'kyazdani42/nvim-web-devicons'
+
+    -- show changed, added and deleted lines in the markers column
+    use {'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+
+    -- alternative to tagbar/ctags/symbols-outline
+    use 'stevearc/aerial.nvim'
+
+    -- File Browser
+    use {
+      "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
+        requires = {
+          "nvim-lua/plenary.nvim",
+          "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+          "MunifTanjim/nui.nvim",
+        }
+      }
+
+    -- show which keys can be pressed (after one press)
+    use 'folke/which-key.nvim'
+
+
+    -- replace the UI for messages, cmdline, popupmenu
+    use {
+        'folke/noice.nvim',
+        requires = {
+            'MunifTanjim/nui.nvim',
+            'rcarriga/nvim-notify'
+        }
+    }
+
+    --------------------
+
+    -- undotree
+    use 'mbbill/undotree'
+
+    -- git plugin (commiting, blame, diff, etc.)
+    use 'tpope/vim-fugitive'
 
     -- indenting python properly
     use 'hynek/vim-python-pep8-indent'
@@ -42,26 +101,6 @@ return require('packer').startup(function(use)
     -- easy commenting out of code
     use 'scrooloose/nerdcommenter'
 
-    -- prettier status line
-    use 'nvim-lualine/lualine.nvim'
-
-    -- display marks
-    use 'kshenoy/vim-signature'
-
-    -- status column
-    use 'luukvbaal/statuscol.nvim'
-
-    -- File Browser
-    use {
-      "nvim-neo-tree/neo-tree.nvim",
-        branch = "v2.x",
-        requires = {
-          "nvim-lua/plenary.nvim",
-          "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-          "MunifTanjim/nui.nvim",
-        }
-      }
-
     -- Table Mode
     use 'dhruvasagar/vim-table-mode'
     vim.g.table_mode_map_prefix = "<leader>tm",
@@ -70,7 +109,7 @@ return require('packer').startup(function(use)
     use 'mhinz/vim-startify'
 
     -- wiki functionality for vim
-    use 'vimwiki/vimwiki' --{ 'branch': 'dev' }
+--    use 'vimwiki/vimwiki' --{ 'branch': 'dev' }
     use 'mattn/calendar-vim'
     --use 'lervag/wiki.vim'
     -- use 'SidOfc/mkdx'
@@ -82,9 +121,6 @@ return require('packer').startup(function(use)
     use 'nvim-lua/plenary.nvim'  -- dependency of telescope
     use 'nvim-telescope/telescope.nvim'
     use 'nvim-telescope/telescope-fzy-native.nvim'
-
-    -- alternative to tagbar/ctags/symbols-outline
-    use 'stevearc/aerial.nvim'
 
     -- show content of registers on pressing `""`
     use 'gennaro-tedesco/nvim-peekup'
@@ -136,29 +172,20 @@ return require('packer').startup(function(use)
 
     use 'ekickx/clipboard-image.nvim'
 
-    use 'kyazdani42/nvim-web-devicons'
-
-    -- show changed, added and deleted lines in the markers column
-    use {'lewis6991/gitsigns.nvim',
-        requires = {
-            'nvim-lua/plenary.nvim'
-        },
-    }
 
     use {'akinsho/git-conflict.nvim', config = function()
         require('git-conflict').setup()
     end}
 
-    -- show which keys can be pressed (after one press)
-    use 'folke/which-key.nvim'
+    -- copilot 
+    use 'github/copilot.vim'
 
     use 'nvim-treesitter/nvim-treesitter'
+    use 'nvim-treesitter/playground'
 
     use 'nvim-orgmode/orgmode'
 
-    use 'romgrk/hologram.nvim'
-
-    use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
+    --use 'romgrk/hologram.nvim'
 
     -- yaml support, for k8s
     use {
