@@ -15,16 +15,9 @@ require("telescope").setup(
             sorting_strategy = "ascending",
             mappings = {
                 i = {
-                    ["<ESC>"] = actions.close,
                     ["<C-j>"] = actions.move_selection_next,
                     ["<C-k>"] = actions.move_selection_previous,
                     ["<C-h>"] = "which_key",
-                    ["<C-o>"] = function()
-                        return
-                    end,
-                    ["<TAB>"] = function()
-                        return
-                    end
                 }
             },
             layout_config = {
@@ -33,6 +26,23 @@ require("telescope").setup(
             file_sorter = sorters.get_fzy_sorter,
             generic_sorter = sorters.get_fzy_sorter
 
+        },
+        pickers = {
+            find_files = {
+                mappings = {
+                    n = {
+                        ["<C-h>"] = function(prompt_bufnr)
+                            local current_picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
+                            local opts = {
+                                hidden = true,
+                                default_text = current_picker:_get_prompt(),
+                            }
+                            require("telescope.actions").close(prompt_bufnr)
+                            require("telescope.builtin").find_files(opts)
+                        end,
+                    },
+                },
+            },
         }
     }
 )
