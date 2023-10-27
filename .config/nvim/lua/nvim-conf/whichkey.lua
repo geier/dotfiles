@@ -54,6 +54,9 @@ wk.register({
     ["<S-Tab>"] = { ":bprevious<CR>", "Switch to previous buffer" },
     ["<C-q>"] = { 'a<C-r>=strftime("%Y-%m-%d")<CR><Esc>', "Insert current date"},
     ["<C-h>"] = { ":WhichKey<CR>", "Run Which-Key" },
+    ["<C-l>"] = {
+        ":nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>:NoiceDismiss<CR>", " ..."
+    },
 })
 
 -- insert mode
