@@ -10,7 +10,6 @@ require('lualine').setup {
         theme = 'auto',
         component_separators = { left = '', right = ''},
         section_separators = { left = '', right = ''},
-        disabled_filetypes = {},
         disabled_filetypes = {
             statusline = { "dashboard", "lazy", "alpha" },
         },
@@ -26,7 +25,16 @@ require('lualine').setup {
     sections = {
         lualine_a = {'mode'},
         lualine_b = {'branch', 'diff', 'diagnostics'},
-        lualine_c = {'filename'},
+        -- show the complete path to the file, but shorten it
+        -- if it gets too long
+        lualine_c = {
+            {
+                'filename',
+                path = 3,
+                file_status = true, -- display file status (readonly status, modified status)
+                symbols = { modified = ' ', readonly = ' ' },
+            },
+        },
         lualine_x = {'encoding', 'fileformat', 'filetype'},
         lualine_y = {'progress'},
         lualine_z = {'location'}

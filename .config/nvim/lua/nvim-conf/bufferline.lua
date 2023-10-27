@@ -1,4 +1,4 @@
-local bufferline_status_ok, cmp = pcall(require, "bufferline")
+local bufferline_status_ok, bufferline = pcall(require, "bufferline")
 if not bufferline_status_ok then
     vim.notify("failed to load bufferline")
     return
@@ -12,7 +12,7 @@ require("bufferline").setup{
             return " " .. icon .. count
         end,
 
-        separator_style = "slant", -- | "thick" | "thin" | { 'any', 'any' },
+        separator_style = "slant", -- "slant", "thick", "thin" | { 'any', 'any' },
         indicator = {
             -- icon = " ",
             -- style = 'icon',
@@ -23,7 +23,12 @@ require("bufferline").setup{
                 filetype = "neo-tree",
                 text = "EXPLORER",
                 text_align = "center",
-                -- separator = true,
+                separator = true,
+            },
+            {
+                filetype = "undotree",
+                text = "UNDO",
+                text_align = "center",
             },
         },
         hover = {
