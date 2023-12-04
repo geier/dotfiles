@@ -10,13 +10,14 @@
     [
       pkgs.age
       pkgs.ansible
-      pkgs.bat
+      pkgs.bat # cat with syntax highlighting
+      pkgs.bats # bash automated testing system
       pkgs.cargo
       pkgs.coreutils
       pkgs.du-dust
       pkgs.duf
-      pkgs.dyff
-      pkgs.emanote
+      pkgs.dyff  # diffing YAML and json
+      pkgs.eza  # nicer ls alternative
       pkgs.fish
       pkgs.fzf
       pkgs.fzy
@@ -29,7 +30,11 @@
       pkgs.istioctl
       pkgs.jq
       pkgs.k9s
+      pkgs.kubectx
+      pkgs.kubernetes-helm
+      pkgs.kustomize
       pkgs.lua
+      pkgs.minio-client
       pkgs.moreutils
       pkgs.neovim
       pkgs.nodePackages.npm
@@ -38,12 +43,15 @@
       pkgs.pandoc
       pkgs.ripgrep
       pkgs.rsync   # rsync shipped with Mac OS is really old
+      pkgs.ruff
       pkgs.sops
       pkgs.tig
       pkgs.tmux
       pkgs.tree
+      pkgs.tree-sitter
       pkgs.vim
       pkgs.visidata
+      pkgs.wget
       pkgs.yq-go
       pkgs.zk
       pkgs.zsh
