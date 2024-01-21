@@ -1,10 +1,9 @@
-local bufferline_status_ok, bufferline = pcall(require, "bufferline")
-if not bufferline_status_ok then
-    vim.notify("failed to load bufferline")
-    return
-end
-
-require("bufferline").setup{
+return {
+    'akinsho/bufferline.nvim',
+    dependencies = {'nvim-tree/nvim-web-devicons', lazy = true },
+    lazy = false,
+    config = function()
+        require "bufferline".setup({
     options = {
         diagnostics = "nvim_lsp", -- | "nvim_lsp" | "coc",
         diagnostics_indicator = function(count, level, diagnostics_dict, context)
@@ -36,5 +35,7 @@ require("bufferline").setup{
             delay = 0,
             reveal = { "close" },
         },
-    }
+    },
+})
+    end
 }

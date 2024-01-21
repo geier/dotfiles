@@ -1,18 +1,23 @@
-------------
--- Packer --
-------------
+-- TODO get this back into table mode settings
+vim.cmd("let g:table_mode_map_prefix = '<leader>tm'")
 
-local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  packer_bootstrap = vim.fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+----------
+-- lazy --
+---------
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-require('plugins')
-vim.cmd [[command! PackerInstall packadd packer.nvim | lua require('plugins').install()]]
-vim.cmd [[command! PackerUpdate packadd packer.nvim | lua require('plugins').update()]]
-vim.cmd [[command! PackerSync packadd packer.nvim | lua require('plugins').sync()]]
-vim.cmd [[command! PackerClean packadd packer.nvim | lua require('plugins').clean()]]
-vim.cmd [[command! PackerCompile packadd packer.nvim | lua require('plugins').compile()]]
+require("lazy").setup("plugins")
 
 -------------
 -- Options --
@@ -104,15 +109,6 @@ for k, v in pairs(win_opts) do
     vim.o[k] = v
     vim.wo[k] = v
 end
-
----------
--- Colors
----------
-
-local theme = 'kanagawa'
-local lightline_theme = theme
-
-vim.api.nvim_command('colorscheme ' .. theme)
 
 ---------------
 -- Autocommands
