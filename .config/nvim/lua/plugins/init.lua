@@ -32,9 +32,6 @@ return {
     -- undotree
     'mbbill/undotree',
 
-    -- git plugin (commiting, blame, diff, etc.)
-    'tpope/vim-fugitive',
-
     -- indenting python properly
     { 'hynek/vim-python-pep8-indent', ft = "python" },
 
