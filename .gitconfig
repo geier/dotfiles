@@ -14,13 +14,19 @@
 	remote = green
 [push]
 	default = simple
+	autoSetupRemote = true
 [ghi]
 	token = !keyring_helper.py github.com ghi
-[merge]
-	conflictstyle = diff3
 [rebase]
 	autostash = true
+	updateRefs = true
 [diff]
 	indentHeuristic = true
+	algorithm = histogram
 [core]
 	quotepath = off
+[http]
+	postbuffer = 2097152000
+[rerere]
+	enabled = true
+	autoupdate = true
