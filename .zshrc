@@ -173,13 +173,25 @@ alias gc='git commit'
 alias gca='git commit -a'
 alias gco='git checkout'
 alias gb='git branch --color=auto'
-alias gw='git switch'
 alias gs='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
 alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
 alias gri="git rebase -i"
 alias grc="git rebase --continue"
 alias gra="git rebase --abort"
 alias gdeletemerged="git branch --merged | egrep -v \"(^\*|master|main|dev)\" | xargs git branch -d"
+
+function gw() {
+      if [[ $# -eq 0 ]]; then
+         local branch=$(git branch --list | sed 's/^\*//g' | sed 's/^[ \t]*//;s/[ \t]*$//' | fzf)
+         if [[ -n $branch ]]; then
+            git switch "$branch"
+         else
+            echo "No branch selected."
+         fi
+      else
+         git switch "$@"
+      fi
+   }
 
 alias A='sudo aptitude'
 alias Ai='sudo aptitude install'
