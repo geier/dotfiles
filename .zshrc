@@ -356,20 +356,14 @@ which virtualenvwrapper.sh > /dev/null && source `which virtualenvwrapper.sh`
 [ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ] && source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 [ -x /usr/local/bin/virtualenvwrapper.sh ] && sourcVe /usr/local/bin/virtualenvwrapper.sh
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/cg/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/cg/mambaforge/etc/profile.d/conda.sh" ]; then
-        . "/Users/cg/mambaforge/etc/profile.d/conda.sh"
+# use python -m pip instead of pip
+pip() {
+    if [[ $1 == -* ]]; then
+        command pip "$@"
     else
-        export PATH="/Users/cg/mambaforge/bin:$PATH"
+        python -m pip "$@"
     fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+}
 
 # }}}
 
