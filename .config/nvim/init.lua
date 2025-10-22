@@ -170,6 +170,10 @@ g.calendar_keys = { goto_next_month = '<C-Right>', goto_prev_month = '<C-Left>',
 g.calendar_monday = 1
 g.calendar_diary = '/Users/cg/workspace/wiki/diary'
 
+-----------
+-- lsp config
+-----------
+vim.lsp.inlay_hint.enable()
 
 ----------
 -- orgmode
