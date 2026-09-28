@@ -42,7 +42,16 @@ return {
       },
 
       { "<C-q>", '<C-R>=strftime("%Y-%m-%d")<CR>', desc = "Insert current date", mode = "i" },
-      { "<C-q>", '<C-R>=strftime("%Y-%m-%d")<CR>', desc = "Insert current date", mode = "c" },
+      {
+        "<C-q>",
+        function()
+          return os.date("%Y-%m-%d")
+        end,
+        desc = "Insert current date",
+        mode = "c",
+        expr = true,
+        silent = false,
+      },
       { "w!!", "%!sudo tee > /dev/null %", desc = "Write with sudo", mode = "c" },
     },
   },
