@@ -5,7 +5,7 @@ vim.cmd("let g:table_mode_map_prefix = '<leader>tm'")
 -- lazy --
 ---------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -77,7 +77,7 @@ local win_opts = {
     cursorline = false,
     number     = true,
     foldmethod = 'expr',
-    foldexpr   = 'nvim_treesitter#foldexpr()',
+    foldexpr   = 'v:lua.vim.treesitter.foldexpr()',
     foldenable = true,
 }
 
@@ -119,7 +119,11 @@ vim.cmd('autocmd BufWinLeave * silent! mkview')
 -- and reload on entering it
 vim.cmd('autocmd BufWinEnter * silent! loadview')
 -- Highlight yanked area for 500ms
-vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=500} ')
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    vim.hl.on_yank({ higroup = "IncSearch", timeout = 500 })
+  end,
+})
 
 ----------
 -- vimwiki
@@ -174,17 +178,3 @@ g.calendar_diary = '/Users/cg/workspace/wiki/diary'
 -- lsp config
 -----------
 vim.lsp.inlay_hint.enable()
-
-------------------
--- require configs
-------------------
-require "nvim-conf.aerial"
-require "nvim-conf.noice"
-require "nvim-conf.bufferline"
-require "nvim-conf.lsp"
-require "nvim-conf.lualine"
-require "nvim-conf.neo-tree"
-require "nvim-conf.statuscolumn"
-require "nvim-conf.telescope"
-require "nvim-conf.treesitter"
-require "nvim-conf.whichkey"  -- better load it last, also contains most mappings

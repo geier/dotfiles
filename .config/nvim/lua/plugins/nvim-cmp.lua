@@ -55,28 +55,3 @@ return {
     })
   end,
 }
-
---[[
-   [
-   [            cmp.setup({
-   [                formatting = lsp_zero.cmp_format(),
-   [                mapping = cmp.mapping.preset.insert({
-   [                    ['<C-Space>'] = cmp.mapping.complete(),
-   [                    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-   [                    ['<C-d>'] = cmp.mapping.scroll_docs(4),
-   [                    ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-   [                    ['<C-b>'] = cmp_action.luasnip_jump_backward(),
-   [                    ['K'] = vim.lsp.buf.hover(),
-   [                    ['gd'] = vim.lsp.buf.definition(),
-   [                    ['gD'] = vim.lsp.buf.declaration(),
-   [                    ['gi'] = vim.lsp.buf.implementation(),
-   [                    ['go'] = vim.lsp.buf.type_definition(),
-   [                    ['gr'] = vim.lsp.buf.references(),
-   [                    ['gs'] = vim.lsp.buf.signature_help(),
-   [                    ['<F2>'] = vim.lsp.buf.rename(),
-   [                    -- ['<F3>'] = vim.lsp.buf.formatting(),
-   [                    ['<F4>'] = vim.lsp.buf.code_action(),
-   [                    ['[d'] = vim.diagnostic.goto_prev(),
-   [                    [']d'] = vim.diagnostic.goto_next(),
-   [                    ['gl'] = vim.diagnostic.open_float(),
-   ]]

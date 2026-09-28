@@ -1,7 +1,4 @@
 return {
-    -- 
-    "folke/which-key.nvim",
-
     -- status column
     'luukvbaal/statuscol.nvim',
 
@@ -13,17 +10,7 @@ return {
 
     -- show changed, added and deleted lines in the markers column
     -- using an empty `opts` tells lazy to call the plugins setup()
-    {'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' }, opts = { } },
-
-    -- replace the UI for messages, cmdline, popupmenu
-    {
-        'folke/noice.nvim',
-        requires = {
-            'MunifTanjim/nui.nvim',
-            'rcarriga/nvim-notify'
-        },
-        opts = { },
-    },
+    { 'lewis6991/gitsigns.nvim', dependencies = { 'nvim-lua/plenary.nvim' }, opts = {} },
 
     --------------------
     -- highlight text as in a Word
@@ -61,12 +48,7 @@ return {
     -- wiki functionality for vim
 --    use 'vimwiki/vimwiki' --{ 'branch': 'dev' }
     'mattn/calendar-vim',
-    --use 'lervag/wiki.vim'
-    -- use 'SidOfc/mkdx'
-    {
-    'bouk/vim-markdown', branch = 'wikilinks', ft = "markdown",
-    },
-
+    'jghauser/follow-md-links.nvim',
     -- show content of registers on pressing `""`
     { 'gennaro-tedesco/nvim-peekup', keys = {} },
 
@@ -78,9 +60,6 @@ return {
 
     -- make some plugins (like vim-surround) repeatable with .
     'tpope/vim-repeat',
-
-    -- semantic highlighter for python code
-    --    'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
     'tell-k/vim-autopep8',
 
@@ -105,26 +84,9 @@ return {
     -- copilot 
     'github/copilot.vim',
 
+    'tamton-aquib/duck.nvim',
+
     'nvim-treesitter/nvim-treesitter',
     'nvim-treesitter/playground',
-
-    'nvim-orgmode/orgmode',
-
-    --'romgrk/hologram.nvim'
-
-    -- yaml support, for k8s
-    {
-      "someone-stole-my-name/yaml-companion.nvim",
-      requires = {
-          { "neovim/nvim-lspconfig" },
-          { "nvim-lua/plenary.nvim" },
-          { "nvim-telescope/telescope.nvim" },
-      },
-      config = function()
-        require("telescope").load_extension("yaml_schema")
-      end,
-      ft = 'yaml',
-    }
-
 
   }

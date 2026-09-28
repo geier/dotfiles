@@ -37,8 +37,8 @@ return {
       { "<C-h>", ":WhichKey<CR>", desc = "Run Which-Key" },
       {
         "<C-l>",
-        ":nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>:NoiceDismiss<CR>",
-        desc = "Redraw and dismiss notifications",
+        ":nohlsearch<cr>:diffupdate<cr>:syntax sync fromstart<cr><c-l>",
+        desc = "Redraw screen",
       },
 
       { "<C-q>", '<C-R>=strftime("%Y-%m-%d")<CR>', desc = "Insert current date", mode = "i" },
